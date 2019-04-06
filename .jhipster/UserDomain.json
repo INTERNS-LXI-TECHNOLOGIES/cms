@@ -1,0 +1,68 @@
+{
+    "name": "UserDomain",
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "password",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "department",
+            "fieldType": "Department",
+            "fieldValues": "CSE,ME,ECE,EEE,CE,OTHER"
+        },
+        {
+            "fieldName": "semester",
+            "fieldType": "Semester",
+            "fieldValues": "S1,S2,S3,S4,S5,S6,S7,S8,NA"
+        },
+        {
+            "fieldName": "contactNumber",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userDomain"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "qualifications",
+            "otherEntityName": "qualification",
+            "otherEntityRelationshipName": "userDomain"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "userDomain",
+            "relationshipName": "roles",
+            "otherEntityName": "userRole",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190406142257",
+    "entityTableName": "user_domain",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

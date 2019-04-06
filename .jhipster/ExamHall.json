@@ -1,0 +1,43 @@
+{
+    "name": "ExamHall",
+    "fields": [
+        {
+            "fieldName": "hallNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "batch",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rollNumFrom",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "rollNumTo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "invigialtor",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "exams",
+            "otherEntityName": "exam",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "halls"
+        }
+    ],
+    "changelogDate": "20190406142307",
+    "entityTableName": "exam_hall",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

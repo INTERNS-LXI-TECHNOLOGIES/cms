@@ -9,7 +9,7 @@ entity UserDomain {
   contactNumber Long
 }
 
-entity Authority {
+entity UserRole {
   role Role
 }
 
@@ -140,7 +140,7 @@ relationship OneToMany {
 relationship ManyToMany {
     Event{cordinators} to UserDomain,
     Exam{halls} to ExamHall{exams},
-    UserDomain{authorities} to Authority
+    UserDomain{roles} to UserRole
 }
 
 relationship ManyToOne {

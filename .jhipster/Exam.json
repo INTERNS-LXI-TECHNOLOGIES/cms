@@ -1,0 +1,50 @@
+{
+    "name": "Exam",
+    "fields": [
+        {
+            "fieldName": "examDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "startingTime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "examSchedule",
+            "otherEntityName": "examSchedule",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "subject",
+            "otherEntityName": "subject",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "exam"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "exams",
+            "relationshipName": "halls",
+            "otherEntityName": "examHall",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190406142305",
+    "entityTableName": "exam",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

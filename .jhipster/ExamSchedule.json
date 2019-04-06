@@ -1,0 +1,48 @@
+{
+    "name": "ExamSchedule",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "department",
+            "fieldType": "Department",
+            "fieldValues": "CSE,ME,ECE,EEE,CE,OTHER"
+        },
+        {
+            "fieldName": "semester",
+            "fieldType": "Semester",
+            "fieldValues": "S1,S2,S3,S4,S5,S6,S7,S8,NA"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "exams",
+            "otherEntityName": "exam",
+            "otherEntityRelationshipName": "examSchedule"
+        }
+    ],
+    "changelogDate": "20190406142304",
+    "entityTableName": "exam_schedule",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
