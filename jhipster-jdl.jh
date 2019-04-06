@@ -1,0 +1,168 @@
+
+entity UserDomain {
+  firstName String,
+  lastName String,
+  email String,
+  password String,
+  department Department,
+  semester Semester,
+  contactNumber Long
+}
+
+entity Authority {
+  role Role
+}
+
+enum Role {
+   STUDENT,
+   FACULTY,
+   ADMIN,
+   PLACEMENT_OFFICER,
+   HOD,
+   TUTOR
+}
+
+entity Address {
+  houseName String,
+  street String,
+  district String,
+  pincode Long,
+  state String,
+  country String
+}
+
+entity Event {
+  eventCategory EventType,
+  eventName String,
+  eventDate Instant,
+  eventVenue String,
+  active Boolean
+}
+
+enum EventType {
+	ARTS,
+    SPORTS,
+    OTHER
+}
+
+entity Qualification {
+	grade String,
+    year Integer,
+    university String,
+    marks Double,
+    percentage Float
+}
+
+entity LeaveApplication {
+	reason String,
+    fromDate Instant,
+    toDate Instant
+}
+
+entity Attatchment {
+	file Blob
+}
+
+entity ExamSchedule {
+  title String,
+  startDate Instant,
+  endDate Instant,
+  active Boolean,
+  department Department,
+  semester Semester
+}
+
+entity Exam {
+	examDate Instant,
+  	startingTime String,
+    duration String
+}
+
+entity StudyMaterial {
+	title String,
+    module Integer,
+	file Blob
+}
+
+entity ExamHall {
+	hallNumber Integer,
+    batch String,
+    rollNumFrom Integer,
+    rollNumTo Integer,
+    invigialtor String
+}
+
+entity Subject {
+	subjectCode String,
+    semester Semester
+}
+
+entity Assignment {
+	submissionDate Instant,
+    topic String,
+    semester Semester,
+    department Department
+}
+
+enum Semester {
+	S1,
+    S2,
+    S3,
+    S4,
+    S5,
+    S6,
+    S7,
+    S8,
+    NA
+}
+
+enum Department {
+	CSE,
+    ME,
+    ECE,
+    EEE,
+    CE,
+    OTHER
+}
+
+relationship OneToOne {
+	UserDomain{address} to Address,
+    Exam{subject} to Subject
+}
+
+relationship OneToMany {
+    UserDomain{qualifications} to Qualification,
+    ExamSchedule{exams} to Exam,
+    Subject{materials} to StudyMaterial,
+    LeaveApplication{attatchments} to Attatchment
+}
+
+relationship ManyToMany {
+    Event{cordinators} to UserDomain,
+    Exam{halls} to ExamHall{exams},
+    UserDomain{authorities} to Authority
+}
+
+relationship ManyToOne {
+	LeaveApplication{appliedBy} to UserDomain
+}
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
