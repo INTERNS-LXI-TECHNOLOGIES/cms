@@ -1,0 +1,20 @@
+{
+    "name": "UserRole",
+    "fields": [
+        {
+            "fieldName": "role",
+            "fieldType": "Role",
+            "fieldValues": "STUDENT,FACULTY,ADMIN,PLACEMENT_OFFICER,HOD,TUTOR"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190406142535",
+    "entityTableName": "user_role",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

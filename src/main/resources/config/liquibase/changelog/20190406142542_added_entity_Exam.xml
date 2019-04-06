@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Exam.
+    -->
+    <changeSet id="20190406142542-1" author="jhipster">
+        <createTable tableName="exam">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="exam_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="starting_time" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="duration" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="exam_schedule_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="subject_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_exam_subject_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="exam" columnName="exam_date" columnDataType="datetime"/>
+        
+        <createTable tableName="exam_halls">
+            <column name="halls_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exam_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="exam_id, halls_id" tableName="exam_halls"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

@@ -1,0 +1,42 @@
+{
+    "name": "Qualification",
+    "fields": [
+        {
+            "fieldName": "grade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "university",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marks",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "percentage",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "userDomain",
+            "otherEntityName": "userDomain",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190406142538",
+    "entityTableName": "qualification",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

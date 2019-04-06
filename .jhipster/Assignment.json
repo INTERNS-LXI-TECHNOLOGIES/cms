@@ -1,0 +1,33 @@
+{
+    "name": "Assignment",
+    "fields": [
+        {
+            "fieldName": "submissionDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "topic",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "semester",
+            "fieldType": "Semester",
+            "fieldValues": "S1,S2,S3,S4,S5,S6,S7,S8,NA"
+        },
+        {
+            "fieldName": "department",
+            "fieldType": "Department",
+            "fieldValues": "CSE,ME,ECE,EEE,CE,OTHER"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190406142546",
+    "entityTableName": "assignment",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

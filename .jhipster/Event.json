@@ -1,0 +1,45 @@
+{
+    "name": "Event",
+    "fields": [
+        {
+            "fieldName": "eventCategory",
+            "fieldType": "EventType",
+            "fieldValues": "ARTS,SPORTS,OTHER"
+        },
+        {
+            "fieldName": "eventName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "eventDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "eventVenue",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "event",
+            "relationshipName": "cordinators",
+            "otherEntityName": "userDomain",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190406142537",
+    "entityTableName": "event",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity LeaveApplication.
+    -->
+    <changeSet id="20190406142539-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="applied_by_id"
+                                 baseTableName="leave_application"
+                                 constraintName="fk_leave_application_applied_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_domain"/>
+
+    </changeSet>
+</databaseChangeLog>

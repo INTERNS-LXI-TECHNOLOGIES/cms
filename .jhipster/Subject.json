@@ -1,0 +1,31 @@
+{
+    "name": "Subject",
+    "fields": [
+        {
+            "fieldName": "subjectCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "semester",
+            "fieldType": "Semester",
+            "fieldValues": "S1,S2,S3,S4,S5,S6,S7,S8,NA"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "materials",
+            "otherEntityName": "studyMaterial",
+            "otherEntityRelationshipName": "subject"
+        }
+    ],
+    "changelogDate": "20190406142545",
+    "entityTableName": "subject",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,41 @@
+{
+    "name": "LeaveApplication",
+    "fields": [
+        {
+            "fieldName": "reason",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fromDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "toDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attatchments",
+            "otherEntityName": "attatchment",
+            "otherEntityRelationshipName": "leaveApplication"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "appliedBy",
+            "otherEntityName": "userDomain",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "leaveApplication"
+        }
+    ],
+    "changelogDate": "20190406142539",
+    "entityTableName": "leave_application",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
