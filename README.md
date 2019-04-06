@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # SmartInformationSystem
 
 This application was generated using JHipster 5.8.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.8.1](https://www.jhipster.tech/documentation-archive/v5.8.1).
@@ -208,4 +210,9 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [jasmine]: http://jasmine.github.io/2.0/introduction.html
 [protractor]: https://angular.github.io/protractor/
 [leaflet]: http://leafletjs.com/
-[definitelytyped]: http://definitelytyped.org/
+
+# [definitelytyped]: http://definitelytyped.org/
+
+# cms
+
+> > > > > > > a9deeaffe32c161d3bd8aff1353ce3c89a47361c
