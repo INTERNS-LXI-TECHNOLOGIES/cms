@@ -211,13 +211,11 @@ public class UserDomain implements Serializable {
 
     public UserDomain addRoles(UserRole userRole) {
         this.roles.add(userRole);
-        userRole.getUserDomains().add(this);
         return this;
     }
 
     public UserDomain removeRoles(UserRole userRole) {
         this.roles.remove(userRole);
-        userRole.getUserDomains().remove(this);
         return this;
     }
 

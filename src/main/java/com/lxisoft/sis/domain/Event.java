@@ -132,13 +132,11 @@ public class Event implements Serializable {
 
     public Event addCordinators(UserDomain userDomain) {
         this.cordinators.add(userDomain);
-        userDomain.getEvents().add(this);
         return this;
     }
 
     public Event removeCordinators(UserDomain userDomain) {
         this.cordinators.remove(userDomain);
-        userDomain.getEvents().remove(this);
         return this;
     }
 
