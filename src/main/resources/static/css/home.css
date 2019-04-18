@@ -1,0 +1,464 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Calibri;
+  box-sizing: border-box;
+}
+.sidenav {
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #b22121;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidenav h1 {
+  color: white;
+}
+
+.sidenav ul {
+  margin-top: 60px;
+}
+.sidenav ul li {
+  border-bottom: 1px solid rgba(190, 190, 190, 0.4);
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.sidenav ul li a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+  display: block;
+}
+
+.sidenav ul li :hover {
+  color: #f1f1f1;
+}
+
+.active {
+  color: #f1f1f1;
+  font-weight: bold;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  float: right;
+  height: 100vh;
+}
+
+.profile-img {
+  position: relative;
+  width: 100%;
+  float: right;
+  height: 30vh;
+}
+.profile-detail {
+  margin-left: 450px;
+  margin-right: 200px;
+}
+.profile-detail ul li {
+  display: block;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 20px;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 1);
+}
+.profile-img .edit-btn a {
+  margin-top: -400px;
+  margin-right: 100px;
+
+  position: relative;
+  float: right;
+}
+.btn {
+  background-color: black;
+  border-style: none;
+  display: block;
+}
+.btn:hover {
+  background-color: rgba(50, 50, 50, 1);
+}
+
+.profile-img .wrapper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-left: 250px;
+}
+.wrapper .wrapper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-left: 250px;
+}
+
+.wrapper h1 {
+  margin-top: 100px;
+  text-align: center;
+}
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.student-studymaterials {
+  transform: translate(0, -100px);
+  width: 800px;
+  height: 300px;
+  margin-top: 100px;
+  background: transparent;
+  border: 2px solid black;
+}
+
+.wrapper .wrapper-container .student-studymaterials h2 {
+  transform: translate(0, 0);
+  color: black;
+}
+
+.student-studymaterials select {
+  margin-top: 50px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid black;
+  width: 200px;
+  margin-left: 50px;
+  position: relative;
+}
+
+.student-studymaterials button {
+  margin-left: 15px;
+  color: white;
+  margin-top: 60px;
+  position: relative;
+}
+
+.student-studymaterials button:hover {
+  background-color: #43a047;
+  color: white;
+}
+.student-exam {
+  transform: translate(0, -100px);
+  width: 800px;
+  height: 300px;
+  margin-top: 100px;
+  background: transparent;
+  border: 2px solid black;
+}
+
+.wrapper .wrapper-container .student-exam h2 {
+  transform: translate(0, 0);
+  color: black;
+}
+
+.student-exam select {
+  margin-top: 50px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid black;
+  width: 200px;
+  margin-left: 50px;
+  position: relative;
+}
+.student-exam button {
+  margin-left: 15px;
+  color: white;
+  margin-top: 60px;
+  position: relative;
+}
+.student-exam button:hover {
+  background-color: #43a047;
+  color: white;
+}
+.faculty-exam {
+  transform: translate(0, -100px);
+  width: 800px;
+  height: 300px;
+  margin-top: 100px;
+  background: transparent;
+  border: 2px solid black;
+}
+
+.wrapper .wrapper-container .faculty-exam h2 {
+  transform: translate(0, 0);
+  color: black;
+}
+
+.faculty-exam select {
+  margin-top: 50px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid black;
+  width: 200px;
+  margin-left: 50px;
+  position: relative;
+}
+.faculty-exam button {
+  margin-left: 15px;
+  color: white;
+  margin-top: 60px;
+  position: relative;
+}
+.faculty-exam button:hover {
+  background-color: #43a047;
+  color: white;
+}
+.admin-exam {
+  transform: translate(0, -100px);
+  width: 800px;
+  height: 300px;
+  margin-top: 100px;
+  background: transparent;
+  border: 2px solid black;
+}
+
+.wrapper .wrapper-container .admin-exam h2 {
+  transform: translate(0, 0);
+  color: black;
+}
+
+.admin-exam select {
+  margin-top: 50px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid black;
+  width: 200px;
+  margin-left: 50px;
+  position: relative;
+}
+.admin-exam button {
+  margin-left: 15px;
+  color: white;
+  margin-top: 60px;
+  position: relative;
+}
+.admin-exam button:hover {
+  background-color: #43a047;
+  color: white;
+}
+
+.upload-studymaterials {
+  transform: translate(0, -100px);
+
+  margin-top: 10px;
+  width: 800px;
+  height: 300px;
+  background: transparent;
+  border: 2px solid black;
+}
+.wrapper .wrapper-container .upload-studymaterials h2 {
+  transform: translate(0, 0);
+  color: black;
+}
+.upload-studymaterials select {
+  margin-top: 50px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid black;
+  width: 200px;
+  margin-left: 50px;
+  position: relative;
+}
+.upload-studymaterials button {
+  margin-left: 15px;
+  color: white;
+  margin-top: 60px;
+  position: relative;
+}
+
+button {
+  width: 100px;
+  height: 50px;
+  background-color: #b22121;
+  border-radius: 1em;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+.upload-studymaterials button:hover {
+  background-color: #43a047;
+  color: white;
+}
+.upload-studymaterials input[type='file'] {
+  margin-top: 20px;
+}
+
+.student-btn {
+  width: 150px;
+  height: 50px;
+  padding-top: 12px;
+  margin-top: -300px;
+  margin-left: -600px;
+  background-color: #006bb3;
+  text-decoration: none;
+  display: block;
+}
+
+.faculty-btn {
+  width: 150px;
+  height: 50px;
+  padding-top: 12px;
+  margin-top: -300px;
+  margin-left: -600px;
+  background-color: #006bb3;
+  text-decoration: none;
+  display: block;
+}
+.student-btn:hover {
+  text-decoration: none;
+  display: block;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0);
+}
+.faculty-btn:hover {
+  text-decoration: none;
+  display: block;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0);
+}
+.student-btn:active {
+  text-decoration: none;
+  display: block;
+}
+.faculty-btn:active {
+  text-decoration: none;
+  display: block;
+}
+.add-student a {
+  text-decoration: none;
+  display: block;
+}
+.add-faculty a {
+  text-decoration: none;
+  display: block;
+}
+.close {
+  transform: translateY(-40px);
+}
+
+.close:hover {
+  color: red;
+}
+.container img {
+  margin-right: 30px;
+  margin-left: -92px;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------
+                                                          searchbox                                                           
+------------------------------------------------------------------------------------------------------------------------------*/
+
+form.search-box input[type='text'] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.search-box button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search-box button:hover {
+  background: #0b7dda;
+}
+
+form.search-box::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+.search-student {
+  margin-left: 200px;
+  margin-top: -295px;
+  width: 900px;
+}
+.search-faculty {
+  margin-left: 200px;
+  margin-top: -295px;
+  width: 900px;
+}
+
+.btn-secondary {
+  position: relative;
+  background-color: red;
+  margin-left: 300px;
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: #f44242;
+  color: white;
+}
+
+.btn-tertiary {
+  position: relative;
+  background-color: darkblue;
+  transform: translate(400%, -100%);
+  color: white;
+}
+.btn-tertiary:hover {
+  background-color: blue;
+  color: white;
+}
+
+.btn-primary {
+  position: relative;
+  transform: translate(200%, -200%);
+  color: white;
+}
+#Birthday_Day {
+  width: 150px;
+}
+#Birthday_Month {
+  width: 150px;
+  position: absolute;
+  transform: translate(175px, -35px);
+}
+#Birthday_Year {
+  width: 150px;
+  position: absolute;
+  transform: translate(350px, -35px);
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------*/
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav li a {
+    font-size: 16px;
+  }
+}

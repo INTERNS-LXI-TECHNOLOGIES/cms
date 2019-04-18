@@ -255,6 +255,7 @@ public class UserDomain implements Serializable {
             ", department='" + getDepartment() + "'" +
             ", semester='" + getSemester() + "'" +
             ", contactNumber=" + getContactNumber() +
+            ", address=" + getAddress() +
             "}";
     }
 }

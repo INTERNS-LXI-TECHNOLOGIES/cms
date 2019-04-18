@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+     <link rel="stylesheet" href="css/idea.css">
+<link rel="stylesheet" type="text/css" href="css/home.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+  <title></title>
+</head>
+<body>
+<div class="sidenav" id="navmenu">
+  <center><h1>DASHBOARD</h1></center>
+  <ul>
+
+    <li><a href="#student-profile">My Profile</a></li>
+    <li><a href="#smart-learn">Smart Learn</a></li>
+    <li><a href="#exam">Exam</a></li>
+  <li><a href="#events">Events</a></li>
+   <li><a href="#placements">Placements</a></li>
+   <li><a href="#ideapad">Ideapad</a></li>
+  <li><a href="#logout">Logout</a></li>
+ 
+  </ul>
+  
+</div>
+
+<div class="tab-content" id="student-profile">
+    <section class="profile-img" >
+    <div class="wrapper-container">
+  <h1> Welcome</h1>
+  <img src="images/avatar.png" alt="Avatar" class="avatar"> 
+</div>
+<div class="profile-detail">
+  <ul>
+    <li>Name:</li><br>
+    <li>Designation:</li><br>
+    <li>Date of Birth:</li><br>
+    <li>Mobile No:</li><br>
+    <li>Email:</li><br>
+    <li>Address:</li><br>
+    </ul>
+</div>
+<div class="edit-btn">
+  <a href="#" class="btn btn-info btn-lg">
+    <span class="glyphicon glyphicon-pencil"></span> Edit 
+  </a>
+</div >
+
+  </section>
+</div>
+
+<div class="tab-content" id="smart-learn" >
+  <section class="wrapper">
+    <div class="wrapper-container">
+      
+      
+
+      <div class="student-studymaterials">
+        <center><h2>STUDY MATERIALS</h2></center>
+
+        <select>
+         <option value="-1" placeholder="">Department</option>
+         <option value="cse">CSE</option>
+         <option value="ece">ECE</option>
+         <option value="civil">CIVIL</option>
+         <option value="mech">MECH</option>
+         <option value="eee">EEE</option>
+
+       </select>
+       <select>
+        <option value="-1" placeholder="">Semester</option>
+        <option value="S1">S1</option>  
+        <option value="S2">S2</option>  
+        <option value="S3">S3</option>  
+        <option value="S4">S4</option>  
+        <option value="S5">S5</option>  
+        <option value="S6">S6</option>  
+        <option value="S7">S7</option>  
+        <option value="S8">S8</option>  
+      </select>
+
+       <select>
+        <option value="-1" placeholder="">Subjects</option>
+        <option value="datamining">DATA MINING</option>  
+        <option value="sustainable">SUSTAINABLE ENERGY PROCESS</option>  
+        <option value="ai">ARTIFICIAL INTELLIGENCE</option>  
+        <option value="es">EMBEDDED SYSTEMS</option>  
+      </select>
+
+      <a href="studentstudymaterial.html"> <center><button>SUBMIT</button><button>CANCEL</button></center></a>
+      </div>
+  </div>
+  </section>
+</div>
+
+
+<div class="tab-content" id="exam" >
+  <section class="wrapper">
+    <div class="wrapper-container">
+      <div class="student-exam">
+        <center><h2>EXAM DETAILS</h2></center>
+
+        <select>
+          <option value="-1" placeholder="">Semester</option>
+          <option value="S1">S1</option>
+          <option value="S2">S2</option>  
+         <option value="S3">S3</option>  
+         <option value="S4">S4</option>  
+         <option value="S5">S5</option>  
+         <option value="S6">S6</option>  
+         <option value="S7">S7</option>  
+         <option value="S8">S8</option>  
+        </select>
+
+        <select>
+         <option value="-1" placeholder="">Department</option>
+         <option value="cse">CSE</option>
+         <option value="ece">ECE</option>
+         <option value="civil">CIVIL</option>
+         <option value="mech">MECH</option>
+         <option value="eee">EEE</option>
+        </select>
+
+
+        <select>
+         <option value="-1" placeholder="">Exams</option>
+         <option value="seriesone">SERIES ONE</option>
+         <option value="seriestwo">SERIES TWO</option>
+         <option value="semeter">SEMESTER</option>
+        </select>
+        <a href="studentexamdetails.html"><center><button>SUBMIT</button><button>CANCEL</button></center></a>
+     </div>
+  </div>
+</div>
+
+
+
+
+<div class="tab-content" id="ideapad">
+  <section class="wrapper">
+    <div class="wrapper-container">
+      <div class="container">
+    <h3>
+    LAUNCH IDEA
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+   </h3>
+
+     <br><label for="RegNo"><b> University Register Number</b></label>&nbsp  &nbsp &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp
+    <br><input type="text" placeholder=" Register Number" name="RegNo" required>
+    
+     <br><label for="title"><b>Title</b></label>&nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp 
+    <br><input type="text" placeholder="Title" name="title" required>
+    
+    <br><label for="ideades"><b>Idea Description</b></label>
+  <br><input type="text" placeholder="Idea description" name="ideades" required><br>
+  
+ <button >Submit</button><br><br> <button>Cancel</button><br>
+</div>
+
+    </div>
+</section>
+</div>
+
+	
+	
+
+
+  
+  <script type="text/javascript" src="js/main.js"></script>
+
+
+</body>
+</html>

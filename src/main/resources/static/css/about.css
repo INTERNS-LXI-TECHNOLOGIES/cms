@@ -1,0 +1,13 @@
+.about {
+  transform: translateY(-250px);
+
+  margin-top: 50px;
+}
+
+.about-content {
+  transform: translateY(-250px);
+}
+.about-content p {
+  font-size: 17px;
+  font-family: roboto;
+}

@@ -1,0 +1,57 @@
+body {
+  font-family: roboto;
+  font-size: 20px;
+  background-color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 20px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.container input[type='text'] {
+  width: 50%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 2px solid black;
+  background: #f1f1f1;
+}
+.container input[type='password'] {
+  width: 50%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 2px solid black;
+  background: #f1f1f1;
+}
+
+.container button {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #b22121;
+  width: 50%;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.container label {
+  color: black;
+}
+.container button:hover,
+.container button:active,
+.container button:focus {
+  background: #43a047;
+}
