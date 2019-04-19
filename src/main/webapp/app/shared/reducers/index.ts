@@ -58,6 +58,10 @@ import subject, {
 import assignment, {
   AssignmentState
 } from 'app/entities/assignment/assignment.reducer';
+// prettier-ignore
+import userDomain, {
+  UserDomainState
+} from 'app/entities/user-domain/user-domain.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {

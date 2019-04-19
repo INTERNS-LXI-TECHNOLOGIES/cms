@@ -50,6 +50,9 @@ import com.lxisoft.sis.domain.enumeration.Semester;
 @SpringBootTest(classes = SmartInformationSystemApp.class)
 public class UserDomainResourceIntTest {
 
+    private static final String DEFAULT_REG_NUM = "AAAAAAAAAA";
+    private static final String UPDATED_REG_NUM = "BBBBBBBBBB";
+
     private static final String DEFAULT_FIRST_NAME = "AAAAAAAAAA";
     private static final String UPDATED_FIRST_NAME = "BBBBBBBBBB";
 
@@ -125,6 +128,7 @@ public class UserDomainResourceIntTest {
      */
     public static UserDomain createEntity(EntityManager em) {
         UserDomain userDomain = new UserDomain()
+            .regNum(DEFAULT_REG_NUM)
             .firstName(DEFAULT_FIRST_NAME)
             .lastName(DEFAULT_LAST_NAME)
             .email(DEFAULT_EMAIL)
@@ -156,6 +160,7 @@ public class UserDomainResourceIntTest {
         List<UserDomain> userDomainList = userDomainRepository.findAll();
         assertThat(userDomainList).hasSize(databaseSizeBeforeCreate + 1);
         UserDomain testUserDomain = userDomainList.get(userDomainList.size() - 1);
+        assertThat(testUserDomain.getRegNum()).isEqualTo(DEFAULT_REG_NUM);
         assertThat(testUserDomain.getFirstName()).isEqualTo(DEFAULT_FIRST_NAME);
         assertThat(testUserDomain.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
         assertThat(testUserDomain.getEmail()).isEqualTo(DEFAULT_EMAIL);
@@ -196,6 +201,7 @@ public class UserDomainResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(userDomain.getId().intValue())))
+            .andExpect(jsonPath("$.[*].regNum").value(hasItem(DEFAULT_REG_NUM.toString())))
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME.toString())))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME.toString())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
@@ -249,6 +255,7 @@ public class UserDomainResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(userDomain.getId().intValue()))
+            .andExpect(jsonPath("$.regNum").value(DEFAULT_REG_NUM.toString()))
             .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME.toString()))
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
@@ -279,6 +286,7 @@ public class UserDomainResourceIntTest {
         // Disconnect from session so that the updates on updatedUserDomain are not directly saved in db
         em.detach(updatedUserDomain);
         updatedUserDomain
+            .regNum(UPDATED_REG_NUM)
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
             .email(UPDATED_EMAIL)
@@ -297,6 +305,7 @@ public class UserDomainResourceIntTest {
         List<UserDomain> userDomainList = userDomainRepository.findAll();
         assertThat(userDomainList).hasSize(databaseSizeBeforeUpdate);
         UserDomain testUserDomain = userDomainList.get(userDomainList.size() - 1);
+        assertThat(testUserDomain.getRegNum()).isEqualTo(UPDATED_REG_NUM);
         assertThat(testUserDomain.getFirstName()).isEqualTo(UPDATED_FIRST_NAME);
         assertThat(testUserDomain.getLastName()).isEqualTo(UPDATED_LAST_NAME);
         assertThat(testUserDomain.getEmail()).isEqualTo(UPDATED_EMAIL);

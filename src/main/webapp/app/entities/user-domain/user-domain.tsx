@@ -66,6 +66,9 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                 <th className="hand" onClick={this.sort('id')}>
                   ID <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('regNum')}>
+                  Reg Num <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('firstName')}>
                   First Name <FontAwesomeIcon icon="sort" />
                 </th>
@@ -101,6 +104,7 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                       {userDomain.id}
                     </Button>
                   </td>
+                  <td>{userDomain.regNum}</td>
                   <td>{userDomain.firstName}</td>
                   <td>{userDomain.lastName}</td>
                   <td>{userDomain.email}</td>

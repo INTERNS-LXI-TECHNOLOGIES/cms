@@ -1,733 +1,696 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/registration.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/registration.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+</script>
+<script type="text/javascript">
+		function setDept(dept) {
+			console.log("dept set");
+			document.getElementById('department').value=dept.value;
+			console.log("dept set"+document.getElementById('department').value);
+		}
 </script>
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <title></title>
 </head>
 <body>
-  <div class="sidenav" id="navmenu">
-    <center><h1>DASHBOARD</h1></center>
-    <ul>
-
-      <li><a href="#admin-profile" >My Profile</a></li>
-      <li><a href="#student" >Student</a></li>
-      <li><a href="#faculty"> Faculty</a></li>
-      <li><a href="#exam"> Exam</a></li>
-      <li><a href="#events"> Events</a></li>
-      <li><a href="#logout">Logout</a></li>
-    </ul>
-
-  </div>
-  <div class="tab-content" id="admin-profile">
-    <section class="profile-img" >
-      <div class="wrapper-container">
-        <h1> Welcome Admin !</h1>
-        <img src="images/avatar.png" alt="Avatar" class="avatar"> 
-      </div>
-      <div class="profile-detail">
-        <ul>
-         <li th:text="'EmployeeId: ' + ${admin.id}">employeeid:</li><br>
-         <li th:text="'FirstName: ' + ${admin.firstName}">firstName:</li><br>
-         <li th:text="'LastName: ' +${admin.lastName}">lastName:</li><br>
-         <li th:text="'Email: ' +${admin.email}">email:</li><br>
-         <li th:text="'Password: ' +${admin.password} ">password:</li><br>
-         <li th:text="'ContactNo: ' +${admin.contactNumber} ">contactNumber:</li><br>
-       </ul>
-     </div>
-     <div class="edit-btn">
-      <a href="#" class="btn btn-info btn-lg">
-        <span class="glyphicon glyphicon-pencil"></span> Edit 
-      </a>
-    </div >
-
-  </section>
-</div>
-
-
-
-<!-----------------------------------------admin profile edit modal-------------------------------------------------->
-
-<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <center><h2 class="modal-title" id="exampleModalLabel"><b>Profile</b></h2></center>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Date of Birth:</label>
-            <select  name="Birthday_day" id="Birthday_Day" class="form-control" width=50px;>
-              <option value="-1">Day:</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-
-              <option value="31">31</option>
-            </select>
-
-            <select id="Birthday_Month" name="Birthday_Month" class="form-control">
-              <option value="-1">Month:</option>
-              <option value="January">Jan</option>
-              <option value="February">Feb</option>
-              <option value="March">Mar</option>
-              <option value="April">Apr</option>
-              <option value="May">May</option>
-              <option value="June">Jun</option>
-              <option value="July">Jul</option>
-              <option value="August">Aug</option>
-              <option value="September">Sep</option>
-              <option value="October">Oct</option>
-              <option value="November">Nov</option>
-              <option value="December">Dec</option>
-            </select>
-
-            <select name="Birthday_Year" id="Birthday_Year" class="form-control">
-
-              <option value="-1">Year:</option>
-              <option value="2012">2012</option>
-              <option value="2011">2011</option>
-              <option value="2010">2010</option>
-              <option value="2009">2009</option>
-              <option value="2008">2008</option>
-              <option value="2007">2007</option>
-              <option value="2006">2006</option>
-              <option value="2005">2005</option>
-              <option value="2004">2004</option>
-              <option value="2003">2003</option>
-              <option value="2002">2002</option>
-              <option value="2001">2001</option>
-              <option value="2000">2000</option>
-
-              <option value="1999">1999</option>
-              <option value="1998">1998</option>
-              <option value="1997">1997</option>
-              <option value="1996">1996</option>
-              <option value="1995">1995</option>
-              <option value="1994">1994</option>
-              <option value="1993">1993</option>
-              <option value="1992">1992</option>
-              <option value="1991">1991</option>
-              <option value="1990">1990</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="email" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Address:</label>
-            <textarea  class="form-control" id="message-text"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Login Credentials</u></font></b></label><br>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Password:</label>
-              <input  type="password" class="form-control" id="recipient-name">
-            </div>
-          </div>
-        </form>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-tertiary">Save</button>
-          <button type="reset" class="btn btn-primary">Reset</button>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-----------------------------------------------Add students button----------------------------------------->
-<div class="tab-content" id="student">
-  <section class="wrapper">
-    <div class="wrapper-container">
-      <div class="add-student">
-       <a href="#" data-toggle="modal" data-target="#exampleModal" class="student-btn btn-info btn-lg">
-        <span class="glyphicon glyphicon-plus"></span> Add Student
-      </a>
-    </div>
-
-    <!------------------------------------------------modal-------------------------------------------->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <center><h2 class="modal-title" id="exampleModalLabel"><b>STUDENT REGISTRATION</b></h2></center>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="/create-user" method="POST">
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Firstname:</label>
-                <input th:field= "${dummy.user.firstName}" type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Lastname:</label>
-                <input th:field= "${dummy.user.lastName}" type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Department:</label>
-                <select class="form-control" id="recipient-name">
-                  <option value="-1">Select Department</option>
-                  <option value="cse">CSE</option>
-                  <option value="eee">EEE</option>
-                  <option value="ece">ECE</option>
-                  <option value="ce">CE</option>
-                  <option value="me">ME</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Date of Birth:</label>
-                <select  name="Birthday_day" id="Birthday_Day" class="form-control" width=50px;>
-                  <option value="-1">Day:</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30</option>
-
-                  <option value="31">31</option>
-                </select>
-
-                <select id="Birthday_Month" name="Birthday_Month" class="form-control">
-                  <option value="-1">Month:</option>
-                  <option value="January">Jan</option>
-                  <option value="February">Feb</option>
-                  <option value="March">Mar</option>
-                  <option value="April">Apr</option>
-                  <option value="May">May</option>
-                  <option value="June">Jun</option>
-                  <option value="July">Jul</option>
-                  <option value="August">Aug</option>
-                  <option value="September">Sep</option>
-                  <option value="October">Oct</option>
-                  <option value="November">Nov</option>
-                  <option value="December">Dec</option>
-                </select>
-
-                <select name="Birthday_Year" id="Birthday_Year" class="form-control">
-
-                  <option value="-1">Year:</option>
-                  <option value="2012">2012</option>
-                  <option value="2011">2011</option>
-                  <option value="2010">2010</option>
-                  <option value="2009">2009</option>
-                  <option value="2008">2008</option>
-                  <option value="2007">2007</option>
-                  <option value="2006">2006</option>
-                  <option value="2005">2005</option>
-                  <option value="2004">2004</option>
-                  <option value="2003">2003</option>
-                  <option value="2002">2002</option>
-                  <option value="2001">2001</option>
-                  <option value="2000">2000</option>
-
-                  <option value="1999">1999</option>
-                  <option value="1998">1998</option>
-                  <option value="1997">1997</option>
-                  <option value="1996">1996</option>
-                  <option value="1995">1995</option>
-                  <option value="1994">1994</option>
-                  <option value="1993">1993</option>
-                  <option value="1992">1992</option>
-                  <option value="1991">1991</option>
-                  <option value="1990">1990</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Email:</label>
-                <input th:field="${dummy.user.email}" type="email" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-                <input th:field="${dummy.user.contactNumber}" type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Housename:</label>
-                <textarea th:field="${dummy.address.houseName}"class="form-control" id="message-text"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Street:</label>
-                <input th:field="${dummy.address.street}"type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">District:</label>
-                <input th:field="${dummy.address.district}"type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Pincode:</label>
-                <input th:field="${dummy.address.pincode}"type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">State:</label>
-                <input th:field="${dummy.address.state}"type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Nationality:</label>
-                <input th:field="${dummy.address.country}"type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">Class X</font>
-                  <input th:field="${dummy.list[__0__].grade}" value="sslc"  type="hidden">
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Board:</label>
-                  <input th:field="${dummy.list[__0__].university}"type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                  <input th:field="${dummy.list[__0__].year}" type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Percentage:</label>
-                  <input th:field="${dummy.list[__0__].marks}"type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Diploma</font>
-                    <input th:field="${dummy.list[__1__].grade}" value ="diploma" type="hidden" >
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Board:</label>
-                    <input th:field="${dummy.list[__1__].university}"type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                    <input  th:field="${dummy.list[__1__].year}"type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Percentage:</label>
-                    <input  th:field="${dummy.list[__1__].marks}"type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Class XII</font>
-                      <input th:field="${dummy.list[__2__].grade}" value="plustwo" type="hidden">
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Board:</label>
-                      <input  th:field="${dummy.list[__2__].university}"type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                      <input  th:field="${dummy.list[__2__].year}"type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Percentage:</label>
-                      <input  th:field="${dummy.list[__2__].marks}"type="text" class="form-control" id="recipient-name">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Login Credentials</u></font></b><br><br>University Registration Number:</label>
-                      <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Password:</label>
-                      <input  th:field="${dummy.user.password}"type="password" class="form-control" id="recipient-name">
-                    </div>
-
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-tertiary">Save</button>
-                      <button type="reset" class="btn btn-primary">Reset</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-
-
-          <!-------------------------------------------search box------------------------------------------------------>
-
-
-          <div class="search-student">
-            <form class="search-box">
-              <input type="text" placeholder="Search Student.." name="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-        </div>
-      </section>
-    </div>
-    <!-------------------------------------------------add faculty button----------------------------------------------->
-  <div class="tab-content" id="faculty">
-      <section class="wrapper">
-        <div class="wrapper-container">
-          <div class="add-faculty">
-           <a href="#" data-toggle="modal" data-target="#exampleModal2" class="faculty-btn btn-info btn-lg">
-            <span class="glyphicon glyphicon-plus"></span> Add Faculty
-          </a>
-        </div> 
-
-
-        <!------------------------------------------------faculty registration modal--------------------------------------------->
-      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <center><h2 class="modal-title" id="exampleModalLabel"><b>FACULTY REGISTRATION</b></h2></center>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                 <form action="/create-user" method="POST">
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Firstname:</label>
-                    <input th:field="${dummy.user.firstName}" type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Lastname:</label>
-                    <input th:field="${dummy.user.lastName}" type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Department:</label>
-                    <select class="form-control" id="recipient-name">
-                      <option value="-1">Select Department</option>
-                      <option value="cse">CSE</option>
-                      <option value="eee">EEE</option>
-                      <option value="ece">ECE</option>
-                      <option value="ce">CE</option>
-                      <option value="me">ME</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Date of Birth:</label>
-                    <select  name="Birthday_day" id="Birthday_Day" class="form-control" width=50px;>
-                      <option value="-1">Day:</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-
-                      <option value="13">13</option>
-                      <option value="14">14</option>
-                      <option value="15">15</option>
-                      <option value="16">16</option>
-                      <option value="17">17</option>
-                      <option value="18">18</option>
-                      <option value="19">19</option>
-                      <option value="20">20</option>
-                      <option value="21">21</option>
-
-                      <option value="22">22</option>
-                      <option value="23">23</option>
-                      <option value="24">24</option>
-                      <option value="25">25</option>
-                      <option value="26">26</option>
-                      <option value="27">27</option>
-                      <option value="28">28</option>
-                      <option value="29">29</option>
-                      <option value="30">30</option>
-
-                      <option value="31">31</option>
-                    </select>
-
-                    <select id="Birthday_Month" name="Birthday_Month" class="form-control">
-                      <option value="-1">Month:</option>
-                      <option value="January">Jan</option>
-                      <option value="February">Feb</option>
-                      <option value="March">Mar</option>
-                      <option value="April">Apr</option>
-                      <option value="May">May</option>
-                      <option value="June">Jun</option>
-                      <option value="July">Jul</option>
-                      <option value="August">Aug</option>
-                      <option value="September">Sep</option>
-                      <option value="October">Oct</option>
-                      <option value="November">Nov</option>
-                      <option value="December">Dec</option>
-                    </select>
-
-                    <select name="Birthday_Year" id="Birthday_Year" class="form-control">
-
-                      <option value="-1">Year:</option>
-                      <option value="1996">1996</option>
-                      <option value="1995">1995</option>
-                      <option value="1994">1994</option>
-                      <option value="1993">1993</option>
-                      <option value="1992">1992</option>
-                      <option value="1991">1991</option>
-                      <option value="1990">1990</option>
-                      <option value="1990">1990</option>
-                      <option value="1990">1989</option>
-                      <option value="1990">1988</option>
-                      <option value="1990">1987</option>
-                      <option value="1990">1986</option>
-                      <option value="1990">1985</option>
-                      <option value="1990">1984</option>
-                      <option value="1990">1983</option>
-                      <option value="1990">1982</option>
-                      <option value="1990">1981</option>
-                      <option value="1990">1980</option>
-                      <option value="1990">1979</option>
-                      <option value="1990">1978</option>
-                      <option value="1990">1977</option>
-                      <option value="1990">1976</option>
-                      <option value="1990">1975</option>
-                      <option value="1990">1974</option>
-                      <option value="1990">1973</option>
-                      <option value="1990">1972</option>
-                      <option value="1990">1971</option>
-                      <option value="1990">1970</option>
-                      <option value="1990">1969</option>
-                      <option value="1990">1968</option>
-                      <option value="1990">1967</option>
-                      <option value="1990">1966</option>
-                      <option value="1990">1965</option>
-                      <option value="1990">1964</option>
-                      <option value="1990">1963</option>
-                      <option value="1990">1962</option>
-                      <option value="1990">1961</option>
-                      <option value="1990">1960</option>
-
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Email:</label>
-                    <input th:field="${dummy.user.email}"   type="email" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-                    <input  th:field="${dummy.user.contactNumber}" type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="message-text" class="col-form-label">Address:</label>
-                    <textarea th:field="${dummy.address.houseName}" class="form-control" id="message-text"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Street:</label>
-                    <input th:field="${dummy.address.street}" type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">District:</label>
-                    <input th:field="${dummy.address.district}"  type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Pincode:</label>
-                    <input th:field="${dummy.address.pincode}"  type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">State:</label>
-                    <input th:field="${dummy.address.state}" type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Nationality:</label>
-                    <input th:field="${dummy.address.country}"  type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">PG</font>
-                      <input  th:field="${dummy.list[__3__].grade}" value="pg" type="hidden" >
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Board:</label>
-                      <input th:field="${dummy.list[__3__].university}"  type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                      <input  th:field="${dummy.list[__3__].year}" type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Percentage:</label>
-                      <input  th:field="${dummy.list[__3__].marks}" type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Ph.D</font>
-                        <input  th:field="${dummy.list[__4__].grade}" value="phd" type="hidden" >
-                      </div>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Board:</label>
-                        <input th:field="${dummy.list[__4__].university}" type="text" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                        <input th:field="${dummy.list[__4__].year}"type="text" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Percentage:</label>
-                        <input th:field="${dummy.list[__4__].marks}"type="text" class="form-control" id="recipient-name">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Login Credentials</u></font></b><br><br>Employee ID:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Password:</label>
-                        <input th:field="${dummy.user.password}"type="password" class="form-control" id="recipient-name">
-                      </div>
-                    
-                  
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-tertiary">Save</button>
-                    <button type="reset" class="btn btn-primary">Reset</button>
-                    </div>
-                  
-
-                </div>
-              </div>
-            </div>
-          </div>
-          </form>
-
-
-
-          <!-------------------------------------------search box------------------------------------------------------>
-
-
-      <div class="search-faculty"> 
-             <form class="search-box"> 
-               <input type="text" placeholder="Search Faculty.." name="search"> 
-              <button type="submit"><i class="fa fa-search"></i></button> 
-            </form> 
-           </div> 
-         </div> 
-      </section> 
-   </div>
-
-
-    <div class="tab-content" id="exam" >
-      <section class="wrapper">
-        <div class="wrapper-container">
-          <div class="admin-exam">
-            <center><h2>EXAM DETAILS</h2></center>
-
-            <select>
-              <option value="-1" placeholder="">Schedule</option>
-              <option value="add student schedule">ADD STUDENT SCHEDULE</option>
-              <option value="add staff schedule">ADD STAFF SCHEDULE</option>  
-              <option value="view student schedule">VIEW STUDENT SCHEDULE</option>  
-              <option value="view staff schedule">VIEW STAFF SCHEDULE</option>  
-
-            </select>
-
-            <select>
-             <option value="-1" placeholder="">Department</option>
-             <option value="cse">CSE</option>
-             <option value="ece">ECE</option>
-             <option value="civil">CIVIL</option>
-             <option value="mech">MECH</option>
-             <option value="eee">EEE</option>
-           </select>
-
-
-           <select>
-             <option value="-1" placeholder="">Exams</option>
-             <option value="seriesone">SERIES ONE</option>
-             <option value="seriestwo">SERIES TWO</option>
-             <option value="semeter">SEMESTER</option>
-           </select>
-           <center><button>APPLY</button><button>CANCEL</button></center>
-         </div>
-       </div>
-     </div>
-
-
-
-
-
-
-
-     <script type="text/javascript" src="js/main.js"></script>
-
-   </body>
-   </html>
+	<div class="sidenav" id="navmenu">
+		<center>
+			<h1>DASHBOARD</h1>
+		</center>
+		<ul>
+
+			<li><a href="#admin-profile">My Profile</a></li>
+			<li><a href="#student">Student</a></li>
+			<li><a href="#faculty"> Faculty</a></li>
+			<li><a href="#exam"> Exam</a></li>
+			<li><a href="#events"> Events</a></li>
+			<li><a href="#logout">Logout</a></li>
+		</ul>
+
+	</div>
+	<div class="tab-content" id="admin-profile">
+		<section class="profile-img">
+			<div class="wrapper-container">
+				<h1>Welcome Admin !</h1>
+				<img src="images/avatar.png" alt="Avatar" class="avatar">
+			</div>
+			<div class="profile-detail">
+				<ul>
+					<li th:text="'EmployeeId: ' + ${admin.id}">employeeid:</li>
+					<br>
+					<li th:text="'FirstName: ' + ${admin.firstName}">firstName:</li>
+					<br>
+					<li th:text="'LastName: ' +${admin.lastName}">lastName:</li>
+					<br>
+					<li th:text="'Email: ' +${admin.email}">email:</li>
+					<br>
+					<li th:text="'Password: ' +${admin.password} ">password:</li>
+					<br>
+					<li th:text="'ContactNo: ' +${admin.contactNumber} ">contactNumber:</li>
+					<br>
+				</ul>
+			</div>
+			<div class="edit-btn">
+				<a href="#" class="btn btn-info btn-lg"> <span
+					class="glyphicon glyphicon-pencil"></span> Edit
+				</a>
+			</div>
+
+		</section>
+	</div>
+
+
+
+
+
+	<!-----------------------------------------------Add students button----------------------------------------->
+	<div class="tab-content" id="student">
+		<section class="wrapper">
+			<div class="wrapper-container">
+				<div class="add-student">
+					<a href="#" data-toggle="modal" data-target="#exampleModal"
+						class="student-btn btn-info btn-lg"> <span
+						class="glyphicon glyphicon-plus"></span> Add Student
+					</a>
+				</div>
+
+				<!------------------------------------------------modal-------------------------------------------->
+
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<center>
+									<h2 class="modal-title" id="exampleModalLabel">
+										<b>STUDENT REGISTRATION</b>
+									</h2>
+								</center>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="/create-user" method="POST">
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Firstname:</label>
+										<input th:field="${dummy.user.firstName}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Lastname:</label>
+										<input th:field="${dummy.user.lastName}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Department:</label>
+										<input th:field="${dummy.user.department}" type="text" th:id="department">
+										<select class="form-control"  >
+											<option
+												th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
+												th:value="${dept}" 
+												th:text="${dept}"
+												th:onclick="document.getElementById('department').value=|${dept}|">
+												</option>
+											<!--                   <option value="-1">Select Department</option> -->
+											<!--                   <option value="cse">CSE</option> -->
+											<!--                   <option value="eee">EEE</option> -->
+											<!--                   <option value="ece">ECE</option> -->
+											<!--                   <option value="ce">CE</option> -->
+											<!--                   <option value="me">ME</option> -->
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Date
+											of Birth:</label> <select name="Birthday_day" id="Birthday_Day"
+											class="form-control" width=50px;>
+											<option value="-1">Day:</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+
+											<option value="31">31</option>
+										</select> <select id="Birthday_Month" name="Birthday_Month"
+											class="form-control">
+											<option value="-1">Month:</option>
+											<option value="January">Jan</option>
+											<option value="February">Feb</option>
+											<option value="March">Mar</option>
+											<option value="April">Apr</option>
+											<option value="May">May</option>
+											<option value="June">Jun</option>
+											<option value="July">Jul</option>
+											<option value="August">Aug</option>
+											<option value="September">Sep</option>
+											<option value="October">Oct</option>
+											<option value="November">Nov</option>
+											<option value="December">Dec</option>
+										</select> <select name="Birthday_Year" id="Birthday_Year"
+											class="form-control">
+
+											<option value="-1">Year:</option>
+											<option value="2012">2012</option>
+											<option value="2011">2011</option>
+											<option value="2010">2010</option>
+											<option value="2009">2009</option>
+											<option value="2008">2008</option>
+											<option value="2007">2007</option>
+											<option value="2006">2006</option>
+											<option value="2005">2005</option>
+											<option value="2004">2004</option>
+											<option value="2003">2003</option>
+											<option value="2002">2002</option>
+											<option value="2001">2001</option>
+											<option value="2000">2000</option>
+
+											<option value="1999">1999</option>
+											<option value="1998">1998</option>
+											<option value="1997">1997</option>
+											<option value="1996">1996</option>
+											<option value="1995">1995</option>
+											<option value="1994">1994</option>
+											<option value="1993">1993</option>
+											<option value="1992">1992</option>
+											<option value="1991">1991</option>
+											<option value="1990">1990</option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Email:</label>
+										<input th:field="${dummy.user.email}" type="email"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Mobile
+											Number:</label> <input th:field="${dummy.user.contactNumber}"
+											type="text" class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="col-form-label">Housename:</label>
+										<textarea th:field="${dummy.address.houseName}"
+											class="form-control" id="message-text"></textarea>
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Street:</label>
+										<input th:field="${dummy.address.street}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">District:</label>
+										<input th:field="${dummy.address.district}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Pincode:</label>
+										<input th:field="${dummy.address.pincode}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">State:</label>
+										<input th:field="${dummy.address.state}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Nationality:</label>
+										<input th:field="${dummy.address.country}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label"><br>
+										<b><font size="4px"> <u>Qualification</u></font></b><br>
+										<br>
+										<font size="3px" color="darkblue">Class X</font> <input
+											th:field="${dummy.list[__0__].grade}" value="sslc"
+											type="hidden">
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Board:</label>
+										<input th:field="${dummy.list[__0__].university}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Year
+											of Passing:</label> <input th:field="${dummy.list[__0__].year}"
+											type="text" class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Percentage:</label>
+										<input th:field="${dummy.list[__0__].marks}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label"><br>
+										<font size="3px" color="darkblue">Diploma</font> <input
+											th:field="${dummy.list[__1__].grade}" value="diploma"
+											type="hidden">
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Board:</label>
+										<input th:field="${dummy.list[__1__].university}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Year
+											of Passing:</label> <input th:field="${dummy.list[__1__].year}"
+											type="text" class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Percentage:</label>
+										<input th:field="${dummy.list[__1__].marks}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label"><br>
+										<font size="3px" color="darkblue">Class XII</font> <input
+											th:field="${dummy.list[__2__].grade}" value="plustwo"
+											type="hidden">
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Board:</label>
+										<input th:field="${dummy.list[__2__].university}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Year
+											of Passing:</label> <input th:field="${dummy.list[__2__].year}"
+											type="text" class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Percentage:</label>
+										<input th:field="${dummy.list[__2__].marks}" type="text"
+											class="form-control"  >
+									</div>
+
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label"><br>
+										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
+										<br>University Registration Number:</label> <input type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Password:</label>
+										<input th:field="${dummy.user.password}" type="password"
+											class="form-control"  >
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-tertiary">Save</button>
+										<button type="reset" class="btn btn-primary">Reset</button>
+									</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+
+
+
+				<!-------------------------------------------search box------------------------------------------------------>
+
+
+				<div class="search-student">
+					<form class="search-box">
+						<input type="text" placeholder="Search Student.." name="search">
+						<button type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!-------------------------------------------------add faculty button----------------------------------------------->
+	<div class="tab-content" id="faculty">
+		<section class="wrapper">
+			<div class="wrapper-container">
+				<div class="add-faculty">
+					<a href="#" data-toggle="modal" data-target="#exampleModal2"
+						class="faculty-btn btn-info btn-lg"> <span
+						class="glyphicon glyphicon-plus"></span> Add Faculty
+					</a>
+				</div>
+
+
+				<!------------------------------------------------faculty registration modal--------------------------------------------->
+				<div class="modal fade" id="exampleModal2" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<center>
+									<h2 class="modal-title" id="exampleModalLabel">
+										<b>FACULTY REGISTRATION</b>
+									</h2>
+								</center>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="/create-user" method="POST">
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Firstname:</label>
+										<input th:field="${dummy.user.firstName}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Lastname:</label>
+										<input th:field="${dummy.user.lastName}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Department:</label>
+										<select class="form-control"  >
+											<option value="-1">Select Department</option>
+											<option value="cse">CSE</option>
+											<option value="eee">EEE</option>
+											<option value="ece">ECE</option>
+											<option value="ce">CE</option>
+											<option value="me">ME</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Date
+											of Birth:</label> <select name="Birthday_day" id="Birthday_Day"
+											class="form-control" width=50px;>
+											<option value="-1">Day:</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+
+											<option value="31">31</option>
+										</select> <select id="Birthday_Month" name="Birthday_Month"
+											class="form-control">
+											<option value="-1">Month:</option>
+											<option value="January">Jan</option>
+											<option value="February">Feb</option>
+											<option value="March">Mar</option>
+											<option value="April">Apr</option>
+											<option value="May">May</option>
+											<option value="June">Jun</option>
+											<option value="July">Jul</option>
+											<option value="August">Aug</option>
+											<option value="September">Sep</option>
+											<option value="October">Oct</option>
+											<option value="November">Nov</option>
+											<option value="December">Dec</option>
+										</select> <select name="Birthday_Year" id="Birthday_Year"
+											class="form-control">
+
+											<option value="-1">Year:</option>
+											<option value="1996">1996</option>
+											<option value="1995">1995</option>
+											<option value="1994">1994</option>
+											<option value="1993">1993</option>
+											<option value="1992">1992</option>
+											<option value="1991">1991</option>
+											<option value="1990">1990</option>
+											<option value="1990">1990</option>
+											<option value="1990">1989</option>
+											<option value="1990">1988</option>
+											<option value="1990">1987</option>
+											<option value="1990">1986</option>
+											<option value="1990">1985</option>
+											<option value="1990">1984</option>
+											<option value="1990">1983</option>
+											<option value="1990">1982</option>
+											<option value="1990">1981</option>
+											<option value="1990">1980</option>
+											<option value="1990">1979</option>
+											<option value="1990">1978</option>
+											<option value="1990">1977</option>
+											<option value="1990">1976</option>
+											<option value="1990">1975</option>
+											<option value="1990">1974</option>
+											<option value="1990">1973</option>
+											<option value="1990">1972</option>
+											<option value="1990">1971</option>
+											<option value="1990">1970</option>
+											<option value="1990">1969</option>
+											<option value="1990">1968</option>
+											<option value="1990">1967</option>
+											<option value="1990">1966</option>
+											<option value="1990">1965</option>
+											<option value="1990">1964</option>
+											<option value="1990">1963</option>
+											<option value="1990">1962</option>
+											<option value="1990">1961</option>
+											<option value="1990">1960</option>
+
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Email:</label>
+										<input th:field="${dummy.user.email}" type="email"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Mobile
+											Number:</label> <input th:field="${dummy.user.contactNumber}"
+											type="text" class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="col-form-label">Address:</label>
+										<textarea th:field="${dummy.address.houseName}"
+											class="form-control" id="message-text"></textarea>
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Street:</label>
+										<input th:field="${dummy.address.street}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">District:</label>
+										<input th:field="${dummy.address.district}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Pincode:</label>
+										<input th:field="${dummy.address.pincode}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">State:</label>
+										<input th:field="${dummy.address.state}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Nationality:</label>
+										<input th:field="${dummy.address.country}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label"><br>
+										<b><font size="4px"> <u>Qualification</u></font></b><br>
+										<br>
+										<font size="3px" color="darkblue">PG</font> <input
+											th:field="${dummy.list[__3__].grade}" value="pg"
+											type="hidden">
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Board:</label>
+										<input th:field="${dummy.list[__3__].university}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Year
+											of Passing:</label> <input th:field="${dummy.list[__3__].year}"
+											type="text" class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Percentage:</label>
+										<input th:field="${dummy.list[__3__].marks}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label"><br>
+										<font size="3px" color="darkblue">Ph.D</font> <input
+											th:field="${dummy.list[__4__].grade}" value="phd"
+											type="hidden">
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Board:</label>
+										<input th:field="${dummy.list[__4__].university}" type="text"
+											class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Year
+											of Passing:</label> <input th:field="${dummy.list[__4__].year}"
+											type="text" class="form-control"  >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Percentage:</label>
+										<input th:field="${dummy.list[__4__].marks}" type="text"
+											class="form-control"  >
+									</div>
+
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label"><br>
+										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
+										<br>Employee ID:</label> <input type="text" class="form-control"
+											 >
+									</div>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Password:</label>
+										<input th:field="${dummy.user.password}" type="password"
+											class="form-control"  >
+									</div>
+
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-tertiary">Save</button>
+										<button type="reset" class="btn btn-primary">Reset</button>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</form>
+
+
+
+				<!-------------------------------------------search box------------------------------------------------------>
+
+
+				<div class="search-faculty">
+					<form class="search-box">
+						<input type="text" placeholder="Search Faculty.." name="search">
+						<button type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
+	<div class="tab-content" id="exam">
+		<section class="wrapper">
+			<div class="wrapper-container">
+				<div class="admin-exam">
+					<center>
+						<h2>EXAM DETAILS</h2>
+					</center>
+
+					<select>
+						<option value="-1" placeholder="">Schedule</option>
+						<option value="add student schedule">ADD STUDENT SCHEDULE</option>
+						<option value="add staff schedule">ADD STAFF SCHEDULE</option>
+						<option value="view student schedule">VIEW STUDENT
+							SCHEDULE</option>
+						<option value="view staff schedule">VIEW STAFF SCHEDULE</option>
+
+					</select> <select>
+						<option value="-1" placeholder="">Department</option>
+						<option value="cse">CSE</option>
+						<option value="ece">ECE</option>
+						<option value="civil">CIVIL</option>
+						<option value="mech">MECH</option>
+						<option value="eee">EEE</option>
+					</select> <select>
+						<option value="-1" placeholder="">Exams</option>
+						<option value="seriesone">SERIES ONE</option>
+						<option value="seriestwo">SERIES TWO</option>
+						<option value="semeter">SEMESTER</option>
+					</select>
+					<center>
+						<button>APPLY</button>
+						<button>CANCEL</button>
+					</center>
+				</div>
+			</div>
+	</div>
+
+
+
+
+
+
+
+	<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

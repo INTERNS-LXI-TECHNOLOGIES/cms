@@ -13,6 +13,8 @@ public class UserDomainDTO implements Serializable {
 
     private Long id;
 
+    private String regNum;
+
     private String firstName;
 
     private String lastName;
@@ -38,6 +40,14 @@ public class UserDomainDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRegNum() {
+        return regNum;
+    }
+
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
     }
 
     public String getFirstName() {
@@ -137,6 +147,7 @@ public class UserDomainDTO implements Serializable {
     public String toString() {
         return "UserDomainDTO{" +
             "id=" + getId() +
+            ", regNum='" + getRegNum() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", email='" + getEmail() + "'" +

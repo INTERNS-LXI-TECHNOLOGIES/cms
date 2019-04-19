@@ -2,6 +2,10 @@
     "name": "UserDomain",
     "fields": [
         {
+            "fieldName": "regNum",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "firstName",
             "fieldType": "String"
         },

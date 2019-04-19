@@ -98,6 +98,12 @@ export class UserDomainUpdate extends React.Component<IUserDomainUpdateProps, IU
                   </AvGroup>
                 ) : null}
                 <AvGroup>
+                  <Label id="regNumLabel" for="regNum">
+                    Reg Num
+                  </Label>
+                  <AvField id="user-domain-regNum" type="text" name="regNum" />
+                </AvGroup>
+                <AvGroup>
                   <Label id="firstNameLabel" for="firstName">
                     First Name
                   </Label>

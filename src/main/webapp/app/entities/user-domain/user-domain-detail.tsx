@@ -29,6 +29,10 @@ export class UserDomainDetail extends React.Component<IUserDomainDetailProps> {
           </h2>
           <dl className="jh-entity-details">
             <dt>
+              <span id="regNum">Reg Num</span>
+            </dt>
+            <dd>{userDomainEntity.regNum}</dd>
+            <dt>
               <span id="firstName">First Name</span>
             </dt>
             <dd>{userDomainEntity.firstName}</dd>

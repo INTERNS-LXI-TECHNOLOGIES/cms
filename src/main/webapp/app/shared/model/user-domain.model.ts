@@ -24,6 +24,7 @@ export const enum Semester {
 
 export interface IUserDomain {
   id?: number;
+  regNum?: string;
   firstName?: string;
   lastName?: string;
   email?: string;

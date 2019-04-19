@@ -1,5 +1,7 @@
 
 entity UserDomain {
+
+  regNum String,
   firstName String,
   lastName String,
   email String,

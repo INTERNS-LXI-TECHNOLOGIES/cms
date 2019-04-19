@@ -27,6 +27,9 @@ public class UserDomain implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "reg_num")
+    private String regNum;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -69,6 +72,19 @@ public class UserDomain implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRegNum() {
+        return regNum;
+    }
+
+    public UserDomain regNum(String regNum) {
+        this.regNum = regNum;
+        return this;
+    }
+
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
     }
 
     public String getFirstName() {
@@ -248,6 +264,7 @@ public class UserDomain implements Serializable {
     public String toString() {
         return "UserDomain{" +
             "id=" + getId() +
+            ", regNum='" + getRegNum() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", email='" + getEmail() + "'" +
@@ -255,7 +272,6 @@ public class UserDomain implements Serializable {
             ", department='" + getDepartment() + "'" +
             ", semester='" + getSemester() + "'" +
             ", contactNumber=" + getContactNumber() +
-            ", address=" + getAddress() +
             "}";
     }
 }

@@ -74,7 +74,7 @@ public class UserController {
         System.out.println(userDomainResource.getUserDomain(dummy.getUser().getId()).getBody());
        
         
-		return viewProfile(model);
+		return "redirect:/view-profile";
 		}
 }
 	
