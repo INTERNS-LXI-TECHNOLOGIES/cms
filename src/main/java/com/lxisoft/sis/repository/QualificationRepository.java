@@ -1,8 +1,14 @@
 package com.lxisoft.sis.repository;
 
-import com.lxisoft.sis.domain.Qualification;
-import org.springframework.data.jpa.repository.*;
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.lxisoft.sis.domain.Qualification;
+import com.lxisoft.sis.domain.UserDomain;
 
 
 /**
@@ -11,5 +17,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface QualificationRepository extends JpaRepository<Qualification, Long> {
-
+	public Page<Qualification> findAllByUserDomain(UserDomain user, Pageable pageable);
 }

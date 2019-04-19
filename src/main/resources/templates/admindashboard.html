@@ -35,12 +35,12 @@
       </div>
       <div class="profile-detail">
         <ul>
-         <li th:text="'EmployeeId: ' + ${user.id}">employeeid:</li><br>
-         <li th:text="'FirstName: ' + ${user.firstName}">firstName:</li><br>
-         <li th:text="'LastName: ' +${user.lastName}">lastName:</li><br>
-         <li th:text="'Email: ' +${user.email}">email:</li><br>
-         <li th:text="'Password: ' +${user.password} ">password:</li><br>
-         <li th:text="'ContactNo: ' +${user.contactNumber} ">contactNumber:</li><br>
+         <li th:text="'EmployeeId: ' + ${admin.id}">employeeid:</li><br>
+         <li th:text="'FirstName: ' + ${admin.firstName}">firstName:</li><br>
+         <li th:text="'LastName: ' +${admin.lastName}">lastName:</li><br>
+         <li th:text="'Email: ' +${admin.email}">email:</li><br>
+         <li th:text="'Password: ' +${admin.password} ">password:</li><br>
+         <li th:text="'ContactNo: ' +${admin.contactNumber} ">contactNumber:</li><br>
        </ul>
      </div>
      <div class="edit-btn">
@@ -215,14 +215,14 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="/create-student" method="POST">
+            <form action="/create-user" method="POST">
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Firstname:</label>
-                <input th:field= "${student.firstName}" type="text" class="form-control" id="recipient-name">
+                <input th:field= "${dummy.user.firstName}" type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Lastname:</label>
-                <input th:field= "${student.lastName}" type="text" class="form-control" id="recipient-name">
+                <input th:field= "${dummy.user.lastName}" type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Department:</label>
@@ -324,83 +324,83 @@
 
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Email:</label>
-                <input th:field="${student.email}" type="email" class="form-control" id="recipient-name">
+                <input th:field="${dummy.user.email}" type="email" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-                <input th:field="${student.contactNumber}" type="text" class="form-control" id="recipient-name">
+                <input th:field="${dummy.user.contactNumber}" type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Housename:</label>
-                <textarea th:field="${address.houseName}"class="form-control" id="message-text"></textarea>
+                <textarea th:field="${dummy.address.houseName}"class="form-control" id="message-text"></textarea>
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Street:</label>
-                <input th:field="${address.street}"type="text" class="form-control" id="recipient-name">
+                <input th:field="${dummy.address.street}"type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">District:</label>
-                <input th:field="${address.district}"type="text" class="form-control" id="recipient-name">
+                <input th:field="${dummy.address.district}"type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Pincode:</label>
-                <input th:field="${address.pincode}"type="text" class="form-control" id="recipient-name">
+                <input th:field="${dummy.address.pincode}"type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">State:</label>
-                <input th:field="${address.state}"type="text" class="form-control" id="recipient-name">
+                <input th:field="${dummy.address.state}"type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Nationality:</label>
-                <input th:field="${address.country}"type="text" class="form-control" id="recipient-name">
+                <input th:field="${dummy.address.country}"type="text" class="form-control" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">Class X</font>
-                  <input th:field="${sslc.grade}" value="sslc"  type="hidden">
+                  <input th:field="${dummy.list[__0__].grade}" value="sslc"  type="hidden">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Board:</label>
-                  <input th:field="${sslc.university}"type="text" class="form-control" id="recipient-name">
+                  <input th:field="${dummy.list[__0__].university}"type="text" class="form-control" id="recipient-name">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                  <input th:field="${sslc.year}" type="text" class="form-control" id="recipient-name">
+                  <input th:field="${dummy.list[__0__].year}" type="text" class="form-control" id="recipient-name">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Percentage:</label>
-                  <input th:field="${sslc.marks}"type="text" class="form-control" id="recipient-name">
+                  <input th:field="${dummy.list[__0__].marks}"type="text" class="form-control" id="recipient-name">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Diploma</font>
-                    <input th:field="${diploma.grade}" value ="diploma" type="hidden" >
+                    <input th:field="${dummy.list[__1__].grade}" value ="diploma" type="hidden" >
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Board:</label>
-                    <input th:field="${diploma.university}"type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.list[__1__].university}"type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                    <input  th:field="${diploma.year}"type="text" class="form-control" id="recipient-name">
+                    <input  th:field="${dummy.list[__1__].year}"type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Percentage:</label>
-                    <input  th:field="${diploma.marks}"type="text" class="form-control" id="recipient-name">
+                    <input  th:field="${dummy.list[__1__].marks}"type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Class XII</font>
-                      <input th:field="${plustwo.grade}" value="plustwo" type="hidden">
+                      <input th:field="${dummy.list[__2__].grade}" value="plustwo" type="hidden">
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Board:</label>
-                      <input  th:field="${plustwo.university}"type="text" class="form-control" id="recipient-name">
+                      <input  th:field="${dummy.list[__2__].university}"type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                      <input  th:field="${plustwo.year}"type="text" class="form-control" id="recipient-name">
+                      <input  th:field="${dummy.list[__2__].year}"type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Percentage:</label>
-                      <input  th:field="${plustwo.marks}"type="text" class="form-control" id="recipient-name">
+                      <input  th:field="${dummy.list[__2__].marks}"type="text" class="form-control" id="recipient-name">
                     </div>
 
                     <div class="form-group">
@@ -409,7 +409,7 @@
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Password:</label>
-                      <input  th:field="${student.password}"type="password" class="form-control" id="recipient-name">
+                      <input  th:field="${dummy.user.password}"type="password" class="form-control" id="recipient-name">
                     </div>
 
                     <div class="modal-footer">
@@ -438,18 +438,18 @@
       </section>
     </div>
     <!-------------------------------------------------add faculty button----------------------------------------------->
-  <!-- -- --  <div class="tab-content" id="faculty">
+  <div class="tab-content" id="faculty">
       <section class="wrapper">
         <div class="wrapper-container">
           <div class="add-faculty">
            <a href="#" data-toggle="modal" data-target="#exampleModal2" class="faculty-btn btn-info btn-lg">
             <span class="glyphicon glyphicon-plus"></span> Add Faculty
           </a>
-        </div> ----->
+        </div> 
 
 
         <!------------------------------------------------faculty registration modal--------------------------------------------->
-       <!-- -- -<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -459,14 +459,14 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form>
+                 <form action="/create-user" method="POST">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Firstname:</label>
-                    <input th:field="${faculty.firstName}" type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.user.firstName}" type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Lastname:</label>
-                    <input th:field="${faculty.lastName}" type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.user.lastName}" type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Department:</label>
@@ -583,67 +583,67 @@
 
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Email:</label>
-                    <input th:field="${faculty.email}"   type="email" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.user.email}"   type="email" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-                    <input  th:field="${faculty.contactNumber}" type="text" class="form-control" id="recipient-name">
+                    <input  th:field="${dummy.user.contactNumber}" type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Address:</label>
-                    <textarea th:field="${address.houseName}" class="form-control" id="message-text"></textarea>
+                    <textarea th:field="${dummy.address.houseName}" class="form-control" id="message-text"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Street:</label>
-                    <input th:field="${address.street}" type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.address.street}" type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">District:</label>
-                    <input th:field="${address.district}"  type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.address.district}"  type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Pincode:</label>
-                    <input th:field="${address.pincode}"  type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.address.pincode}"  type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">State:</label>
-                    <input th:field="${address.state}" type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.address.state}" type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Nationality:</label>
-                    <input th:field="${address.country}"  type="text" class="form-control" id="recipient-name">
+                    <input th:field="${dummy.address.country}"  type="text" class="form-control" id="recipient-name">
                   </div>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">PG</font>
-                      <input  th:field="${pg.grade}" value="pg" type="hidden" >
+                      <input  th:field="${dummy.list[__3__].grade}" value="pg" type="hidden" >
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Board:</label>
-                      <input th:field="${pg.university}"  type="text" class="form-control" id="recipient-name">
+                      <input th:field="${dummy.list[__3__].university}"  type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                      <input  th:field="${pg.year}" type="text" class="form-control" id="recipient-name">
+                      <input  th:field="${dummy.list[__3__].year}" type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Percentage:</label>
-                      <input  th:field="${pg.marks}" type="text" class="form-control" id="recipient-name">
+                      <input  th:field="${dummy.list[__3__].marks}" type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Ph.D</font>
-                        <input  th:field="${phd.grade}" value="phd" type="hidden" >
+                        <input  th:field="${dummy.list[__4__].grade}" value="phd" type="hidden" >
                       </div>
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Board:</label>
-                        <input th:field="${phd.university}" type="text" class="form-control" id="recipient-name">
+                        <input th:field="${dummy.list[__4__].university}" type="text" class="form-control" id="recipient-name">
                       </div>
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-                        <input th:field="${phd.year}"type="text" class="form-control" id="recipient-name">
+                        <input th:field="${dummy.list[__4__].year}"type="text" class="form-control" id="recipient-name">
                       </div>
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Percentage:</label>
-                        <input th:field="${phd.marks}"type="text" class="form-control" id="recipient-name">
+                        <input th:field="${dummy.list[__4__].marks}"type="text" class="form-control" id="recipient-name">
                       </div>
 
                       <div class="form-group">
@@ -652,35 +652,37 @@
                       </div>
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Password:</label>
-                        <input th:field="${faculty.password}"type="password" class="form-control" id="recipient-name">
+                        <input th:field="${dummy.user.password}"type="password" class="form-control" id="recipient-name">
                       </div>
-                    </form>
-                  </div>
+                    
+                  
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-tertiary">Save</button>
                     <button type="reset" class="btn btn-primary">Reset</button>
-                  </form>
+                    </div>
+                  
 
                 </div>
               </div>
             </div>
-          </div>----->
+          </div>
+          </form>
 
 
 
           <!-------------------------------------------search box------------------------------------------------------>
 
 
-         -div class="search-faculty">
-            <form class="search-box">
-              <input type="text" placeholder="Search Faculty.." name="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-        </div>
-      </section>
-    </div>
+      <div class="search-faculty"> 
+             <form class="search-box"> 
+               <input type="text" placeholder="Search Faculty.." name="search"> 
+              <button type="submit"><i class="fa fa-search"></i></button> 
+            </form> 
+           </div> 
+         </div> 
+      </section> 
+   </div>
 
 
     <div class="tab-content" id="exam" >

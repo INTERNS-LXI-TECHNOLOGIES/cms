@@ -1,10 +1,12 @@
 package com.lxisoft.sis.service;
 
+import com.lxisoft.sis.domain.UserDomain;
 import com.lxisoft.sis.service.dto.QualificationDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,4 +45,6 @@ public interface QualificationService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    Page<QualificationDTO> getQualificationOfUser(UserDomain user, Pageable pageable);
 }

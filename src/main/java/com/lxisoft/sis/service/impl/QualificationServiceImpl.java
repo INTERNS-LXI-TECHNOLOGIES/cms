@@ -2,6 +2,7 @@ package com.lxisoft.sis.service.impl;
 
 import com.lxisoft.sis.service.QualificationService;
 import com.lxisoft.sis.domain.Qualification;
+import com.lxisoft.sis.domain.UserDomain;
 import com.lxisoft.sis.repository.QualificationRepository;
 import com.lxisoft.sis.service.dto.QualificationDTO;
 import com.lxisoft.sis.service.mapper.QualificationMapper;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -83,6 +85,13 @@ public class QualificationServiceImpl implements QualificationService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Qualification : {}", id);        qualificationRepository.deleteById(id);
+        log.debug("Request to delete Qualification : {}", id);       
+        qualificationRepository.deleteById(id);
     }
+
+	@Override
+	public Page<QualificationDTO> getQualificationOfUser(UserDomain user,Pageable pageable) {
+		log.debug("Request to get Qualification of user : {}", user.getId());
+		return qualificationRepository.findAllByUserDomain(user,pageable).map(qualificationMapper::toDto);
+	}
 }
