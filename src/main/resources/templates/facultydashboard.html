@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<title>Faculty Dashboard</title>
+</head>
+<body>
+  <div class="sidenav" id="navmenu">
+  <center><h2>DASHBOARD</h2></center>
+  <ul>
+
+    <li><a href="#faculty-profile">My Profile</a></li>
+    <li><a href="#leave-request">Leave Request</a></li>
+    <li><a href="#timetable" >Timetable</a></li> 
+    <li><a href="#assignment">Assignments</a></li>
+  <li><a href="#exam">Exam</a></li>
+  <li><a href="#events">Events</a></li>
+  <li><a href="#logout">Logout</a></li>
+ 
+  </ul>
+  
+</div>
+<!-- My Profile -->
+  <div class="tab-content" id="faculty-profile">
+      <section class="wrapper">
+        <br>
+       <center> <h2>My Profile</h2></center>
+       <br>
+        <center><div class="card">
+  <img src="images/passport.jpg" class="card-img-top" alt="avatar">
+  <div class="card-body">
+    <p class="card-text">FIRST NAME :ARTHADH </p>
+    <p class="card-text">LAST NAME : BALAN</p>
+    <p class="card-text">DEPARTMENT: CSE </p>
+    <p class="card-text">MOBILE NO: 7736381278 </p>
+    <p class="card-text">EMAIL: arthadhkallingal@live.com</p>
+    <p class="card-text">ADDRESS: Kallingal House</p>
+  </div>
+</div></center>
+      </section>
+  </div>
+  <!-- Leave Request -->
+  <div class="tab-content" id="leave-request">
+      <section class="wrapper">
+        <center><h2>LEAVE MANAGEMENT</h2></center>
+        <div class="leave-form">
+
+      <div class="leave-form-header">
+        <center><h2>LEAVE FORM</h2></center>
+      </div>
+
+      <div class="leavedate">
+        <label class="fromlabel">From Date:</label>
+        <input type="date" name="fromdate" class="fromdate">
+        <label class="tolabel">To Date:</label>
+        <input type="date" name="todate" class="todate">
+      </div>
+
+      <div class="leave-reason">
+        <label>Reason:</label><input type="text" class="reason" name="leave-reason">
+      </div>
+      <br><br><br>
+      <center><button type="submit">Apply for Leave</button></center>
+
+    <div class="leave-requests">
+      
+      <center><h3><u>Leave Requests</u></h3></center>
+      <br>
+      <br>
+      <div class="leave-history">
+        <div class="alert alert-warning">
+          1.<a href="#" onclick="document.getElementById('id01').style.display='block'">Leave request 1</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: PENDING  &nbsp<span class="glyphicon glyphicon-exclamation-sign"></span><br>
+
+        </div>
+       
+        
+        <div class="alert alert-success">
+          2.<a href="#" onclick="document.getElementById('id01').style.display='block'">Leave request 2</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: ACCEPTED  &nbsp<span class="glyphicon glyphicon-ok-circle"></span><br>
+        </div>
+        <div class="alert alert-danger">
+          3.<a href="#" onclick="document.getElementById('id01').style.display='block'">Leave request 3</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: REJECTED &nbsp<span class="glyphicon glyphicon-remove-circle"></span><br>
+
+        </div>   
+      </div>
+      
+    </div>
+
+    </div>
+      </section>
+  </div>
+  <!-- Timetable -->
+  <div class="tab-content" id="timetable">
+      <section class="wrapper">
+        <h2>TIMETABLE</h2>
+        <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hour 1</th>
+      <th scope="col">Hour 2</th>
+      <th scope="col">Hour 3</th>
+      <th scope="col">Hour 4</th>
+      <th scope="col">Hour 5</th>
+      <th scope="col">Hour 6</th>
+      <th scope="col">Hour 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">Wednesday</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">Thursday</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">Friday</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      </section>
+  </div>
+  <!-- Assignments -->
+  <div class="tab-content" id="assignment">
+      <section class="wrapper">
+        <center><h2>Assignments</h2></center>
+        <div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          DATA MINING
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          ASSIGNMENT 1
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          ASSIGNMENT 2
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          EMBEDED SYSTEMS
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          ASSIGNMENT 1
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          ASSIGNMENT 2
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          ARTIFICIAL INTELLIGENCE
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          ASSIGNMENT 1
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          ASSIGNMENT 2
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+      </section>
+  </div>
+  <!-- Exam -->
+  <div class="tab-content" id="exam">
+      <section class="wrapper">
+        <h2>Exam</h2>
+      </section>
+  </div>
+  <!-- Events -->
+  <div class="tab-content" id="events">
+      <section class="wrapper">
+        <h2>Events  </h2>
+      </section>
+  </div>
+  <!-- LOGOUT -->
+  <div class="tab-content" id="logout">
+      <section class="wrapper">
+        <h2>LOGOUT</h2>
+      </section>
+  </div>
+  <script type="text/javascript" src="js/custom.js"></script>
+</body>
+
+</html>

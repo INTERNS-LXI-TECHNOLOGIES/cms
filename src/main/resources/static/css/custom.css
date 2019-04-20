@@ -1,0 +1,224 @@
+/*side navigation*/
+.sidenav {
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidenav h1 {
+  color: lightseagreen;
+}
+.sidenav h2 {
+  color: lightseagreen;
+}
+
+.sidenav ul {
+  margin-top: 120px;
+  margin-left: -40px;
+  text-decoration: none;
+  display: block;
+}
+.sidenav ul li {
+  border-bottom: 1px solid rgba(190, 190, 190, 0.4);
+  padding-bottom: 5px;
+  padding-top: 5px;
+  text-decoration: none;
+  display: block;
+}
+.sidenav ul li a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  display: block;
+}
+
+.sidenav ul li:hover {
+  background-color: seagreen;
+}
+/*body content alignment*/
+.wrapper {
+  margin-left: 250px;
+  margin-right: 10px;
+}
+.wrapper .wrapper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-left: 0px;
+  margin-top: 70px;
+}
+
+.wrapper .login-card {
+  position: relative;
+  margin-top: 200px;
+  width: 700px;
+  height: 400px;
+  background-color: white;
+  border-style: none;
+  box-shadow: 2px 4px 10px;
+}
+
+.wrapper .login-card .login-form .login-btn {
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border-style: none;
+  color: white;
+}
+.wrapper .login-card .login-form .login-btn:hover {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+}
+
+.wrapper .card .card-img-top {
+  width: 14rem;
+}
+
+.wrapper .card {
+  width: 25rem;
+  margin-right: 50px;
+}
+
+/*-----------------------------------------------LEAVE FORM---------------------------------------------*/
+.wrapper .leave-form {
+  position: relative;
+  margin-left: 30px;
+  margin-top: 120px;
+  width: 800px;
+  height: 500px;
+  background-color: white;
+  box-shadow: 2px 4px 10px black;
+  background-color: seagreen;
+}
+
+.wrapper .leave-form .leave-form-header {
+  height: 50px;
+  background-color: #213459;
+}
+
+.wrapper .leave-form .leave-form-header h2 {
+  position: relative;
+  vertical-align: middle;
+  color: white;
+  padding-top: 10px;
+}
+.wrapper .leave-form .leavedate .fromdate {
+  position: relative;
+  transform: translate(65px, 65px);
+}
+
+.wrapper .leave-form .leavedate .fromlabel {
+  transform: translate(150px, 30px);
+}
+.wrapper .leave-form .leavedate .todate,
+.wrapper .leave-form .leavedate .tolabel {
+  margin-top: 0px;
+  margin-left: 65%;
+}
+
+.wrapper .leave-form .leavedate .fromdate {
+  border: 2px solid black;
+}
+.wrapper .leave-form .leavedate .todate {
+  border: 2px solid black;
+}
+
+.wrapper .leave-form .leave-reason input {
+  height: 30px;
+  width: 700px;
+  margin-left: 50px;
+}
+
+.wrapper .leave-form .leave-reason label {
+  position: relative;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+.wrapper .leave-form button {
+  background-color: #213459;
+  color: white;
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  border-style: none;
+}
+
+.wrapper .leave-form button:hover {
+  box-shadow: 2px 4px 10px black;
+}
+
+.wrapper .leave-form .leave-requests {
+  position: relative;
+  margin-left: 850px;
+  margin-bottom: 20px;
+  margin-top: -420px;
+  width: 300px;
+  height: 600px;
+  background-color: white;
+  box-shadow: 2px 4px 15px black;
+}
+.wrapper .leave-form .leave-requests .leave-history {
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-wrap: normal;
+}
+/*-----------------------------------------------------------------------------------------------------*/
+
+.staff-timetable {
+  background-color: rgba(50, 115, 220, 0.3);
+  width: 900px;
+  height: 250px;
+  box-shadow: 2px 4px 10px black;
+}
+
+.staff-timetable .btn-primary {
+  position: relative;
+  margin-top: 50px;
+}
+
+.staff-timetable .btn-secondary {
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+/******************************class timetable************************************************/
+
+.class-timetable {
+  background-color: rgba(50, 115, 220, 0.3);
+  width: 900px;
+  height: 250px;
+  box-shadow: 2px 4px 10px black;
+}
+
+.class-timetable .btn-primary {
+  position: relative;
+  margin-top: 50px;
+}
+
+.class-timetable .btn-secondary {
+  margin-top: 50px;
+  margin-left: 30px;
+}
+.class-timetable .dropdown {
+  border-bottom: 2px solid black;
+  width: 70px;
+}
+/***************************************add student************************************************/
+.wrapper .wrapper-container .add-student,
+.wrapper .wrapper-container .add-faculty {
+  position: relative;
+  margin-top: 20px;
+}
+
+.modal-footer .btn-danger {
+  transform: translateY(25px);
+}

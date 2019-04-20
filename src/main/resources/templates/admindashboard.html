@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  
+	<title>Admin Dashboard</title>
+</head>
+<body>
+  <div class="sidenav" id="navmenu">
+  <center><h2>DASHBOARD</h2></center>
+  <ul>
+
+    <li><a href="#admin-profile" >My Profile</a></li>
+    <li><a href="#student" >Student</a></li>
+    <li><a href="#faculty"> Faculty</a></li>
+    <li><a href="#timetable"> Timetable</a></li>
+    <li><a href="#events"> Events</a></li>
+    <li><a href="#logout">Logout</a></li>
+ 
+  </ul>
+  
+</div>
+<!-- My Profile -->
+  <div class="tab-content" id="admin-profile">
+      <section class="wrapper">
+        <br>
+       <center><h2>My Profile</h2></center>
+       <br>
+        <center><div class="card">
+  <img src="images/passport.jpg" class="card-img-top" alt="avatar">
+  <div class="card-body">
+  	<p class="card-text" th:text="'Id: '+${admin.id}"> ID:1</p>
+    <p class="card-text" th:text="'FirstName: '+${admin.firstName}">FIRST NAME :ARTHADH </p>
+    <p class="card-text" th:text="'LastName: '+${admin.lastName}">LAST NAME : BALAN</p>
+    <p class="card-text" th:text="'ContactNo: '+${admin.contactNumber}">MOBILE NO: 7736381278 </p>
+    <p class="card-text" th:text="'Email: ' + ${admin.email}">EMAIL: arthadhkallingal@live.com</p>
+  </div>
+</div></center>
+      </section>
+  </div>
+  <!-- Student -->
+  <div class="tab-content" id="student">
+  <section class="wrapper">
+    <div class="wrapper-container">
+      <center><h2>Manage Student</h2></center>
+      <div class="add-student">
+         <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-plus"></span> Add Student
+        </a>
+      </div>
+
+<!------------------------------------------------student modal---------------------------------->
+
+<div class="modal fade-in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <center><h2 class="modal-title" id="exampleModalLabel"><b>STUDENT REGISTRATION</b></h2></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Department:</label>
+            <select class="form-control" id="recipient-name">
+              <option value="-1">Select Department</option>
+              <option value="cse">CSE</option>
+              <option value="eee">EEE</option>
+              <option value="ece">ECE</option>
+              <option value="ce">CE</option>
+              <option value="me">ME</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >Date of Birth:</label>
+            <input type="date" class="form-control" id="recipient-name"/>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="email" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Address:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">City:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Pincode:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">State:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nationality:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">Class X</font><br>Name of the Institution: </label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Board:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Year of Passing:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Percentage:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Diploma</font><br>Name of the Institution: </label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Board:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Year of Passing:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Percentage:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Class XII</font><br>Name of the Institution: </label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Board:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Year of Passing:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Percentage:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+         
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Login Credentials</u></font></b><br><br>University Registration Number:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Password:</label>
+            <input type="password" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-tertiary">Save</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+
+      </div>
+    </div>
+  </div>
+</div>    
+    </div>
+  </section>
+</div>
+
+
+
+  <!-- Faculty -->
+  <div class="tab-content" id="faculty">
+      <section class="wrapper">
+        <div class="wrapper-container">
+          <center><h2>Manage Faculty</h2></center>
+      <div class="add-faculty">
+         <a href="#" data-toggle="modal" data-target="#exampleModal2"  class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-plus"></span> Add Faculty
+        </a>
+      </div>
+    </div>
+    <!------------------------------------------------faculty registration modal--------------------------------------------->
+  <div class="modal fade-in" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <center><h2 class="modal-title" id="exampleModalLabel"><b>FACULTY REGISTRATION</b></h2></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Department:</label>
+            <select class="form-control" id="recipient-name">
+              <option value="-1">Select Department</option>
+              <option value="cse">CSE</option>
+              <option value="eee">EEE</option>
+              <option value="ece">ECE</option>
+              <option value="ce">CE</option>
+              <option value="me">ME</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label >Date of Birth:</label>
+            <input type="date" class="form-control" id="recipient-name"/>
+          </div>
+          
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="email" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Address:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">City:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Pincode:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">State:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nationality:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">PG</font><br>Name of the Institution: </label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Board:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Year of Passing:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Percentage:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Ph.D</font><br>Name of the Institution: </label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Board:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Year of Passing:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Percentage:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+         
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Login Credentials</u></font></b><br><br>Employee ID:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Password:</label>
+            <input type="password" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-tertiary">Save</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      </section>
+  </div>
+  <!-- Timetable -->
+  <div class="tab-content" id="timetable">
+      <section class="wrapper">
+        
+        <div class="wrapper-container">
+
+          <!----------------------------------------------staff timetable------------------------------------------>
+        <div class="staff-timetable">
+          <center><h2>STAFF Timetable</h2></center>
+        <select class="staff-filter1">
+          <option value="-1" placeholder="Department">Department</option>
+          <option value="cse" >CSE</option>
+          <option value="ece">ECE</option>
+          <option value="eee">EEE</option>
+          <option value="ce">CE</option>
+          <option value="me">ME</option>
+        </select>
+        
+        <select class="staff-filter2">
+          <option value="-1" placeholder="STAFF">STAFF</option>
+          <option value="staff1" >STAFF 1</option>
+          <option value="ece">STAFF 2</option>
+          <option value="eee">STAFF 3</option>
+          <option value="ce">STAFF 4</option>
+          <option value="me">STAFF 5</option>
+        </select>
+
+        <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createstafftimetableModal"><span class="glyphicon glyphicon-plus"></span>
+  Create timetable
+</button>
+
+<!-- Modal -->
+<div class="modal fade-in bd-example-modal-lg" id="createstafftimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <center><h5 class="modal-title" id="myLargeModalLabel">CREATE STAFF TIMETABLE</h5></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hour 1</th>
+      <th scope="col">Hour 2</th>
+      <th scope="col">Hour 3</th>
+      <th scope="col">Hour 4</th>
+      <th scope="col">Hour 5</th>
+      <th scope="col">Hour 6</th>
+      <th scope="col">Hour 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Wednesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Thursday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Friday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+  </tbody>
+</table>
+</div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewstafftimetableModal"><span class="glyphicon glyphicon-search"></span>
+  View timetable
+</button></center>
+<!-- view staff timetable Modal -->
+<div class="modal fade-in bd-example-modal-lg" id="viewstafftimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <center><h5 class="modal-title" id="myLargeModalLabel">EDIT STAFF TIMETABLE</h5></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hour 1</th>
+      <th scope="col">Hour 2</th>
+      <th scope="col">Hour 3</th>
+      <th scope="col">Hour 4</th>
+      <th scope="col">Hour 5</th>
+      <th scope="col">Hour 6</th>
+      <th scope="col">Hour 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Wednesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Thursday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Friday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+  </tbody>
+</table>
+<div class="form-group">
+  <input type="button" class="btn btn-warning btn-sm pull-right" value="Reset">
+  <div class="clearfix"></div>
+</div>
+</div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">Cancel</button>
+        <button type="button" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------- -->
+
+
+      </div>
+      <br><br><br>
+
+<!------------------------------------------class timetable------------------------------------------>
+
+      <div class="class-timetable">
+        <center><h2>CLASS Timetable</h2></center>
+
+        <select class="class-filter1">
+          <option value="-1" placeholder="Department">Department</option>
+          <option value="cse" >CSE</option>
+          <option value="ece">ECE</option>
+          <option value="eee">EEE</option>
+          <option value="ce">CE</option>
+          <option value="me">ME</option>
+        </select>
+        
+        <select class="class-filter2">
+          <option value="-1" placeholder="YEAR OF PASSOUT">YEAR OF PASSOUT</option>
+          <option value="2016" >2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+        </select>
+
+
+
+        <center><button href="#" class="btn btn-primary" data-toggle="modal" data-target="#createclasstimetableModal"><span class="glyphicon glyphicon-plus"></span>
+  Create timetable
+</button>
+<!-- create class timetable Modal -->
+<div class="modal fade-in bd-example-modal-lg" id="createclasstimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <center><h5 class="modal-title" id="myLargeModalLabel">CREATE CLASS TIMETABLE</h5></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hour 1</th>
+      <th scope="col">Hour 2</th>
+      <th scope="col">Hour 3</th>
+      <th scope="col">Hour 4</th>
+      <th scope="col">Hour 5</th>
+      <th scope="col">Hour 6</th>
+      <th scope="col">Hour 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Wednesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Thursday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Friday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+  </tbody>
+</table>
+</div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ------------------view/Edit class timtable modal----------------- -->
+<button class="btn btn-secondary" href="#" data-toggle="modal" data-target="#viewclasstimetableModal"><span class="glyphicon glyphicon-search"></span>
+  View timetable
+</button></center>
+<!-- view class timetable Modal -->
+<div class="modal fade-in bd-example-modal-lg" id="viewclasstimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <center><h5 class="modal-title" id="myLargeModalLabel">EDIT CLASS TIMETABLE</h5></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hour 1</th>
+      <th scope="col">Hour 2</th>
+      <th scope="col">Hour 3</th>
+      <th scope="col">Hour 4</th>
+      <th scope="col">Hour 5</th>
+      <th scope="col">Hour 6</th>
+      <th scope="col">Hour 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Wednesday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Thursday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <th scope="row">Friday</th>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+  </tbody>
+</table>
+<div class="form-group">
+  <input type="button" class="btn btn-warning btn-sm pull-right" value="Reset">
+  <div class="clearfix"></div>
+</div>
+</div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">Cancel</button>
+        <button type="button" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------- -->
+
+      </div>
+    </div>
+      </section>
+  </div>
+  <!-- Events -->
+  <div class="tab-content" id="events">
+      <section class="wrapper">
+        <h2>Events  </h2>
+      </section>
+  </div>
+  <!-- LOGOUT -->
+  <div class="tab-content" id="logout">
+      <section class="wrapper">
+        <h2>LOGOUT</h2>
+      </section>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+</body>
+
+</html>
