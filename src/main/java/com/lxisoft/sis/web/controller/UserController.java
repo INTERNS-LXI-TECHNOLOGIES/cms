@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,32 +54,40 @@ public class UserController {
 		dummyDTO.setUser(new UserDomainDTO());
 		model.addAttribute("dummy", dummyDTO);
 
-         return "admindashboard";
+		return "admindashboard";
 
 	}
 
 	@PostMapping("/create-user")
 	public String createUser(@ModelAttribute DummyDTO dummy, Model model) throws URISyntaxException {
 		AddressDTO address = addressResource.createAddress(dummy.getAddress()).getBody();
-	    dummy.getUser().setAddressId(address.getId());
+		dummy.getUser().setAddressId(address.getId());
 		dummy.setUser(userDomainResource.createUserDomain(dummy.getUser()).getBody());
-		
-		
+
 		for (QualificationDTO q : dummy.getList()) {
-			if(q!=null)
-			
-			q.setUserDomainId(dummy.getUser().getId());
+			if (q != null)
+
+				q.setUserDomainId(dummy.getUser().getId());
 			q = qualificationResource.createQualification(q).getBody();
 		}
-		
-        System.out.println(userDomainResource.getUserDomain(dummy.getUser().getId()).getBody());
-       
-        
+
+		System.out.println(userDomainResource.getUserDomain(dummy.getUser().getId()).getBody());
+
 		return "redirect:/view-profile";
-		}
+	}
+
+	@GetMapping("/view-student-profile")
+	public String viewStudentProfile(Model model, Pageable pageable) {
+
+		UserDomainDTO user = userDomainResource.getUserDomain(Long.parseLong("2")).getBody();
+//		model.addAttribute("student", user);
+
+		DummyDTO dummy = new DummyDTO();
+		dummy.setUser(user);
+		dummy.setAddress(addressResource.getAddress(user.getAddressId()).getBody());
+		dummy.setList(qualificationResource.getAllQuaficationsOfUser(pageable, user.getAddressId()).getBody());
+		model.addAttribute("dummy", dummy);
+		return "studentdashboard";
+
+	}
 }
-	
-
-
-
-

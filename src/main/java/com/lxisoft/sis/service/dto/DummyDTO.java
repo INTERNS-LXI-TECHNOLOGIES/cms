@@ -2,11 +2,13 @@ package com.lxisoft.sis.service.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class DummyDTO implements Serializable{
 	private UserDomainDTO user;
 	private AddressDTO address;
-	ArrayList<QualificationDTO> list=new ArrayList<QualificationDTO>();
+	List<QualificationDTO> list=new ArrayList<QualificationDTO>();
 	public UserDomainDTO getUser() {
 		return user;
 	}
@@ -19,10 +21,10 @@ public class DummyDTO implements Serializable{
 	public void setAddress(AddressDTO address) {
 		this.address = address;
 	}
-	public ArrayList<QualificationDTO> getList() {
+	public List<QualificationDTO> getList() {
 		return list;
 	}
-	public void setList(ArrayList<QualificationDTO> list) {
+	public void setList(List<QualificationDTO> list) {
 		this.list = list;
 	}
 	

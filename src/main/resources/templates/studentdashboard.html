@@ -36,12 +36,19 @@
 </div>
 <div class="profile-detail">
   <ul>
-    <li>Name:</li><br>
-    <li>Designation:</li><br>
-    <li>Date of Birth:</li><br>
-    <li>Mobile No:</li><br>
-    <li>Email:</li><br>
-    <li>Address:</li><br>
+    <li th:text="'Firstname: ' + ${dummy.user.firstName}">FirstName:</li><br>
+      <li th:text="'Lastname: ' + ${dummy.user.lastName}">LastName:</li><br>
+    <li th:text="'Department: ' + ${dummy.user.department}">Department:</li><br>
+    <li >Date of Birth:</li><br>
+    <li th:text="'Mobilenumber: ' + ${dummy.user.contactNumber}">Mobile No:</li><br>
+    <li th:text="'Email: ' + ${dummy.user.email}">Email:</li><br>
+    <li th:text="'Housename: ' + ${dummy.address.houseName}">Housename:</li><br>
+    <li th:text="'Street: ' + ${dummy.address.street}">Street:</li><br>
+    <li th:text="'District: ' + ${dummy.address.district}">District:</li><br>
+    <li th:text="'Pincode: ' + ${dummy.address.pincode}">Pincode:</li><br>
+    <li th:text="'State: ' + ${dummy.address.state}">State:</li><br>
+ <li th:text="'Nationality: ' + ${dummy.address.country}">Nationality:</li><br>
+    
     </ul>
 </div>
 <div class="edit-btn">

@@ -42,7 +42,7 @@
 		<section class="profile-img">
 			<div class="wrapper-container">
 				<h1>Welcome Admin !</h1>
-				<img src="images/avatar.png" alt="Avatar" class="avatar">
+				<img src="images/appu.jpg" alt="Avatar" class="avatar">
 			</div>
 			<div class="profile-detail">
 				<ul>
@@ -118,6 +118,7 @@
 										<label for="recipient-name" class="col-form-label">Department:</label>
 										<input th:field="${dummy.user.department}" type="hidden" th:id="department">
 										<select class="form-control"  >
+											<option disabled selected="selected">Select Department</option>
 											<option
 												th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
 												th:value="${dept}" 
@@ -224,8 +225,8 @@
 											class="form-control"  >
 									</div>
 									<div class="form-group">
-										<label for="recipient-name" class="col-form-label">Mobile
-											Number:</label> <input th:field="${dummy.user.contactNumber}"
+										<label for="recipient-name" class="col-form-label">MobileNumber:</label>
+										 <input th:field="${dummy.user.contactNumber}"
 											type="text" class="form-control"  >
 									</div>
 									<div class="form-group">
@@ -327,7 +328,7 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
 										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
-										<br>University Registration Number:</label> <input type="text"
+										<br>University Registration Number:</label> <input th:field="${dummy.user.regNum}"  type="text"
 											class="form-control"  >
 									</div>
 									<div class="form-group">
@@ -407,13 +408,22 @@
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Department:</label>
+										<input th:field="${dummy.user.department}" type="hidden" th:id="department2">
 										<select class="form-control"  >
-											<option value="-1">Select Department</option>
-											<option value="cse">CSE</option>
-											<option value="eee">EEE</option>
-											<option value="ece">ECE</option>
-											<option value="ce">CE</option>
-											<option value="me">ME</option>
+										<option disabled selected="selected">Select Department</option>
+										
+										<option
+										th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
+												th:value="${dept}" 
+												th:text="${dept}"
+												onclick="document.getElementById('department2').value=this.value">
+										</option>
+<!-- 											<option value="-1">Select Department</option> -->
+<!-- 											<option value="cse">CSE</option> -->
+<!-- 											<option value="eee">EEE</option> -->
+<!-- 											<option value="ece">ECE</option> -->
+<!-- 											<option value="ce">CE</option> -->
+<!-- 											<option value="me">ME</option> -->
 										</select>
 									</div>
 									<div class="form-group">
@@ -605,7 +615,7 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
 										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
-										<br>Employee ID:</label> <input type="text" class="form-control"
+										<br>Employee ID:</label> <input th:field="${dummy.user.regNum}" type="text" class="form-control"
 											 >
 									</div>
 									<div class="form-group">
