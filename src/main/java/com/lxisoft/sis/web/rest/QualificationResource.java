@@ -146,5 +146,13 @@ public class QualificationResource {
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, userid.toString()))
 				.build();
 	}
-
+	
+	@GetMapping("/qualifications/get-user/{id}")
+	public ResponseEntity<List<QualificationDTO>> getAllQuaficationsOfUser(Pageable pageable, @PathVariable Long id) {
+		log.debug("REST request to get all Qualification of user : {}", id);
+		UserDomain user = userMapper.toEntity(userDomainResource.getUserDomain(id).getBody());
+		Page<QualificationDTO> page = qualificationService.getQualificationOfUser(user,pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/qualifications/get-user/{id}");
+		return ResponseEntity.ok().headers(headers).body(page.getContent());
+	}
 }

@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,7 +50,6 @@ public class UserController {
 
 		DummyDTO dummyDTO = new DummyDTO();
 		dummyDTO.setAddress(new AddressDTO());
-//		dummyDTO.getList().add(new QualificationDTO());
 
 		dummyDTO.setUser(new UserDomainDTO());
 		model.addAttribute("dummy", dummyDTO);
@@ -58,41 +58,50 @@ public class UserController {
 
 	}
 
+	@GetMapping("/view-student-profile")
+	public String viewStudentProfile(Model model, Pageable pageable) {
+
+		UserDomainDTO user = userDomainResource.getUserDomain(Long.parseLong("2")).getBody();
+//		model.addAttribute("student", user);
+
+		DummyDTO dummy = new DummyDTO();
+		dummy.setUser(user);
+		dummy.setAddress(addressResource.getAddress(user.getAddressId()).getBody());
+		dummy.setList(qualificationResource.getAllQuaficationsOfUser(pageable, user.getAddressId()).getBody());
+		model.addAttribute("dummy", dummy);
+		return "studentdashboard";
+	}
+
 	@PostMapping("/create-user")
 	public String createUser(@ModelAttribute DummyDTO dummy, @RequestParam("date") String date,
 			@RequestParam("month") String month, @RequestParam("year") String year, Model model)
 			throws URISyntaxException {
-		if(dummy.setValidContents()) {
+		if (dummy.setValidContents()) {
 			if (dummy.getAddress() != null) {
 				AddressDTO address = addressResource.createAddress(dummy.getAddress()).getBody();
 				dummy.getUser().setAddressId(address.getId());
 			}
-			System.out.println("---------------------------------" + date + month + year);
 			if ((date != null && month != null && year != null)
 					|| (!date.equals("") && !month.equals("") && !year.equals(""))) {
-				Instant dob = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(date))
-						.toInstant();
+				Instant dob = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month),
+						Integer.parseInt(date)).toInstant();
 				dummy.getUser().setDob(dob);
 				System.out.println("-----------------------------" + dob.toString());
 			}
 			dummy.getUser().setActivated(true);
 			dummy.setUser(userDomainResource.createUserDomain(dummy.getUser()).getBody());
-
 			for (QualificationDTO q : dummy.getList()) {
 				if (q != null) {
 					q.setUserDomainId(dummy.getUser().getId());
 					q = qualificationResource.createQualification(q).getBody();
 				}
 			}
-
-			System.out.println(userDomainResource.getUserDomain(dummy.getUser().getId()).getBody() + date + month + year);
 			return "redirect:/view-profile";
-		}
-		else {
-			ErrorDTO err = new ErrorDTO("Error 500", "Can't pasre inputs", "Some fields of the entered content couldn't be parsed", "UNRESOLVED");
-			model.addAttribute("error",err);
+		} else {
+			ErrorDTO err = new ErrorDTO("Error 500", "Can't pasre inputs",
+					"Some fields of the entered content couldn't be parsed", "UNRESOLVED");
+			model.addAttribute("error", err);
 			return "error";
 		}
-
 	}
 }
