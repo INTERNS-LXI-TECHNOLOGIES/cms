@@ -12,6 +12,8 @@ import org.mapstruct.*;
 public interface UserRoleMapper extends EntityMapper<UserRoleDTO, UserRole> {
 
 
+    @Mapping(target = "users", ignore = true)
+    UserRole toEntity(UserRoleDTO userRoleDTO);
 
     default UserRole fromId(Long id) {
         if (id == null) {

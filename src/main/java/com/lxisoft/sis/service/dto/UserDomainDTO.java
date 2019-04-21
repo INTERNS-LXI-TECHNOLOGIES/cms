@@ -1,4 +1,6 @@
 package com.lxisoft.sis.service.dto;
+import java.time.Instant;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,14 +15,19 @@ public class UserDomainDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String regNum;
 
     private String firstName;
 
     private String lastName;
 
+    private Instant dob;
+
+    @NotNull
     private String email;
 
+    @NotNull
     private String password;
 
     private Department department;
@@ -28,6 +35,8 @@ public class UserDomainDTO implements Serializable {
     private Semester semester;
 
     private Long contactNumber;
+
+    private Boolean activated;
 
 
     private Long addressId;
@@ -64,6 +73,14 @@ public class UserDomainDTO implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Instant getDob() {
+        return dob;
+    }
+
+    public void setDob(Instant dob) {
+        this.dob = dob;
     }
 
     public String getEmail() {
@@ -104,6 +121,14 @@ public class UserDomainDTO implements Serializable {
 
     public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    public Boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(Boolean activated) {
+        this.activated = activated;
     }
 
     public Long getAddressId() {
@@ -150,11 +175,13 @@ public class UserDomainDTO implements Serializable {
             ", regNum='" + getRegNum() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
+            ", dob='" + getDob() + "'" +
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +
             ", department='" + getDepartment() + "'" +
             ", semester='" + getSemester() + "'" +
             ", contactNumber=" + getContactNumber() +
+            ", activated='" + isActivated() + "'" +
             ", address=" + getAddressId() +
             "}";
     }

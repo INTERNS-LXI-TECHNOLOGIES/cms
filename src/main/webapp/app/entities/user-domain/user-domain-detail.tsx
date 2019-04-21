@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
 // tslint:disable-next-line:no-unused-variable
-import { ICrudGetAction } from 'react-jhipster';
+import { ICrudGetAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -41,6 +41,12 @@ export class UserDomainDetail extends React.Component<IUserDomainDetailProps> {
             </dt>
             <dd>{userDomainEntity.lastName}</dd>
             <dt>
+              <span id="dob">Dob</span>
+            </dt>
+            <dd>
+              <TextFormat value={userDomainEntity.dob} type="date" format={APP_DATE_FORMAT} />
+            </dd>
+            <dt>
               <span id="email">Email</span>
             </dt>
             <dd>{userDomainEntity.email}</dd>
@@ -60,6 +66,10 @@ export class UserDomainDetail extends React.Component<IUserDomainDetailProps> {
               <span id="contactNumber">Contact Number</span>
             </dt>
             <dd>{userDomainEntity.contactNumber}</dd>
+            <dt>
+              <span id="activated">Activated</span>
+            </dt>
+            <dd>{userDomainEntity.activated ? 'true' : 'false'}</dd>
             <dt>Address</dt>
             <dd>{userDomainEntity.addressId ? userDomainEntity.addressId : ''}</dd>
             <dt>Roles</dt>

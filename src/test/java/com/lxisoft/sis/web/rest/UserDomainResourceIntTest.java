@@ -28,6 +28,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +61,9 @@ public class UserDomainResourceIntTest {
     private static final String DEFAULT_LAST_NAME = "AAAAAAAAAA";
     private static final String UPDATED_LAST_NAME = "BBBBBBBBBB";
 
+    private static final Instant DEFAULT_DOB = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DOB = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
@@ -73,6 +78,9 @@ public class UserDomainResourceIntTest {
 
     private static final Long DEFAULT_CONTACT_NUMBER = 1L;
     private static final Long UPDATED_CONTACT_NUMBER = 2L;
+
+    private static final Boolean DEFAULT_ACTIVATED = false;
+    private static final Boolean UPDATED_ACTIVATED = true;
 
     @Autowired
     private UserDomainRepository userDomainRepository;
@@ -131,11 +139,13 @@ public class UserDomainResourceIntTest {
             .regNum(DEFAULT_REG_NUM)
             .firstName(DEFAULT_FIRST_NAME)
             .lastName(DEFAULT_LAST_NAME)
+            .dob(DEFAULT_DOB)
             .email(DEFAULT_EMAIL)
             .password(DEFAULT_PASSWORD)
             .department(DEFAULT_DEPARTMENT)
             .semester(DEFAULT_SEMESTER)
-            .contactNumber(DEFAULT_CONTACT_NUMBER);
+            .contactNumber(DEFAULT_CONTACT_NUMBER)
+            .activated(DEFAULT_ACTIVATED);
         return userDomain;
     }
 
@@ -163,11 +173,13 @@ public class UserDomainResourceIntTest {
         assertThat(testUserDomain.getRegNum()).isEqualTo(DEFAULT_REG_NUM);
         assertThat(testUserDomain.getFirstName()).isEqualTo(DEFAULT_FIRST_NAME);
         assertThat(testUserDomain.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
+        assertThat(testUserDomain.getDob()).isEqualTo(DEFAULT_DOB);
         assertThat(testUserDomain.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testUserDomain.getPassword()).isEqualTo(DEFAULT_PASSWORD);
         assertThat(testUserDomain.getDepartment()).isEqualTo(DEFAULT_DEPARTMENT);
         assertThat(testUserDomain.getSemester()).isEqualTo(DEFAULT_SEMESTER);
         assertThat(testUserDomain.getContactNumber()).isEqualTo(DEFAULT_CONTACT_NUMBER);
+        assertThat(testUserDomain.isActivated()).isEqualTo(DEFAULT_ACTIVATED);
     }
 
     @Test
@@ -192,6 +204,63 @@ public class UserDomainResourceIntTest {
 
     @Test
     @Transactional
+    public void checkRegNumIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userDomainRepository.findAll().size();
+        // set the field null
+        userDomain.setRegNum(null);
+
+        // Create the UserDomain, which fails.
+        UserDomainDTO userDomainDTO = userDomainMapper.toDto(userDomain);
+
+        restUserDomainMockMvc.perform(post("/api/user-domains")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userDomainDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserDomain> userDomainList = userDomainRepository.findAll();
+        assertThat(userDomainList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEmailIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userDomainRepository.findAll().size();
+        // set the field null
+        userDomain.setEmail(null);
+
+        // Create the UserDomain, which fails.
+        UserDomainDTO userDomainDTO = userDomainMapper.toDto(userDomain);
+
+        restUserDomainMockMvc.perform(post("/api/user-domains")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userDomainDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserDomain> userDomainList = userDomainRepository.findAll();
+        assertThat(userDomainList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPasswordIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userDomainRepository.findAll().size();
+        // set the field null
+        userDomain.setPassword(null);
+
+        // Create the UserDomain, which fails.
+        UserDomainDTO userDomainDTO = userDomainMapper.toDto(userDomain);
+
+        restUserDomainMockMvc.perform(post("/api/user-domains")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userDomainDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserDomain> userDomainList = userDomainRepository.findAll();
+        assertThat(userDomainList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllUserDomains() throws Exception {
         // Initialize the database
         userDomainRepository.saveAndFlush(userDomain);
@@ -204,11 +273,13 @@ public class UserDomainResourceIntTest {
             .andExpect(jsonPath("$.[*].regNum").value(hasItem(DEFAULT_REG_NUM.toString())))
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME.toString())))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME.toString())))
+            .andExpect(jsonPath("$.[*].dob").value(hasItem(DEFAULT_DOB.toString())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].password").value(hasItem(DEFAULT_PASSWORD.toString())))
             .andExpect(jsonPath("$.[*].department").value(hasItem(DEFAULT_DEPARTMENT.toString())))
             .andExpect(jsonPath("$.[*].semester").value(hasItem(DEFAULT_SEMESTER.toString())))
-            .andExpect(jsonPath("$.[*].contactNumber").value(hasItem(DEFAULT_CONTACT_NUMBER.intValue())));
+            .andExpect(jsonPath("$.[*].contactNumber").value(hasItem(DEFAULT_CONTACT_NUMBER.intValue())))
+            .andExpect(jsonPath("$.[*].activated").value(hasItem(DEFAULT_ACTIVATED.booleanValue())));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -258,11 +329,13 @@ public class UserDomainResourceIntTest {
             .andExpect(jsonPath("$.regNum").value(DEFAULT_REG_NUM.toString()))
             .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME.toString()))
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME.toString()))
+            .andExpect(jsonPath("$.dob").value(DEFAULT_DOB.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.password").value(DEFAULT_PASSWORD.toString()))
             .andExpect(jsonPath("$.department").value(DEFAULT_DEPARTMENT.toString()))
             .andExpect(jsonPath("$.semester").value(DEFAULT_SEMESTER.toString()))
-            .andExpect(jsonPath("$.contactNumber").value(DEFAULT_CONTACT_NUMBER.intValue()));
+            .andExpect(jsonPath("$.contactNumber").value(DEFAULT_CONTACT_NUMBER.intValue()))
+            .andExpect(jsonPath("$.activated").value(DEFAULT_ACTIVATED.booleanValue()));
     }
 
     @Test
@@ -289,11 +362,13 @@ public class UserDomainResourceIntTest {
             .regNum(UPDATED_REG_NUM)
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
+            .dob(UPDATED_DOB)
             .email(UPDATED_EMAIL)
             .password(UPDATED_PASSWORD)
             .department(UPDATED_DEPARTMENT)
             .semester(UPDATED_SEMESTER)
-            .contactNumber(UPDATED_CONTACT_NUMBER);
+            .contactNumber(UPDATED_CONTACT_NUMBER)
+            .activated(UPDATED_ACTIVATED);
         UserDomainDTO userDomainDTO = userDomainMapper.toDto(updatedUserDomain);
 
         restUserDomainMockMvc.perform(put("/api/user-domains")
@@ -308,11 +383,13 @@ public class UserDomainResourceIntTest {
         assertThat(testUserDomain.getRegNum()).isEqualTo(UPDATED_REG_NUM);
         assertThat(testUserDomain.getFirstName()).isEqualTo(UPDATED_FIRST_NAME);
         assertThat(testUserDomain.getLastName()).isEqualTo(UPDATED_LAST_NAME);
+        assertThat(testUserDomain.getDob()).isEqualTo(UPDATED_DOB);
         assertThat(testUserDomain.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testUserDomain.getPassword()).isEqualTo(UPDATED_PASSWORD);
         assertThat(testUserDomain.getDepartment()).isEqualTo(UPDATED_DEPARTMENT);
         assertThat(testUserDomain.getSemester()).isEqualTo(UPDATED_SEMESTER);
         assertThat(testUserDomain.getContactNumber()).isEqualTo(UPDATED_CONTACT_NUMBER);
+        assertThat(testUserDomain.isActivated()).isEqualTo(UPDATED_ACTIVATED);
     }
 
     @Test

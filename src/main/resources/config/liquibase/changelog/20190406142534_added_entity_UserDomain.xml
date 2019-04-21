@@ -23,7 +23,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="reg_num" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="first_name" type="varchar(255)">
@@ -34,12 +34,16 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="email" type="varchar(255)">
+            <column name="dob" type="datetime">
                 <constraints nullable="true" />
             </column>
 
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="jhi_password" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="department" type="varchar(255)">
@@ -53,11 +57,16 @@
             <column name="contact_number" type="bigint">
                 <constraints nullable="true" />
             </column>
+
+            <column name="activated" type="boolean">
+                <constraints nullable="true" />
+            </column>
             <column name="address_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_user_domain_address_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="user_domain" columnName="dob" columnDataType="datetime"/>
         
         <createTable tableName="user_domain_roles">
             <column name="roles_id" type="bigint">

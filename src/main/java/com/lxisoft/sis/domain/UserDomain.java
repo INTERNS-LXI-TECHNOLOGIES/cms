@@ -4,8 +4,10 @@ package com.lxisoft.sis.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -27,7 +29,8 @@ public class UserDomain implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "reg_num")
+    @NotNull
+    @Column(name = "reg_num", nullable = false)
     private String regNum;
 
     @Column(name = "first_name")
@@ -36,10 +39,15 @@ public class UserDomain implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "dob")
+    private Instant dob;
+
+    @NotNull
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "jhi_password")
+    @NotNull
+    @Column(name = "jhi_password", nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -52,6 +60,9 @@ public class UserDomain implements Serializable {
 
     @Column(name = "contact_number")
     private Long contactNumber;
+
+    @Column(name = "activated")
+    private Boolean activated;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -111,6 +122,19 @@ public class UserDomain implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Instant getDob() {
+        return dob;
+    }
+
+    public UserDomain dob(Instant dob) {
+        this.dob = dob;
+        return this;
+    }
+
+    public void setDob(Instant dob) {
+        this.dob = dob;
     }
 
     public String getEmail() {
@@ -178,6 +202,19 @@ public class UserDomain implements Serializable {
         this.contactNumber = contactNumber;
     }
 
+    public Boolean isActivated() {
+        return activated;
+    }
+
+    public UserDomain activated(Boolean activated) {
+        this.activated = activated;
+        return this;
+    }
+
+    public void setActivated(Boolean activated) {
+        this.activated = activated;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -227,11 +264,13 @@ public class UserDomain implements Serializable {
 
     public UserDomain addRoles(UserRole userRole) {
         this.roles.add(userRole);
+        userRole.getUsers().add(this);
         return this;
     }
 
     public UserDomain removeRoles(UserRole userRole) {
         this.roles.remove(userRole);
+        userRole.getUsers().remove(this);
         return this;
     }
 
@@ -267,11 +306,13 @@ public class UserDomain implements Serializable {
             ", regNum='" + getRegNum() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
+            ", dob='" + getDob() + "'" +
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +
             ", department='" + getDepartment() + "'" +
             ", semester='" + getSemester() + "'" +
             ", contactNumber=" + getContactNumber() +
+            ", activated='" + isActivated() + "'" +
             "}";
     }
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
 // tslint:disable-next-line:no-unused-variable
-import { ICrudGetAllAction, getSortState, IPaginationBaseState, getPaginationItemsNumber, JhiPagination } from 'react-jhipster';
+import { ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState, getPaginationItemsNumber, JhiPagination } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -75,6 +75,9 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                 <th className="hand" onClick={this.sort('lastName')}>
                   Last Name <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('dob')}>
+                  Dob <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('email')}>
                   Email <FontAwesomeIcon icon="sort" />
                 </th>
@@ -89,6 +92,9 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                 </th>
                 <th className="hand" onClick={this.sort('contactNumber')}>
                   Contact Number <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('activated')}>
+                  Activated <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
                   Address <FontAwesomeIcon icon="sort" />
@@ -107,11 +113,15 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                   <td>{userDomain.regNum}</td>
                   <td>{userDomain.firstName}</td>
                   <td>{userDomain.lastName}</td>
+                  <td>
+                    <TextFormat type="date" value={userDomain.dob} format={APP_DATE_FORMAT} />
+                  </td>
                   <td>{userDomain.email}</td>
                   <td>{userDomain.password}</td>
                   <td>{userDomain.department}</td>
                   <td>{userDomain.semester}</td>
                   <td>{userDomain.contactNumber}</td>
+                  <td>{userDomain.activated ? 'true' : 'false'}</td>
                   <td>{userDomain.addressId ? <Link to={`address/${userDomain.addressId}`}>{userDomain.addressId}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

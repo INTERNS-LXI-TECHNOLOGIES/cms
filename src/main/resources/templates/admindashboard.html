@@ -117,12 +117,11 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Department:</label>
 										<input th:field="${dummy.user.department}" type="hidden" th:id="department">
-										<select class="form-control"  >
+										<select onchange="document.getElementById('department').value=this.value" class="form-control"  >
 											<option
 												th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
 												th:value="${dept}" 
-												th:text="${dept}"
-												onclick="document.getElementById('department').value=this.value">
+												th:text="${dept}">
 												</option>
 											<!--                   <option value="-1">Select Department</option> -->
 											<!--                   <option value="cse">CSE</option> -->
@@ -134,7 +133,9 @@
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Date
-											of Birth:</label> <select name="Birthday_day" id="Birthday_Day"
+											of Birth:</label>
+											<input type="hidden" th:id="date1" th:name="date">
+											<select onchange="document.getElementById('date1').value=this.value;" name="Birthday_day" id="Birthday_Day"
 											class="form-control" width=50px;>
 											<option value="-1">Day:</option>
 											<option value="1">1</option>
@@ -172,22 +173,26 @@
 											<option value="30">30</option>
 
 											<option value="31">31</option>
-										</select> <select id="Birthday_Month" name="Birthday_Month"
+										</select> 
+										<input type="hidden" th:id="month1" th:name="month">
+										<select onchange="document.getElementById('month1').value=this.value;" id="Birthday_Month" name="Birthday_Month"
 											class="form-control">
 											<option value="-1">Month:</option>
-											<option value="January">Jan</option>
-											<option value="February">Feb</option>
-											<option value="March">Mar</option>
-											<option value="April">Apr</option>
-											<option value="May">May</option>
-											<option value="June">Jun</option>
-											<option value="July">Jul</option>
-											<option value="August">Aug</option>
-											<option value="September">Sep</option>
-											<option value="October">Oct</option>
-											<option value="November">Nov</option>
-											<option value="December">Dec</option>
-										</select> <select name="Birthday_Year" id="Birthday_Year"
+											<option value="0">Jan</option>
+											<option value="1">Feb</option>
+											<option value="2">Mar</option>
+											<option value="3">Apr</option>
+											<option value="4">May</option>
+											<option value="5">Jun</option>
+											<option value="6">Jul</option>
+											<option value="7">Aug</option>
+											<option value="8">Sep</option>
+											<option value="9">Oct</option>
+											<option value="10">Nov</option>
+											<option value="11">Dec</option>
+										</select>
+										<input type="hidden" th:id="year1" th:name="year">
+										 <select onchange="document.getElementById('year1').value=this.value;" name="Birthday_Year" id="Birthday_Year"
 											class="form-control">
 
 											<option value="-1">Year:</option>
@@ -328,7 +333,7 @@
 										<label for="recipient-name" class="col-form-label"><br>
 										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
 										<br>University Registration Number:</label> <input type="text"
-											class="form-control"  >
+											class="form-control" th:field="${dummy.user.regNum}">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Password:</label>
@@ -407,18 +412,25 @@
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Department:</label>
-										<select class="form-control"  >
-											<option value="-1">Select Department</option>
-											<option value="cse">CSE</option>
-											<option value="eee">EEE</option>
-											<option value="ece">ECE</option>
-											<option value="ce">CE</option>
-											<option value="me">ME</option>
+										<input th:field="${dummy.user.department}" type="hidden" th:id="department1">
+										<select onchange="document.getElementById('department1').value=this.value" class="form-control"  >
+											<option
+												th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
+												th:value="${dept}" 
+												th:text="${dept}">
+												</option>
+											<!--                   <option value="-1">Select Department</option> -->
+											<!--                   <option value="cse">CSE</option> -->
+											<!--                   <option value="eee">EEE</option> -->
+											<!--                   <option value="ece">ECE</option> -->
+											<!--                   <option value="ce">CE</option> -->
+											<!--                   <option value="me">ME</option> -->
 										</select>
 									</div>
 									<div class="form-group">
+										<input type="hidden" th:id="date" th:name="date">
 										<label for="recipient-name" class="col-form-label">Date
-											of Birth:</label> <select name="Birthday_day" id="Birthday_Day"
+											of Birth:</label> <select onchange="document.getElementById('date').value=this.value;" name="Birthday_day" id="Birthday_Day"
 											class="form-control" width=50px;>
 											<option value="-1">Day:</option>
 											<option value="1">1</option>
@@ -456,22 +468,26 @@
 											<option value="30">30</option>
 
 											<option value="31">31</option>
-										</select> <select id="Birthday_Month" name="Birthday_Month"
+										</select>
+										<input type="hidden" th:id="month" th:name="month"> 
+										<select onchange="document.getElementById('month').value=this.value;"  id="Birthday_Month" name="Birthday_Month"
 											class="form-control">
 											<option value="-1">Month:</option>
-											<option value="January">Jan</option>
-											<option value="February">Feb</option>
-											<option value="March">Mar</option>
-											<option value="April">Apr</option>
-											<option value="May">May</option>
-											<option value="June">Jun</option>
-											<option value="July">Jul</option>
-											<option value="August">Aug</option>
-											<option value="September">Sep</option>
-											<option value="October">Oct</option>
-											<option value="November">Nov</option>
-											<option value="December">Dec</option>
-										</select> <select name="Birthday_Year" id="Birthday_Year"
+											<option value="0">Jan</option>
+											<option value="1">Feb</option>
+											<option value="2">Mar</option>
+											<option value="3">Apr</option>
+											<option value="4">May</option>
+											<option value="5">Jun</option>
+											<option value="6">Jul</option>
+											<option value="7">Aug</option>
+											<option value="8">Sep</option>
+											<option value="9">Oct</option>
+											<option value="10">Nov</option>
+											<option value="11">Dec</option>
+										</select> 
+										<input type="hidden" th:id="year" th:name="year">
+										<select name="Birthday_Year" onchange="document.getElementById('year').value=this.value;" id="Birthday_Year"
 											class="form-control">
 
 											<option value="-1">Year:</option>
@@ -562,12 +578,12 @@
 										<b><font size="4px"> <u>Qualification</u></font></b><br>
 										<br>
 										<font size="3px" color="darkblue">PG</font> <input
-											th:field="${dummy.list[__3__].grade}" value="pg"
+											th:field="${dummy.list[__0__].grade}" value="pg"
 											type="hidden">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Board:</label>
-										<input th:field="${dummy.list[__3__].university}" type="text"
+										<input th:field="${dummy.list[__0__].university}" type="text"
 											class="form-control"  >
 									</div>
 									<div class="form-group">
@@ -577,35 +593,35 @@
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Percentage:</label>
-										<input th:field="${dummy.list[__3__].marks}" type="text"
+										<input th:field="${dummy.list[__0__].marks}" type="text"
 											class="form-control"  >
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
 										<font size="3px" color="darkblue">Ph.D</font> <input
-											th:field="${dummy.list[__4__].grade}" value="phd"
+											th:field="${dummy.list[__1__].grade}" value="phd"
 											type="hidden">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Board:</label>
-										<input th:field="${dummy.list[__4__].university}" type="text"
+										<input th:field="${dummy.list[__1__].university}" type="text"
 											class="form-control"  >
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Year
-											of Passing:</label> <input th:field="${dummy.list[__4__].year}"
+											of Passing:</label> <input th:field="${dummy.list[__1__].year}"
 											type="text" class="form-control"  >
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Percentage:</label>
-										<input th:field="${dummy.list[__4__].marks}" type="text"
+										<input th:field="${dummy.list[__1__].marks}" type="text"
 											class="form-control"  >
 									</div>
 
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
 										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
-										<br>Employee ID:</label> <input type="text" class="form-control"
+										<br>Employee ID:</label> <input th:field="${dummy.user.regNum}" type="text" class="form-control"
 											 >
 									</div>
 									<div class="form-group">

@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "regNum",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "firstName",
@@ -14,12 +17,22 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "dob",
+            "fieldType": "Instant"
+        },
+        {
             "fieldName": "email",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "password",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "department",
@@ -34,6 +47,10 @@
         {
             "fieldName": "contactNumber",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "activated",
+            "fieldType": "Boolean"
         }
     ],
     "relationships": [
@@ -53,7 +70,7 @@
         },
         {
             "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "userDomain",
+            "otherEntityRelationshipName": "user",
             "relationshipName": "roles",
             "otherEntityName": "userRole",
             "otherEntityField": "id",

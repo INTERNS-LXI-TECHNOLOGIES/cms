@@ -7,7 +7,15 @@
             "fieldValues": "STUDENT,FACULTY,ADMIN,PLACEMENT_OFFICER,HOD,TUTOR"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "user",
+            "otherEntityName": "userDomain",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "roles"
+        }
+    ],
     "changelogDate": "20190406142535",
     "entityTableName": "user_role",
     "dto": "mapstruct",

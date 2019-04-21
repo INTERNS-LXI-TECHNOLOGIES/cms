@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import { IQualification } from 'app/shared/model/qualification.model';
 import { IUserRole } from 'app/shared/model/user-role.model';
 
@@ -27,14 +28,18 @@ export interface IUserDomain {
   regNum?: string;
   firstName?: string;
   lastName?: string;
+  dob?: Moment;
   email?: string;
   password?: string;
   department?: Department;
   semester?: Semester;
   contactNumber?: number;
+  activated?: boolean;
   addressId?: number;
   qualifications?: IQualification[];
   roles?: IUserRole[];
 }
 
-export const defaultValue: Readonly<IUserDomain> = {};
+export const defaultValue: Readonly<IUserDomain> = {
+  activated: false
+};
