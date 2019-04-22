@@ -57,7 +57,7 @@ public class AddressResource {
     }
 
     /**
-     * PUT  /addresses : Updates an existing address.
+     * PUT  /addresses :e Updates an existing address.
      *
      * @param addressDTO the addressDTO to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated addressDTO,

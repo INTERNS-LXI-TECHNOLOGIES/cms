@@ -1,16 +1,19 @@
 package com.lxisoft.sas.web.rest;
+import com.lxisoft.sas.domain.UserDomain;
 import com.lxisoft.sas.service.QualificationService;
 import com.lxisoft.sas.web.rest.errors.BadRequestAlertException;
 import com.lxisoft.sas.web.rest.util.HeaderUtil;
 import com.lxisoft.sas.web.rest.util.PaginationUtil;
 import com.lxisoft.sas.service.dto.QualificationDTO;
+import com.lxisoft.sas.service.mapper.UserDomainMapper;
+
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +34,12 @@ public class QualificationResource {
 
     private static final String ENTITY_NAME = "qualification";
 
+    @Autowired
+	UserDomainResource userDomainResource;
+
+	@Autowired
+	UserDomainMapper userMapper;
+	
     private final QualificationService qualificationService;
 
     public QualificationResource(QualificationService qualificationService) {
@@ -52,8 +61,7 @@ public class QualificationResource {
         }
         QualificationDTO result = qualificationService.save(qualificationDTO);
         return ResponseEntity.created(new URI("/api/qualifications/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
     }
 
     /**
@@ -65,6 +73,7 @@ public class QualificationResource {
      * or with status 500 (Internal Server Error) if the qualificationDTO couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
+    
     @PutMapping("/qualifications")
     public ResponseEntity<QualificationDTO> updateQualification(@RequestBody QualificationDTO qualificationDTO) throws URISyntaxException {
         log.debug("REST request to update Qualification : {}", qualificationDTO);
@@ -116,4 +125,17 @@ public class QualificationResource {
         qualificationService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @DeleteMapping("/qualifications/delete-all/{userid}")
+	public ResponseEntity<Void> deleteAllQualificationsOfUser(@PathVariable Long userid,Pageable pageable) {
+		log.debug("REST request to delete Qualification of user : {}", userid);
+		UserDomain user = userMapper.toEntity(userDomainResource.getUserDomain(userid).getBody());
+		List<QualificationDTO> quals = qualificationService.getQualificationOfUser(user,pageable).getContent();
+		for (QualificationDTO q : quals) {
+			deleteQualification(q.getId());
+		}
+		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, userid.toString()))
+				.build();
+	}
+    
 }

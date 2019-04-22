@@ -23,4 +23,52 @@ public class DummyDTO {
 	public void setList(ArrayList<QualificationDTO> list) {
 		this.list = list;
 	}
+	
+	public boolean setValidContents() {
+		if (user.getEmail() == null || user.getEmail().equals("")) {
+			return false;
+		} else if (user.getPassword() == null || user.getPassword() == "") {
+			return false;
+		}
+		return validateAddress();
+	}
+
+	private boolean validateAddress() {
+		if (address.getCountry().equals("")) {
+			address.setCountry(null);
+		}
+		if (address.getDistrict().equals("")) {
+			address.setDistrict(null);
+		}
+		if (address.getHouseName().equals("")) {
+			address.setHouseName(null);
+		}
+		if (address.getState().equals("")) {
+			address.setState(null);
+		}
+		if (address.getStreet().equals("")) {
+			address.setStreet(null);
+		}
+		if (address.getCountry() == null && address.getDistrict() == null && address.getHouseName() == null
+				&& address.getPincode() == null && address.getState() == null && address.getStreet() == null) {
+			address = null;
+		}
+		return validateQualifications();
+	}
+	private boolean validateQualifications() {
+		for (QualificationDTO q : list) {
+			if (q.getGrade().equals("")) {
+				q.setGrade(null);
+			}
+			
+			if (q.getUniversity().equals("")) {
+				q.setUniversity(null);
+			}
+			if (q.getGrade() == null && q.getMarks() == null && q.getPercentage() == null && q.getUniversity() == null
+					&& q.getYear() == null) {
+				q = null;
+			}
+		}
+		return true;
+	}
 }
