@@ -4,8 +4,10 @@ package com.lxisoft.sas.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -27,17 +29,26 @@ public class UserDomain implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Column(name = "reg_num", nullable = false)
+    private String regNum;
+
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @NotNull
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "jhi_password")
+    @NotNull
+    @Column(name = "jhi_password", nullable = false)
     private String password;
+
+    @Column(name = "dob")
+    private Instant dob;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "department")
@@ -69,6 +80,19 @@ public class UserDomain implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRegNum() {
+        return regNum;
+    }
+
+    public UserDomain regNum(String regNum) {
+        this.regNum = regNum;
+        return this;
+    }
+
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
     }
 
     public String getFirstName() {
@@ -121,6 +145,19 @@ public class UserDomain implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Instant getDob() {
+        return dob;
+    }
+
+    public UserDomain dob(Instant dob) {
+        this.dob = dob;
+        return this;
+    }
+
+    public void setDob(Instant dob) {
+        this.dob = dob;
     }
 
     public Department getDepartment() {
@@ -211,11 +248,13 @@ public class UserDomain implements Serializable {
 
     public UserDomain addRoles(UserRole userRole) {
         this.roles.add(userRole);
+        userRole.getUserIds().add(this);
         return this;
     }
 
     public UserDomain removeRoles(UserRole userRole) {
         this.roles.remove(userRole);
+        userRole.getUserIds().remove(this);
         return this;
     }
 
@@ -248,10 +287,12 @@ public class UserDomain implements Serializable {
     public String toString() {
         return "UserDomain{" +
             "id=" + getId() +
+            ", regNum='" + getRegNum() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +
+            ", dob='" + getDob() + "'" +
             ", department='" + getDepartment() + "'" +
             ", semester='" + getSemester() + "'" +
             ", contactNumber=" + getContactNumber() +

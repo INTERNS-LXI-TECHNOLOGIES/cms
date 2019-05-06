@@ -5,6 +5,14 @@ public class DummyDTO {
 	private UserDomainDTO user;
 	private AddressDTO address;
 	ArrayList<QualificationDTO> list=new ArrayList<QualificationDTO>();
+	ArrayList<SubjectDTO> subList=new ArrayList<SubjectDTO>();
+	
+	public ArrayList<SubjectDTO> getSubList() {
+		return subList;
+	}
+	public void setSubList(ArrayList<SubjectDTO> subList) {
+		this.subList = subList;
+	}
 	public UserDomainDTO getUser() {
 		return user;
 	}
@@ -33,6 +41,7 @@ public class DummyDTO {
 		return validateAddress();
 	}
 
+	
 	private boolean validateAddress() {
 		if (address.getCountry().equals("")) {
 			address.setCountry(null);
@@ -55,6 +64,7 @@ public class DummyDTO {
 		}
 		return validateQualifications();
 	}
+	
 	private boolean validateQualifications() {
 		for (QualificationDTO q : list) {
 			if (q.getGrade().equals("")) {
@@ -71,4 +81,21 @@ public class DummyDTO {
 		}
 		return true;
 	}
+	
+	public boolean validateTimeTable() {
+		for (SubjectDTO s : subList) {
+			if (s.getSubjectCode().equals("")) {
+				s.setSubjectCode(null);
+			}
+			if (s.getSubjectCode() == null)
+			{
+				s=null;
+			}
+		
+		}
+		return true;
+	}
+	
+	
+	
 }

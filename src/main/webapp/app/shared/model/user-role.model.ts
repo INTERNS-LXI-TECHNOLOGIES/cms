@@ -1,3 +1,5 @@
+import { IUserDomain } from 'app/shared/model/user-domain.model';
+
 export const enum Role {
   STUDENT = 'STUDENT',
   FACULTY = 'FACULTY',
@@ -10,6 +12,7 @@ export const enum Role {
 export interface IUserRole {
   id?: number;
   role?: Role;
+  userIds?: IUserDomain[];
 }
 
 export const defaultValue: Readonly<IUserRole> = {};

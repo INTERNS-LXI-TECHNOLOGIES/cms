@@ -143,7 +143,7 @@
   margin-left: 50px;
   margin-top: 50px;
 }
-.wrapper .leave-form button {
+.wrapper .leave-form .leave-btn {
   background-color: #213459;
   color: white;
   height: 50px;
@@ -152,7 +152,7 @@
   border-style: none;
 }
 
-.wrapper .leave-form button:hover {
+.wrapper .leave-form .leave-btn:hover {
   box-shadow: 2px 4px 10px black;
 }
 
@@ -221,4 +221,24 @@
 
 .modal-footer .btn-danger {
   transform: translateY(25px);
+}
+
+#Birthday_Day {
+  width: 120px;
+}
+#Birthday_Month {
+  width: 120px;
+  position: absolute;
+  transform: translate(175px, -35px);
+}
+#Birthday_Year {
+  width: 120px;
+  position: absolute;
+  transform: translate(340px, -35px);
+}
+
+.ttfield {
+  background: transparent;
+  color: white;
+  border: none;
 }

@@ -19,7 +19,6 @@ public class QualificationDTO implements Serializable {
 
     private Float percentage;
 
-
     private Long userDomainId;
 
     public Long getId() {

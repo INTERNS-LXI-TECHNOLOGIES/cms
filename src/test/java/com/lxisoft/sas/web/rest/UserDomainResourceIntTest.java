@@ -28,6 +28,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,9 @@ import com.lxisoft.sas.domain.enumeration.Semester;
 @SpringBootTest(classes = SmartAcademicSystemApp.class)
 public class UserDomainResourceIntTest {
 
+    private static final String DEFAULT_REG_NUM = "AAAAAAAAAA";
+    private static final String UPDATED_REG_NUM = "BBBBBBBBBB";
+
     private static final String DEFAULT_FIRST_NAME = "AAAAAAAAAA";
     private static final String UPDATED_FIRST_NAME = "BBBBBBBBBB";
 
@@ -61,6 +66,9 @@ public class UserDomainResourceIntTest {
 
     private static final String DEFAULT_PASSWORD = "AAAAAAAAAA";
     private static final String UPDATED_PASSWORD = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_DOB = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DOB = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final Department DEFAULT_DEPARTMENT = Department.CSE;
     private static final Department UPDATED_DEPARTMENT = Department.ME;
@@ -125,10 +133,12 @@ public class UserDomainResourceIntTest {
      */
     public static UserDomain createEntity(EntityManager em) {
         UserDomain userDomain = new UserDomain()
+            .regNum(DEFAULT_REG_NUM)
             .firstName(DEFAULT_FIRST_NAME)
             .lastName(DEFAULT_LAST_NAME)
             .email(DEFAULT_EMAIL)
             .password(DEFAULT_PASSWORD)
+            .dob(DEFAULT_DOB)
             .department(DEFAULT_DEPARTMENT)
             .semester(DEFAULT_SEMESTER)
             .contactNumber(DEFAULT_CONTACT_NUMBER);
@@ -156,10 +166,12 @@ public class UserDomainResourceIntTest {
         List<UserDomain> userDomainList = userDomainRepository.findAll();
         assertThat(userDomainList).hasSize(databaseSizeBeforeCreate + 1);
         UserDomain testUserDomain = userDomainList.get(userDomainList.size() - 1);
+        assertThat(testUserDomain.getRegNum()).isEqualTo(DEFAULT_REG_NUM);
         assertThat(testUserDomain.getFirstName()).isEqualTo(DEFAULT_FIRST_NAME);
         assertThat(testUserDomain.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
         assertThat(testUserDomain.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testUserDomain.getPassword()).isEqualTo(DEFAULT_PASSWORD);
+        assertThat(testUserDomain.getDob()).isEqualTo(DEFAULT_DOB);
         assertThat(testUserDomain.getDepartment()).isEqualTo(DEFAULT_DEPARTMENT);
         assertThat(testUserDomain.getSemester()).isEqualTo(DEFAULT_SEMESTER);
         assertThat(testUserDomain.getContactNumber()).isEqualTo(DEFAULT_CONTACT_NUMBER);
@@ -187,6 +199,63 @@ public class UserDomainResourceIntTest {
 
     @Test
     @Transactional
+    public void checkRegNumIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userDomainRepository.findAll().size();
+        // set the field null
+        userDomain.setRegNum(null);
+
+        // Create the UserDomain, which fails.
+        UserDomainDTO userDomainDTO = userDomainMapper.toDto(userDomain);
+
+        restUserDomainMockMvc.perform(post("/api/user-domains")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userDomainDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserDomain> userDomainList = userDomainRepository.findAll();
+        assertThat(userDomainList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEmailIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userDomainRepository.findAll().size();
+        // set the field null
+        userDomain.setEmail(null);
+
+        // Create the UserDomain, which fails.
+        UserDomainDTO userDomainDTO = userDomainMapper.toDto(userDomain);
+
+        restUserDomainMockMvc.perform(post("/api/user-domains")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userDomainDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserDomain> userDomainList = userDomainRepository.findAll();
+        assertThat(userDomainList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPasswordIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userDomainRepository.findAll().size();
+        // set the field null
+        userDomain.setPassword(null);
+
+        // Create the UserDomain, which fails.
+        UserDomainDTO userDomainDTO = userDomainMapper.toDto(userDomain);
+
+        restUserDomainMockMvc.perform(post("/api/user-domains")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(userDomainDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserDomain> userDomainList = userDomainRepository.findAll();
+        assertThat(userDomainList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllUserDomains() throws Exception {
         // Initialize the database
         userDomainRepository.saveAndFlush(userDomain);
@@ -196,10 +265,12 @@ public class UserDomainResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(userDomain.getId().intValue())))
+            .andExpect(jsonPath("$.[*].regNum").value(hasItem(DEFAULT_REG_NUM.toString())))
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME.toString())))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME.toString())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].password").value(hasItem(DEFAULT_PASSWORD.toString())))
+            .andExpect(jsonPath("$.[*].dob").value(hasItem(DEFAULT_DOB.toString())))
             .andExpect(jsonPath("$.[*].department").value(hasItem(DEFAULT_DEPARTMENT.toString())))
             .andExpect(jsonPath("$.[*].semester").value(hasItem(DEFAULT_SEMESTER.toString())))
             .andExpect(jsonPath("$.[*].contactNumber").value(hasItem(DEFAULT_CONTACT_NUMBER.intValue())));
@@ -249,10 +320,12 @@ public class UserDomainResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(userDomain.getId().intValue()))
+            .andExpect(jsonPath("$.regNum").value(DEFAULT_REG_NUM.toString()))
             .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME.toString()))
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.password").value(DEFAULT_PASSWORD.toString()))
+            .andExpect(jsonPath("$.dob").value(DEFAULT_DOB.toString()))
             .andExpect(jsonPath("$.department").value(DEFAULT_DEPARTMENT.toString()))
             .andExpect(jsonPath("$.semester").value(DEFAULT_SEMESTER.toString()))
             .andExpect(jsonPath("$.contactNumber").value(DEFAULT_CONTACT_NUMBER.intValue()));
@@ -279,10 +352,12 @@ public class UserDomainResourceIntTest {
         // Disconnect from session so that the updates on updatedUserDomain are not directly saved in db
         em.detach(updatedUserDomain);
         updatedUserDomain
+            .regNum(UPDATED_REG_NUM)
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
             .email(UPDATED_EMAIL)
             .password(UPDATED_PASSWORD)
+            .dob(UPDATED_DOB)
             .department(UPDATED_DEPARTMENT)
             .semester(UPDATED_SEMESTER)
             .contactNumber(UPDATED_CONTACT_NUMBER);
@@ -297,10 +372,12 @@ public class UserDomainResourceIntTest {
         List<UserDomain> userDomainList = userDomainRepository.findAll();
         assertThat(userDomainList).hasSize(databaseSizeBeforeUpdate);
         UserDomain testUserDomain = userDomainList.get(userDomainList.size() - 1);
+        assertThat(testUserDomain.getRegNum()).isEqualTo(UPDATED_REG_NUM);
         assertThat(testUserDomain.getFirstName()).isEqualTo(UPDATED_FIRST_NAME);
         assertThat(testUserDomain.getLastName()).isEqualTo(UPDATED_LAST_NAME);
         assertThat(testUserDomain.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testUserDomain.getPassword()).isEqualTo(UPDATED_PASSWORD);
+        assertThat(testUserDomain.getDob()).isEqualTo(UPDATED_DOB);
         assertThat(testUserDomain.getDepartment()).isEqualTo(UPDATED_DEPARTMENT);
         assertThat(testUserDomain.getSemester()).isEqualTo(UPDATED_SEMESTER);
         assertThat(testUserDomain.getContactNumber()).isEqualTo(UPDATED_CONTACT_NUMBER);

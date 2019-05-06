@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import { IQualification } from 'app/shared/model/qualification.model';
 import { IUserRole } from 'app/shared/model/user-role.model';
 
@@ -24,10 +25,12 @@ export const enum Semester {
 
 export interface IUserDomain {
   id?: number;
+  regNum?: string;
   firstName?: string;
   lastName?: string;
   email?: string;
   password?: string;
+  dob?: Moment;
   department?: Department;
   semester?: Semester;
   contactNumber?: number;

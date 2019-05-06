@@ -8,6 +8,8 @@ import { ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipste
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IUserDomain } from 'app/shared/model/user-domain.model';
+import { getEntities as getUserDomains } from 'app/entities/user-domain/user-domain.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './user-role.reducer';
 import { IUserRole } from 'app/shared/model/user-role.model';
 // tslint:disable-next-line:no-unused-variable
@@ -18,12 +20,14 @@ export interface IUserRoleUpdateProps extends StateProps, DispatchProps, RouteCo
 
 export interface IUserRoleUpdateState {
   isNew: boolean;
+  userIdId: string;
 }
 
 export class UserRoleUpdate extends React.Component<IUserRoleUpdateProps, IUserRoleUpdateState> {
   constructor(props) {
     super(props);
     this.state = {
+      userIdId: '0',
       isNew: !this.props.match.params || !this.props.match.params.id
     };
   }
@@ -40,6 +44,8 @@ export class UserRoleUpdate extends React.Component<IUserRoleUpdateProps, IUserR
     } else {
       this.props.getEntity(this.props.match.params.id);
     }
+
+    this.props.getUserDomains();
   }
 
   saveEntity = (event, errors, values) => {
@@ -63,7 +69,7 @@ export class UserRoleUpdate extends React.Component<IUserRoleUpdateProps, IUserR
   };
 
   render() {
-    const { userRoleEntity, loading, updating } = this.props;
+    const { userRoleEntity, userDomains, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -122,6 +128,7 @@ export class UserRoleUpdate extends React.Component<IUserRoleUpdateProps, IUserR
 }
 
 const mapStateToProps = (storeState: IRootState) => ({
+  userDomains: storeState.userDomain.entities,
   userRoleEntity: storeState.userRole.entity,
   loading: storeState.userRole.loading,
   updating: storeState.userRole.updating,
@@ -129,6 +136,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getUserDomains,
   getEntity,
   updateEntity,
   createEntity,

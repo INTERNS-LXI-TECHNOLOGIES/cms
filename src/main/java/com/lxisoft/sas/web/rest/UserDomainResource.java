@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -45,7 +46,7 @@ public class UserDomainResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/user-domains")
-    public ResponseEntity<UserDomainDTO> createUserDomain(@RequestBody UserDomainDTO userDomainDTO) throws URISyntaxException {
+    public ResponseEntity<UserDomainDTO> createUserDomain(@Valid @RequestBody UserDomainDTO userDomainDTO) throws URISyntaxException {
         log.debug("REST request to save UserDomain : {}", userDomainDTO);
         if (userDomainDTO.getId() != null) {
             throw new BadRequestAlertException("A new userDomain cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +67,7 @@ public class UserDomainResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/user-domains")
-    public ResponseEntity<UserDomainDTO> updateUserDomain(@RequestBody UserDomainDTO userDomainDTO) throws URISyntaxException {
+    public ResponseEntity<UserDomainDTO> updateUserDomain(@Valid @RequestBody UserDomainDTO userDomainDTO) throws URISyntaxException {
         log.debug("REST request to update UserDomain : {}", userDomainDTO);
         if (userDomainDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

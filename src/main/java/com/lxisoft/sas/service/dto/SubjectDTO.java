@@ -6,6 +6,7 @@ import com.lxisoft.sas.domain.enumeration.Semester;
 /**
  * A DTO for the Subject entity.
  */
+
 public class SubjectDTO implements Serializable {
 
     private Long id;
@@ -13,8 +14,7 @@ public class SubjectDTO implements Serializable {
     private String subjectCode;
 
     private Semester semester;
-
-
+    
     public Long getId() {
         return id;
     }

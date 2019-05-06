@@ -2,6 +2,13 @@
     "name": "UserDomain",
     "fields": [
         {
+            "fieldName": "regNum",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
             "fieldName": "firstName",
             "fieldType": "String"
         },
@@ -11,11 +18,21 @@
         },
         {
             "fieldName": "email",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "password",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dob",
+            "fieldType": "Instant"
         },
         {
             "fieldName": "department",
@@ -49,7 +66,7 @@
         },
         {
             "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "userDomain",
+            "otherEntityRelationshipName": "userId",
             "relationshipName": "roles",
             "otherEntityName": "userRole",
             "otherEntityField": "id",

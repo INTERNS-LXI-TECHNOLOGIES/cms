@@ -1,10 +1,13 @@
 package com.lxisoft.sas.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import com.lxisoft.sas.domain.enumeration.Role;
@@ -26,6 +29,10 @@ public class UserRole implements Serializable {
     @Column(name = "jhi_role")
     private Role role;
 
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
+    private Set<UserDomain> userIds = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -46,6 +53,31 @@ public class UserRole implements Serializable {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Set<UserDomain> getUserIds() {
+        return userIds;
+    }
+
+    public UserRole userIds(Set<UserDomain> userDomains) {
+        this.userIds = userDomains;
+        return this;
+    }
+
+    public UserRole addUserId(UserDomain userDomain) {
+        this.userIds.add(userDomain);
+        userDomain.getRoles().add(this);
+        return this;
+    }
+
+    public UserRole removeUserId(UserDomain userDomain) {
+        this.userIds.remove(userDomain);
+        userDomain.getRoles().remove(this);
+        return this;
+    }
+
+    public void setUserIds(Set<UserDomain> userDomains) {
+        this.userIds = userDomains;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

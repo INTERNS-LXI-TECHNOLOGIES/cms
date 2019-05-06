@@ -83,6 +83,7 @@ public class ExamScheduleServiceImpl implements ExamScheduleService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete ExamSchedule : {}", id);        examScheduleRepository.deleteById(id);
+        log.debug("Request to delete ExamSchedule : {}", id);      
+        examScheduleRepository.deleteById(id);
     }
 }

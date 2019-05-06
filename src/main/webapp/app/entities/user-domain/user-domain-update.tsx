@@ -54,6 +54,8 @@ export class UserDomainUpdate extends React.Component<IUserDomainUpdateProps, IU
   }
 
   saveEntity = (event, errors, values) => {
+    values.dob = convertDateTimeToServer(values.dob);
+
     if (errors.length === 0) {
       const { userDomainEntity } = this.props;
       const entity = {
@@ -98,6 +100,19 @@ export class UserDomainUpdate extends React.Component<IUserDomainUpdateProps, IU
                   </AvGroup>
                 ) : null}
                 <AvGroup>
+                  <Label id="regNumLabel" for="regNum">
+                    Reg Num
+                  </Label>
+                  <AvField
+                    id="user-domain-regNum"
+                    type="text"
+                    name="regNum"
+                    validate={{
+                      required: { value: true, errorMessage: 'This field is required.' }
+                    }}
+                  />
+                </AvGroup>
+                <AvGroup>
                   <Label id="firstNameLabel" for="firstName">
                     First Name
                   </Label>
@@ -113,13 +128,40 @@ export class UserDomainUpdate extends React.Component<IUserDomainUpdateProps, IU
                   <Label id="emailLabel" for="email">
                     Email
                   </Label>
-                  <AvField id="user-domain-email" type="text" name="email" />
+                  <AvField
+                    id="user-domain-email"
+                    type="text"
+                    name="email"
+                    validate={{
+                      required: { value: true, errorMessage: 'This field is required.' }
+                    }}
+                  />
                 </AvGroup>
                 <AvGroup>
                   <Label id="passwordLabel" for="password">
                     Password
                   </Label>
-                  <AvField id="user-domain-password" type="text" name="password" />
+                  <AvField
+                    id="user-domain-password"
+                    type="text"
+                    name="password"
+                    validate={{
+                      required: { value: true, errorMessage: 'This field is required.' }
+                    }}
+                  />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="dobLabel" for="dob">
+                    Dob
+                  </Label>
+                  <AvInput
+                    id="user-domain-dob"
+                    type="datetime-local"
+                    className="form-control"
+                    name="dob"
+                    placeholder={'YYYY-MM-DD HH:mm'}
+                    value={isNew ? null : convertDateTimeFromServer(this.props.userDomainEntity.dob)}
+                  />
                 </AvGroup>
                 <AvGroup>
                   <Label id="departmentLabel">Department</Label>

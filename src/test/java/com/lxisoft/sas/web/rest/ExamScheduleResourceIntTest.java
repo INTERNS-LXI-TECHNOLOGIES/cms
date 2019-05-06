@@ -1,13 +1,22 @@
 package com.lxisoft.sas.web.rest;
 
-import com.lxisoft.sas.SmartAcademicSystemApp;
 
-import com.lxisoft.sas.domain.ExamSchedule;
-import com.lxisoft.sas.repository.ExamScheduleRepository;
-import com.lxisoft.sas.service.ExamScheduleService;
-import com.lxisoft.sas.service.dto.ExamScheduleDTO;
-import com.lxisoft.sas.service.mapper.ExamScheduleMapper;
-import com.lxisoft.sas.web.rest.errors.ExceptionTranslator;
+import static com.lxisoft.sas.web.rest.TestUtil.createFormattingConversionService;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,20 +33,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
-import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
-
-
-import static com.lxisoft.sas.web.rest.TestUtil.createFormattingConversionService;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import com.lxisoft.sas.SmartAcademicSystemApp;
+import com.lxisoft.sas.domain.ExamSchedule;
 import com.lxisoft.sas.domain.enumeration.Department;
 import com.lxisoft.sas.domain.enumeration.Semester;
+import com.lxisoft.sas.repository.ExamScheduleRepository;
+import com.lxisoft.sas.service.ExamScheduleService;
+import com.lxisoft.sas.service.dto.ExamScheduleDTO;
+import com.lxisoft.sas.service.mapper.ExamScheduleMapper;
+import com.lxisoft.sas.web.rest.errors.ExceptionTranslator;
 /**
  * Test class for the ExamScheduleResource REST controller.
  *

@@ -1,4 +1,6 @@
 package com.lxisoft.sas.service.dto;
+import java.time.Instant;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,13 +15,20 @@ public class UserDomainDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    private String regNum;
+
     private String firstName;
 
     private String lastName;
 
+    @NotNull
     private String email;
 
+    @NotNull
     private String password;
+
+    private Instant dob;
 
     private Department department;
 
@@ -27,7 +36,8 @@ public class UserDomainDTO implements Serializable {
 
     private Long contactNumber;
 
-
+    private Boolean activated;
+    
     private Long addressId;
 
     private Set<UserRoleDTO> roles = new HashSet<>();
@@ -38,6 +48,14 @@ public class UserDomainDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRegNum() {
+        return regNum;
+    }
+
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
     }
 
     public String getFirstName() {
@@ -72,6 +90,14 @@ public class UserDomainDTO implements Serializable {
         this.password = password;
     }
 
+    public Instant getDob() {
+        return dob;
+    }
+
+    public void setDob(Instant dob) {
+        this.dob = dob;
+    }
+
     public Department getDepartment() {
         return department;
     }
@@ -94,6 +120,13 @@ public class UserDomainDTO implements Serializable {
 
     public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
+    }
+    public Boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(Boolean activated) {
+        this.activated = activated;
     }
 
     public Long getAddressId() {
@@ -137,10 +170,12 @@ public class UserDomainDTO implements Serializable {
     public String toString() {
         return "UserDomainDTO{" +
             "id=" + getId() +
+            ", regNum='" + getRegNum() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +
+            ", dob='" + getDob() + "'" +
             ", department='" + getDepartment() + "'" +
             ", semester='" + getSemester() + "'" +
             ", contactNumber=" + getContactNumber() +

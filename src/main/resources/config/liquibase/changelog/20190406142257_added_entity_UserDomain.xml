@@ -22,6 +22,10 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="reg_num" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="first_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -31,10 +35,14 @@
             </column>
 
             <column name="email" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="jhi_password" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="dob" type="datetime">
                 <constraints nullable="true" />
             </column>
 
@@ -54,6 +62,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="user_domain" columnName="dob" columnDataType="datetime"/>
         
         <createTable tableName="user_domain_roles">
             <column name="roles_id" type="bigint">

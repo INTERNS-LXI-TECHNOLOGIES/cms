@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
 // tslint:disable-next-line:no-unused-variable
-import { ICrudGetAllAction, getSortState, IPaginationBaseState, getPaginationItemsNumber, JhiPagination } from 'react-jhipster';
+import { ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState, getPaginationItemsNumber, JhiPagination } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -66,6 +66,9 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                 <th className="hand" onClick={this.sort('id')}>
                   ID <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('regNum')}>
+                  Reg Num <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('firstName')}>
                   First Name <FontAwesomeIcon icon="sort" />
                 </th>
@@ -77,6 +80,9 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                 </th>
                 <th className="hand" onClick={this.sort('password')}>
                   Password <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('dob')}>
+                  Dob <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={this.sort('department')}>
                   Department <FontAwesomeIcon icon="sort" />
@@ -101,10 +107,14 @@ export class UserDomain extends React.Component<IUserDomainProps, IUserDomainSta
                       {userDomain.id}
                     </Button>
                   </td>
+                  <td>{userDomain.regNum}</td>
                   <td>{userDomain.firstName}</td>
                   <td>{userDomain.lastName}</td>
                   <td>{userDomain.email}</td>
                   <td>{userDomain.password}</td>
+                  <td>
+                    <TextFormat type="date" value={userDomain.dob} format={APP_DATE_FORMAT} />
+                  </td>
                   <td>{userDomain.department}</td>
                   <td>{userDomain.semester}</td>
                   <td>{userDomain.contactNumber}</td>

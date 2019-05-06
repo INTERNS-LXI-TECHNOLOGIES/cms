@@ -1,9 +1,11 @@
 
 entity UserDomain {
+  regNum String required,
   firstName String,
   lastName String,
-  email String,
-  password String,
+  email String required,
+  password String required,
+  dob Instant,
   department Department,
   semester Semester,
   contactNumber Long
@@ -140,7 +142,7 @@ relationship OneToMany {
 relationship ManyToMany {
     Event{cordinators} to UserDomain,
     Exam{halls} to ExamHall{exams},
-    UserDomain{roles} to UserRole
+    UserDomain{roles} to UserRole{userId}
 }
 
 relationship ManyToOne {
