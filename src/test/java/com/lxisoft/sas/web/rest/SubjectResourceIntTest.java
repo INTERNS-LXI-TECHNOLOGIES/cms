@@ -35,6 +35,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.lxisoft.sas.domain.enumeration.Semester;
+import com.lxisoft.sas.domain.enumeration.Department;
 /**
  * Test class for the SubjectResource REST controller.
  *
@@ -49,6 +50,9 @@ public class SubjectResourceIntTest {
 
     private static final Semester DEFAULT_SEMESTER = Semester.S1;
     private static final Semester UPDATED_SEMESTER = Semester.S2;
+
+    private static final Department DEFAULT_DEPARTMENT = Department.CSE;
+    private static final Department UPDATED_DEPARTMENT = Department.ME;
 
     @Autowired
     private SubjectRepository subjectRepository;
@@ -99,7 +103,8 @@ public class SubjectResourceIntTest {
     public static Subject createEntity(EntityManager em) {
         Subject subject = new Subject()
             .subjectCode(DEFAULT_SUBJECT_CODE)
-            .semester(DEFAULT_SEMESTER);
+            .semester(DEFAULT_SEMESTER)
+            .department(DEFAULT_DEPARTMENT);
         return subject;
     }
 
@@ -126,6 +131,7 @@ public class SubjectResourceIntTest {
         Subject testSubject = subjectList.get(subjectList.size() - 1);
         assertThat(testSubject.getSubjectCode()).isEqualTo(DEFAULT_SUBJECT_CODE);
         assertThat(testSubject.getSemester()).isEqualTo(DEFAULT_SEMESTER);
+        assertThat(testSubject.getDepartment()).isEqualTo(DEFAULT_DEPARTMENT);
     }
 
     @Test
@@ -160,7 +166,8 @@ public class SubjectResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(subject.getId().intValue())))
             .andExpect(jsonPath("$.[*].subjectCode").value(hasItem(DEFAULT_SUBJECT_CODE.toString())))
-            .andExpect(jsonPath("$.[*].semester").value(hasItem(DEFAULT_SEMESTER.toString())));
+            .andExpect(jsonPath("$.[*].semester").value(hasItem(DEFAULT_SEMESTER.toString())))
+            .andExpect(jsonPath("$.[*].department").value(hasItem(DEFAULT_DEPARTMENT.toString())));
     }
     
     @Test
@@ -175,7 +182,8 @@ public class SubjectResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(subject.getId().intValue()))
             .andExpect(jsonPath("$.subjectCode").value(DEFAULT_SUBJECT_CODE.toString()))
-            .andExpect(jsonPath("$.semester").value(DEFAULT_SEMESTER.toString()));
+            .andExpect(jsonPath("$.semester").value(DEFAULT_SEMESTER.toString()))
+            .andExpect(jsonPath("$.department").value(DEFAULT_DEPARTMENT.toString()));
     }
 
     @Test
@@ -200,7 +208,8 @@ public class SubjectResourceIntTest {
         em.detach(updatedSubject);
         updatedSubject
             .subjectCode(UPDATED_SUBJECT_CODE)
-            .semester(UPDATED_SEMESTER);
+            .semester(UPDATED_SEMESTER)
+            .department(UPDATED_DEPARTMENT);
         SubjectDTO subjectDTO = subjectMapper.toDto(updatedSubject);
 
         restSubjectMockMvc.perform(put("/api/subjects")
@@ -214,6 +223,7 @@ public class SubjectResourceIntTest {
         Subject testSubject = subjectList.get(subjectList.size() - 1);
         assertThat(testSubject.getSubjectCode()).isEqualTo(UPDATED_SUBJECT_CODE);
         assertThat(testSubject.getSemester()).isEqualTo(UPDATED_SEMESTER);
+        assertThat(testSubject.getDepartment()).isEqualTo(UPDATED_DEPARTMENT);
     }
 
     @Test

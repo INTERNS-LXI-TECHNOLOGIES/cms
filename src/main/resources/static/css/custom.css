@@ -156,20 +156,37 @@
   box-shadow: 2px 4px 10px black;
 }
 
-.wrapper .leave-form .leave-requests {
+.wrapper .leave-form .my-leave-requests {
   position: relative;
   margin-left: 850px;
   margin-bottom: 20px;
   margin-top: -420px;
   width: 300px;
-  height: 600px;
+  height: 300px;
+  overflow: scroll;
   background-color: white;
   box-shadow: 2px 4px 15px black;
 }
-.wrapper .leave-form .leave-requests .leave-history {
+.wrapper .leave-form .my-leave-requests .leave-history {
   padding-left: 10px;
   padding-right: 10px;
-  overflow-wrap: normal;
+  overflow-wrap: scroll;
+}
+.wrapper .leave-form .student-leave-requests {
+  position: relative;
+  margin-left: 850px;
+  margin-bottom: 20px;
+  margin-top: -25px;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  box-shadow: 2px 4px 15px black;
+  overflow: scroll;
+}
+.wrapper .leave-form .student-leave-requests .leave-history {
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-wrap: scroll;
 }
 /*-----------------------------------------------------------------------------------------------------*/
 

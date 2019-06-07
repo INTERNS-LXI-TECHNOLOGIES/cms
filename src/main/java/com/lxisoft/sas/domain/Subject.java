@@ -12,6 +12,8 @@ import java.util.Objects;
 
 import com.lxisoft.sas.domain.enumeration.Semester;
 
+import com.lxisoft.sas.domain.enumeration.Department;
+
 /**
  * A Subject.
  */
@@ -31,6 +33,10 @@ public class Subject implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "semester")
     private Semester semester;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "department")
+    private Department department;
 
     @OneToMany(mappedBy = "subject")
     private Set<StudyMaterial> materials = new HashSet<>();
@@ -67,6 +73,19 @@ public class Subject implements Serializable {
 
     public void setSemester(Semester semester) {
         this.semester = semester;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public Subject department(Department department) {
+        this.department = department;
+        return this;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Set<StudyMaterial> getMaterials() {
@@ -121,6 +140,7 @@ public class Subject implements Serializable {
             "id=" + getId() +
             ", subjectCode='" + getSubjectCode() + "'" +
             ", semester='" + getSemester() + "'" +
+            ", department='" + getDepartment() + "'" +
             "}";
     }
 }

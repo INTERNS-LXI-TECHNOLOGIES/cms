@@ -96,7 +96,8 @@ entity ExamHall {
 
 entity Subject {
 	subjectCode String,
-    semester Semester
+    semester Semester,
+    department Department
 }
 
 entity Assignment {

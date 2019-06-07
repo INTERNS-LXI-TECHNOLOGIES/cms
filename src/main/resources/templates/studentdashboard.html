@@ -13,13 +13,9 @@
 
   <li><a href="#student-profile">My Profile</a></li>
   <li><a href="#leave-request">Leave Request</a></li>
-  <li><a href="#smart-learn">Smart Learn</a></li>
   <li><a href="#timetable">Timetable</a></li>
   <li><a href="#assignment">Assignment</a></li>
-  <li><a href="#exam">Exam</a></li>
-  <li><a href="#events">Events</a></li>
   <li><a href="#logout">Logout</a></li>
- 
   </ul>
   
 </div>
@@ -56,18 +52,174 @@
 
       <div class="leavedate">
         <label class="fromlabel">From Date:</label>
-        <input type="date" name="fromdate" class="fromdate">
-        <label class="tolabel">To Date:</label>
-        <input type="date" name="todate" class="todate">
-      </div>
+        <input type="hidden" th:id="date21" th:name="date">
+						<select onchange="document.getElementById('date21').value=this.value;" id="from-day">
+											<option disabled selected="selected" value="0">Day:</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+											<option value="31">31</option>
+										</select>
+										<input type="hidden" th:id="month21" th:name="month">		
+										<select onchange="document.getElementById('month21').value=this.value;" id="from-month">
+											<option disabled selected="selected" value="0">Month:</option>
+											<option value="1">Jan</option>
+											<option value="2">Feb</option>
+											<option value="3">Mar</option>
+											<option value="4">Apr</option>
+											<option value="5">May</option>
+											<option value="6">Jun</option>
+											<option value="7">Jul</option>
+											<option value="8">Aug</option>
+											<option value="9">Sep</option>
+											<option value="10">Oct</option>
+											<option value="11">Nov</option>
+											<option value="12">Dec</option>
+										</select>	
+										<input type="hidden" th:id="year21" th:name="year">
+										<select onchange="document.getElementById('year21').value=this.value;" id="from-year">
 
+											<option disabled selected="selected" value="0">Year:</option>
+											<option value="2012">2012</option>
+											<option value="2011">2011</option>
+											<option value="2010">2010</option>
+											<option value="2009">2009</option>
+											<option value="2008">2008</option>
+											<option value="2007">2007</option>
+											<option value="2006">2006</option>
+											<option value="2005">2005</option>
+											<option value="2004">2004</option>
+											<option value="2003">2003</option>
+											<option value="2002">2002</option>
+											<option value="2001">2001</option>
+											<option value="2000">2000</option>
+											<option value="1999">1999</option>
+											<option value="1998">1998</option>
+											<option value="1997">1997</option>
+											<option value="1996">1996</option>
+											<option value="1995">1995</option>
+											<option value="1994">1994</option>
+											<option value="1993">1993</option>
+											<option value="1992">1992</option>
+											<option value="1991">1991</option>
+											<option value="1990">1990</option>
+										</select>		
+        <label class="tolabel">To Date:</label>
+        <input type="hidden" th:id="date22" th:name="date">
+						<select onchange="document.getElementById('dat22').value=this.value;" id="to-day">
+											<option disabled selected="selected" value="0">Day:</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+											<option value="31">31</option>
+										</select>
+										<input type="hidden" th:id="month22" th:name="month">		
+										<select onchange="document.getElementById('month22').value=this.value;" id="to-month">
+											<option disabled selected="selected" value="0">Month:</option>
+											<option value="1">Jan</option>
+											<option value="2">Feb</option>
+											<option value="3">Mar</option>
+											<option value="4">Apr</option>
+											<option value="5">May</option>
+											<option value="6">Jun</option>
+											<option value="7">Jul</option>
+											<option value="8">Aug</option>
+											<option value="9">Sep</option>
+											<option value="10">Oct</option>
+											<option value="11">Nov</option>
+											<option value="12">Dec</option>
+										</select>	
+										<input type="hidden" th:id="year22" th:name="year">
+										<select onchange="document.getElementById('year22').value=this.value;" id="to-year">
+
+											<option disabled selected="selected" value="0">Year:</option>
+											<option value="2012">2012</option>
+											<option value="2011">2011</option>
+											<option value="2010">2010</option>
+											<option value="2009">2009</option>
+											<option value="2008">2008</option>
+											<option value="2007">2007</option>
+											<option value="2006">2006</option>
+											<option value="2005">2005</option>
+											<option value="2004">2004</option>
+											<option value="2003">2003</option>
+											<option value="2002">2002</option>
+											<option value="2001">2001</option>
+											<option value="2000">2000</option>
+											<option value="1999">1999</option>
+											<option value="1998">1998</option>
+											<option value="1997">1997</option>
+											<option value="1996">1996</option>
+											<option value="1995">1995</option>
+											<option value="1994">1994</option>
+											<option value="1993">1993</option>
+											<option value="1992">1992</option>
+											<option value="1991">1991</option>
+											<option value="1990">1990</option>
+										</select>		
+        
+      </div>
       <div class="leave-reason">
         <label>Reason:</label><input type="text" class="reason" name="leave-reason">
       </div>
       <br><br><br>
       <center><button class="leave-btn" type="submit">Apply for Leave</button></center>
 
-    <div class="leave-requests">
+    <div class="my-leave-requests">
       
       <center><h3><u>Leave Requests</u></h3></center>
       <br>
@@ -75,8 +227,6 @@
       <div class="leave-history">
         <div class="alert alert-warning">
           1.<a href="#" data-toggle="modal" data-target="#leaveModal">Leave request 1</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: PENDING  &nbsp<span class="glyphicon glyphicon-exclamation-sign"></span><br>
-			
-			
 			<div class="modal fade-in bd-example-modal-lg" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -90,9 +240,7 @@
       <p>From: </p>
       <p>To: </p>
       <br>
-      <p><strong>REASON: </strong></p>
-      
-        
+      <p><strong>REASON: </strong></p>       
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
@@ -101,7 +249,7 @@
   </div>
 </div>
 </div>
-<!-- --------------------------------------------------------------------- -->
+<!------------------------------------------------------------------------->
  </div>
        
         
@@ -119,12 +267,7 @@
     </div>
       </section>
   </div>
-  <!-- SMART LEARN -->
-  <div class="tab-content" id="smart-learn">
-      <section class="wrapper">
-        <h2>SMART LEARN</h2>
-      </section>
-  </div>
+
   <!-- Timetable -->
   <div class="tab-content" id="timetable">
       <section class="wrapper">
@@ -203,48 +346,21 @@
   <div class="tab-content" id="assignment">
       <section class="wrapper">
         <center><h2>Assignments</h2></center>
-        <div class="accordion" id="accordionExample">
+     <center><div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <strong>DATA MINING</strong>
+          DATA MINING
         </button>
       </h2>
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-        <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          ASSIGNMENT 1
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          ASSIGNMENT 2
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        
-      </div>
-    </div>
-  </div>
+        <li>ASSIGNMENT 1 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: SUBMTTED &nbsp<span class="glyphicon glyphicon-ok-circle"> </a></li>
+        <li>ASSIGNMENT 2 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: PENDING &nbsp<span class="glyphicon glyphicon-exclamation-sign"></a></li>
+        <li>ASSIGNMENT 3 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: PENDING &nbsp<span class="glyphicon glyphicon-exclamation-sign"></a></li>
       </div>
     </div>
   </div>
@@ -252,43 +368,15 @@
     <div class="card-header" id="headingTwo">
       <h2 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <strong>EMBEDED SYSTEMS</strong>
+          EMBEDDED SYSTEM
         </button>
       </h2>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
-        <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          ASSIGNMENT 1
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          ASSIGNMENT 2
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        
-      </div>
-    </div>
-  </div>
-        
+        <li>ASSIGNMENT 1 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: SUBMTTED &nbsp<span class="glyphicon glyphicon-ok-circle"> </a></li>
+        <li>ASSIGNMENT 2 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: PENDING &nbsp<span class="glyphicon glyphicon-exclamation-sign"></a></li>
+        <li>ASSIGNMENT 3 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: PENDING &nbsp<span class="glyphicon glyphicon-exclamation-sign"></a></li>
       </div>
     </div>
   </div>
@@ -296,61 +384,23 @@
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-         <strong> ARTIFICIAL INTELLIGENCE</strong>
+          ARTIFICIAL INTELLIGENCE
         </button>
       </h2>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
-        <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          ASSIGNMENT 1
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          ASSIGNMENT 2
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        
-      </div>
-    </div>
-  </div>
-        
+        <li>ASSIGNMENT 1 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: SUBMTTED &nbsp<span class="glyphicon glyphicon-ok-circle"> </a></li>
+        <li>ASSIGNMENT 2 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: PENDING &nbsp<span class="glyphicon glyphicon-exclamation-sign"></a></li>
+        <li>ASSIGNMENT 3 <a href=#>&nbsp &nbsp &nbsp &nbsp Status: PENDING &nbsp<span class="glyphicon glyphicon-exclamation-sign"></a></li>
       </div>
     </div>
   </div>
 </div>
+</center>
       </section>
   </div>
-  <!-- Exam -->
-  <div class="tab-content" id="exam">
-      <section class="wrapper">
-        <h2>Exam</h2>
-      </section>
-  </div>
-  <!-- Events -->
-  <div class="tab-content" id="events">
-      <section class="wrapper">
-        <h2>Events  </h2>
-      </section>
-  </div>
+
   <!-- LOGOUT -->
   <div class="tab-content" id="logout">
       <section class="wrapper">

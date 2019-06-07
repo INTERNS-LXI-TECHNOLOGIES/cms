@@ -87,7 +87,7 @@ import com.lxisoft.sas.web.rest.UserDomainResource;
 				{	
 					if(q.getUniversity().equals(""))
 					{
-						dummy.getList().remove(q);	
+					
 					
 					}
 					else
@@ -143,8 +143,7 @@ import com.lxisoft.sas.web.rest.UserDomainResource;
 				{	
 					if(stt.getSubjectCode().equals(""))
 					{
-
-					
+				
 					}
 					else
 					{

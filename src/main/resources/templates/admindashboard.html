@@ -15,8 +15,8 @@
     <li><a href="#admin-profile" >My Profile</a></li>
     <li><a href="#student" >Student</a></li>
     <li><a href="#faculty"> Faculty</a></li>
+    <li><a href="#subject"> Add Subjects</a></li>
     <li><a href="#timetable"> Timetable</a></li>
-    <li><a href="#events"> Events</a></li>
     <li><a href="#logout">Logout</a></li>
  
   </ul>
@@ -58,7 +58,7 @@
 <!------------------------------------------------student modal---------------------------------->
 
 <div class="modal fade-in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document">d
     <div class="modal-content">
       <div class="modal-header">
         <center><h2 class="modal-title" id="exampleModalLabel"><b>STUDENT REGISTRATION</b></h2></center>
@@ -194,7 +194,7 @@
             <input th:field="${dummy.address.district}" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Pincode:</label>
+            <label for="recipient-name" class="col-form-label">Pin code:</label>
             <input th:field="${dummy.address.pincode}" type="text" class="form-control">
           </div>
           <div class="form-group">
@@ -495,6 +495,62 @@
 
       </section>
   </div>
+  
+    <!-- Add Subjects -->
+  <div class="tab-content" id="subject">
+      <section class="wrapper">
+        <h2>ADD SUBJECTS</h2>
+        <div class="dropdown">
+        <input type="hidden" th:id="subject-department" th:field="${dummy.user.department}">
+  		<select class="subject" onchange="document.getElementById('subject-department').value=this.value;">
+          <option disabled selected="selected" value="0" placeholder="Department">Department</option>
+         <option
+              			th:each="dept: ${T(com.lxisoft.sas.domain.enumeration.Department).values()}"
+						th:value="${dept}" 
+						th:text="${dept}">
+			  </option>
+        </select>
+        <input type="hidden" th:id="subject-semester" th:field="${dummy.user.semester}">
+        <select class="subject" onchange="document.getElementById('subject-semester').value=this.value;">
+          <option disabled selected="selected" value="0" placeholder="Semester">SEMESTER</option>
+         <option
+              			th:each="semester: ${T(com.lxisoft.sas.domain.enumeration.Semester).values()}"
+						th:value="${semester}"
+						th:text="${semester}">
+			  </option>
+        </select>
+        <form >
+        <br>
+  <div class="form-row">
+    <div class="col-3">
+      <input type="text" class="form-control" placeholder="Subject 1">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 2">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 3">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 4">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 5">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 6">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 7">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 8">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 9">
+      <br>
+      <input type="text" class="form-control" placeholder="Subject 10">
+    </div>
+    
+  </div>
+  <br>
+  <button type="button" class="btn btn-primary">ADD</button>
+</form>
+</div>
+      </section>
+  </div>
   <!-- Timetable -->
   <div class="tab-content" id="timetable">
       <section class="wrapper">
@@ -506,7 +562,7 @@
           <center><h2>STAFF Timetable</h2></center>
           
           <input type="hidden" th:id="staff-timetable" th:field="${dummy.user.department}">
-        <select class="staff-filter1" onchange="document.getElementById('staff-timetable').value=this.value;">
+        <center><select class="staff-filter1" onchange="document.getElementById('staff-timetable').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Department">Department</option>
          <option
               			th:each="dept: ${T(com.lxisoft.sas.domain.enumeration.Department).values()}"
@@ -523,6 +579,7 @@
           <option value="ce">STAFF 4</option>
           <option value="me">STAFF 5</option>
         </select>
+        </center>
 
         <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createstafftimetableModal"><span class="glyphicon glyphicon-plus"></span>
   Create timetable
@@ -727,8 +784,8 @@
 
       <div class="class-timetable">
         <center><h2>CLASS Timetable</h2></center>
-		<input type="hidden" th:id="class-timetable" th:field="${dummy.user.department}">
-        <select class="staff-filter1" onchange="document.getElementById('class-timetable').value=this.value;">
+		<input type="hidden" th:id="class-timetable-dept" th:field="${dummy.user.department}">
+       <center><select class="class-filter1" onchange="document.getElementById('class-timetable-dept').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Department">Department</option>
           <option
                         th:each="dept: ${T(com.lxisoft.sas.domain.enumeration.Department).values()}"
@@ -736,15 +793,16 @@
 						th:text="${dept}">
 		  </option>
         </select>
-        
-        <select class="class-filter2">
+        <input type="hidden" th:id="class-timetable-sem" th:field="${dummy.user.semester}">
+        <select class="class-filter2" onchange="document.getElementById('class-timetable-sem').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Semester">SEMESTER</option>
          <option
               			th:each="semester: ${T(com.lxisoft.sas.domain.enumeration.Semester).values()}"
-						th:value="${semester}" 
+						th:value="${semester}"
 						th:text="${semester}">
 			  </option>
         </select>
+        </center>
 
 
 
@@ -948,12 +1006,6 @@
 
       </div>
     </div>
-      </section>
-  </div>
-  <!-- Events -->
-  <div class="tab-content" id="events">
-      <section class="wrapper">
-        <h2>Events  </h2>
       </section>
   </div>
   <!-- LOGOUT -->

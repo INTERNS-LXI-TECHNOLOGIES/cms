@@ -9,6 +9,11 @@
             "fieldName": "semester",
             "fieldType": "Semester",
             "fieldValues": "S1,S2,S3,S4,S5,S6,S7,S8,NA"
+        },
+        {
+            "fieldName": "department",
+            "fieldType": "Department",
+            "fieldValues": "CSE,ME,ECE,EEE,CE,OTHER"
         }
     ],
     "relationships": [
