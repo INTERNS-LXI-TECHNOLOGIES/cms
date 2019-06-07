@@ -111,8 +111,8 @@
   text-align: center;
 }
 .avatar {
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
@@ -220,7 +220,7 @@
   background-color: #43a047;
   color: white;
 }
-.admin-exam {
+.admin-student-exam {
   transform: translate(0, -100px);
   width: 800px;
   height: 300px;
@@ -229,12 +229,12 @@
   border: 2px solid black;
 }
 
-.wrapper .wrapper-container .admin-exam h2 {
+.wrapper .wrapper-container .admin-student-exam h2 {
   transform: translate(0, 0);
   color: black;
 }
 
-.admin-exam select {
+.admin-student-exam select {
   margin-top: 50px;
   border-left: none;
   border-right: none;
@@ -244,13 +244,47 @@
   margin-left: 50px;
   position: relative;
 }
-.admin-exam button {
+.admin-student-exam button {
   margin-left: 15px;
   color: white;
   margin-top: 60px;
   position: relative;
 }
-.admin-exam button:hover {
+.admin-student-exam button:hover {
+  background-color: #43a047;
+  color: white;
+}
+.admin-faculty-exam {
+  transform: translate(0, -100px);
+  width: 800px;
+  height: 300px;
+  margin-top: 100px;
+  background: transparent;
+  border: 2px solid black;
+}
+
+.wrapper .wrapper-container .admin-faculty-exam h2 {
+  transform: translate(0, 0);
+  color: black;
+}
+
+.admin-faculty-exam select {
+  margin-top: 50px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid black;
+  width: 200px;
+  margin-left: 50px;
+  position: relative;
+}
+.admin-faculty-exam button {
+  margin-left: 15px;
+  color: white;
+  margin-top: 60px;
+  position: relative;
+}
+.admin-faculty-exam button:hover {
   background-color: #43a047;
   color: white;
 }
@@ -324,6 +358,71 @@ button {
   text-decoration: none;
   display: block;
 }
+
+.event-btn {
+  width: 150px;
+  height: 50px;
+  padding-top: 12px;
+  margin-top: -200px;
+  margin-left: -250px;
+  background-color: #006bb3;
+  text-decoration: none;
+  display: block;
+}
+.view-event-btn {
+  width: 180px;
+  height: 50px;
+  padding-top: 12px;
+  margin-top: -200px;
+  margin-left: 0px;
+  background-color: #006bb3;
+  text-decoration: none;
+  display: block;
+}
+
+.register-event-btn {
+  width: 165px;
+  height: 50px;
+  padding-top: 12px;
+  margin-top: -200px;
+  margin-left: -300px;
+  background-color: #006bb3;
+
+  text-decoration: none;
+  display: block;
+}
+.assign-btn {
+  width: 200px;
+  height: 50px;
+  padding-top: 12px;
+  margin-top: -200px;
+  margin-left: -300px;
+  background-color: #006bb3;
+  text-decoration: none;
+  display: block;
+}
+
+.re-btn {
+  width: 200px;
+  height: 50px;
+  padding-top: 12px;
+  margin-bottom: -200px;
+  margin-left: -300px;
+  background-color: #006bb3;
+  text-decoration: none;
+  display: block;
+}
+.view-btn {
+  width: 200px;
+  height: 50px;
+  padding-top: 12px;
+  margin-bottom: -200px;
+  margin-left: 20px;
+  background-color: #006bb3;
+  text-decoration: none;
+  display: block;
+}
+
 .student-btn:hover {
   text-decoration: none;
   display: block;
@@ -411,21 +510,17 @@ form.search-box::after {
   width: 900px;
 }
 
-.btn-secondary {
-  position: relative;
-  background-color: red;
-  margin-left: 300px;
-  color: white;
-}
-.btn-secondary:hover {
-  background-color: #f44242;
+.btn-tertiary-one {
+  /*    position: relative;  */
+  background-color: darkblue;
+  /*   transform: translate(400%, -200%);  */
   color: white;
 }
 
 .btn-tertiary {
   position: relative;
   background-color: darkblue;
-  transform: translate(400%, -100%);
+  transform: translateX(400%);
   color: white;
 }
 .btn-tertiary:hover {
@@ -435,9 +530,16 @@ form.search-box::after {
 
 .btn-primary {
   position: relative;
-  transform: translate(200%, -200%);
+  transform: translate(180%, -100 %);
   color: white;
 }
+
+.btn-primary-one {
+  /*   position: relative;  */
+  /*   transform: translate(180%, -200%);  */
+  color: white;
+}
+
 #Birthday_Day {
   width: 150px;
 }

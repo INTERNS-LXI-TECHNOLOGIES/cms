@@ -74,7 +74,7 @@ public class DummyDTO {
 			}
 			if (q.getGrade() == null && q.getMarks() == null && q.getPercentage() == null && q.getUniversity() == null
 					&& q.getYear() == null) {
-				q = null;
+				list.remove(q);
 			}
 		}
 		return true;

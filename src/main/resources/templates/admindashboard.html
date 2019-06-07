@@ -3,6 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/registration.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -10,15 +12,14 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+
+
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript">
-		function setDept(dept) {
-			console.log("dept set");
-			document.getElementById('department').value=dept.value;
-			console.log("dept set"+document.getElementById('department').value);
-		}
-</script>
+
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <title></title>
 </head>
@@ -53,8 +54,6 @@
 					<li th:text="'LastName: ' +${admin.lastName}">lastName:</li>
 					<br>
 					<li th:text="'Email: ' +${admin.email}">email:</li>
-					<br>
-					<li th:text="'Password: ' +${admin.password} ">password:</li>
 					<br>
 					<li th:text="'ContactNo: ' +${admin.contactNumber} ">contactNumber:</li>
 					<br>
@@ -107,23 +106,23 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Firstname:</label>
 										<input th:field="${dummy.user.firstName}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Lastname:</label>
 										<input th:field="${dummy.user.lastName}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Department:</label>
-										<input th:field="${dummy.user.department}" type="hidden" th:id="department">
-										<select onchange="document.getElementById('department').value=this.value" class="form-control"  >
+										<input th:field="${dummy.user.department}" type="hidden"
+											th:id="department"> <select
+											onchange="document.getElementById('department').value=this.value"
+											class="form-control">
 											<option disabled selected="selected">Select Department</option>
 											<option
 												th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
-												th:value="${dept}" 
-												th:text="${dept}">
-												</option>
+												th:value="${dept}" th:text="${dept}"></option>
 											<!--                   <option value="-1">Select Department</option> -->
 											<!--                   <option value="cse">CSE</option> -->
 											<!--                   <option value="eee">EEE</option> -->
@@ -134,11 +133,12 @@
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Date
-											of Birth:</label>
-											<input type="hidden" th:id="date1" th:name="date">
-											<select onchange="document.getElementById('date1').value=this.value;" name="Birthday_day" id="Birthday_Day"
-											class="form-control" width=50px;>
-											<option value="-1">Day:</option>
+											of Birth:</label> <input type="hidden" th:id="date1" th:name="date">
+										<select
+											onchange="document.getElementById('date1').value=this.value;"
+											name="Birthday_day" id="Birthday_Day" class="form-control"
+											width=50px;>
+											<option disabled selected="selected">Day:</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -174,11 +174,12 @@
 											<option value="30">30</option>
 
 											<option value="31">31</option>
-										</select> 
-										<input type="hidden" th:id="month1" th:name="month">
-										<select onchange="document.getElementById('month1').value=this.value;" id="Birthday_Month" name="Birthday_Month"
+										</select> <input type="hidden" th:id="month1" th:name="month">
+										<select
+											onchange="document.getElementById('month1').value=this.value;"
+											id="Birthday_Month" name="Birthday_Month"
 											class="form-control">
-											<option value="-1">Month:</option>
+											<option disabled selected="selected">Month:</option>
 											<option value="0">Jan</option>
 											<option value="1">Feb</option>
 											<option value="2">Mar</option>
@@ -191,10 +192,9 @@
 											<option value="9">Oct</option>
 											<option value="10">Nov</option>
 											<option value="11">Dec</option>
-										</select>
-										<input type="hidden" th:id="year1" th:name="year">
-										 <select onchange="document.getElementById('year1').value=this.value;" name="Birthday_Year" id="Birthday_Year"
-											class="form-control">
+										</select> <input type="hidden" th:id="year1" th:name="year"> <select
+											onchange="document.getElementById('year1').value=this.value;"
+											name="Birthday_Year" id="Birthday_Year" class="form-control">
 
 											<option value="-1">Year:</option>
 											<option value="2012">2012</option>
@@ -227,12 +227,12 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Email:</label>
 										<input th:field="${dummy.user.email}" type="email"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">MobileNumber:</label>
-										 <input th:field="${dummy.user.contactNumber}"
-											type="text" class="form-control"  >
+										<input th:field="${dummy.user.contactNumber}" type="text"
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="message-text" class="col-form-label">Housename:</label>
@@ -242,113 +242,111 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Street:</label>
 										<input th:field="${dummy.address.street}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">District:</label>
 										<input th:field="${dummy.address.district}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Pincode:</label>
 										<input th:field="${dummy.address.pincode}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">State:</label>
 										<input th:field="${dummy.address.state}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Nationality:</label>
 										<input th:field="${dummy.address.country}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
-										<b><font size="4px"> <u>Qualification</u></font></b><br>
-										<br>
-										<font size="3px" color="darkblue">Class X</font> <input
+											<b><font size="4px"> <u>Qualification</u></font></b><br>
+											<br> <font size="3px" color="darkblue">Class X</font> <input
 											th:field="${dummy.list[__0__].grade}" value="sslc"
 											type="hidden">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Board:</label>
 										<input th:field="${dummy.list[__0__].university}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Year
 											of Passing:</label> <input th:field="${dummy.list[__0__].year}"
-											type="text" class="form-control"  >
+											type="text" class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Percentage:</label>
 										<input th:field="${dummy.list[__0__].marks}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
-										<font size="3px" color="darkblue">Diploma</font> <input
+											<font size="3px" color="darkblue">Diploma</font> <input
 											th:field="${dummy.list[__1__].grade}" value="diploma"
 											type="hidden">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Board:</label>
 										<input th:field="${dummy.list[__1__].university}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Year
 											of Passing:</label> <input th:field="${dummy.list[__1__].year}"
-											type="text" class="form-control"  >
+											type="text" class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Percentage:</label>
 										<input th:field="${dummy.list[__1__].marks}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
-										<font size="3px" color="darkblue">Class XII</font> <input
+											<font size="3px" color="darkblue">Class XII</font> <input
 											th:field="${dummy.list[__2__].grade}" value="plustwo"
 											type="hidden">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Board:</label>
 										<input th:field="${dummy.list[__2__].university}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Year
 											of Passing:</label> <input th:field="${dummy.list[__2__].year}"
-											type="text" class="form-control"  >
+											type="text" class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Percentage:</label>
 										<input th:field="${dummy.list[__2__].marks}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
-										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
-										<br>University Registration Number:</label> <input type="text"
+											<b><font size="4px"> <u>Login Credentials</u></font></b><br>
+											<br>University Registration Number:</label> <input type="text"
 											class="form-control" th:field="${dummy.user.regNum}">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Password:</label>
 										<input th:field="${dummy.user.password}" type="password"
-											class="form-control"  >
+											required="required" class="form-control">
 									</div>
 
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-tertiary">Save</button>
+									
+								        <button type="submit" class="btn btn-tertiary">Save</button>
 										<button type="reset" class="btn btn-primary">Reset</button>
 									</div>
-							</form>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -404,36 +402,36 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Firstname:</label>
 										<input th:field="${dummy.user.firstName}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
+									
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Lastname:</label>
 										<input th:field="${dummy.user.lastName}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
+									
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Department:</label>
-										<input th:field="${dummy.user.department}" type="hidden" th:id="department1">
-										<select onchange="document.getElementById('department1').value=this.value" class="form-control"  >
-											<option disabled selected="selected">Select Department</option>
+										<input th:field="${dummy.user.department}" type="hidden"
+											th:id="department1"> <select
+											onchange="document.getElementById('department1').value=this.value"
+											class="form-control">
+											<option disabled selected="selected">Select
+												Department</option>
 											<option
 												th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
-												th:value="${dept}" 
-												th:text="${dept}">
-												</option>
-											<!--                   <option value="-1">Select Department</option> -->
-											<!--                   <option value="cse">CSE</option> -->
-											<!--                   <option value="eee">EEE</option> -->
-											<!--                   <option value="ece">ECE</option> -->
-											<!--                   <option value="ce">CE</option> -->
-											<!--                   <option value="me">ME</option> -->
+												th:value="${dept}" th:text="${dept}"></option>
+											
 										</select>
 									</div>
 									<div class="form-group">
-										<input type="hidden" th:id="date" th:name="date">
-										<label for="recipient-name" class="col-form-label">Date
-											of Birth:</label> <select onchange="document.getElementById('date').value=this.value;" name="Birthday_day" id="Birthday_Day"
-											class="form-control" width=50px;>
+										<input type="hidden" th:id="date" th:name="date"> <label
+											for="recipient-name" class="col-form-label">Date of
+											Birth:</label> <select
+											onchange="document.getElementById('date').value=this.value;"
+											name="Birthday_day" id="Birthday_Day" class="form-control"
+											width=50px;>
 											<option disabled selected="selected">Day:</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -470,11 +468,11 @@
 											<option value="30">30</option>
 
 											<option value="31">31</option>
-										</select>
-										<input type="hidden" th:id="month" th:name="month"> 
-										<select onchange="document.getElementById('month').value=this.value;"  id="Birthday_Month" name="Birthday_Month"
+										</select> <input type="hidden" th:id="month" th:name="month"> <select
+											onchange="document.getElementById('month').value=this.value;"
+											id="Birthday_Month" name="Birthday_Month"
 											class="form-control">
-											<option value="-1">Month:</option>
+											<option disabled selected="selected">Month:</option>
 											<option value="0">Jan</option>
 											<option value="1">Feb</option>
 											<option value="2">Mar</option>
@@ -487,12 +485,12 @@
 											<option value="9">Oct</option>
 											<option value="10">Nov</option>
 											<option value="11">Dec</option>
-										</select> 
-										<input type="hidden" th:id="year" th:name="year">
-										<select name="Birthday_Year" onchange="document.getElementById('year').value=this.value;" id="Birthday_Year"
-											class="form-control">
+										</select> <input type="hidden" th:id="year" th:name="year"> <select
+											name="Birthday_Year"
+											onchange="document.getElementById('year').value=this.value;"
+											id="Birthday_Year" class="form-control">
 
-											<option value="-1">Year:</option>
+											<option disabled selected="selected">Year:</option>
 											<option value="1996">1996</option>
 											<option value="1995">1995</option>
 											<option value="1994">1994</option>
@@ -538,12 +536,12 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Email:</label>
 										<input th:field="${dummy.user.email}" type="email"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Mobile
 											Number:</label> <input th:field="${dummy.user.contactNumber}"
-											type="text" class="form-control"  >
+											type="text" class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="message-text" class="col-form-label">Address:</label>
@@ -553,89 +551,87 @@
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Street:</label>
 										<input th:field="${dummy.address.street}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">District:</label>
 										<input th:field="${dummy.address.district}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Pincode:</label>
 										<input th:field="${dummy.address.pincode}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">State:</label>
 										<input th:field="${dummy.address.state}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Nationality:</label>
 										<input th:field="${dummy.address.country}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
-										<b><font size="4px"> <u>Qualification</u></font></b><br>
-										<br>
-										<font size="3px" color="darkblue">PG</font> <input
+											<b><font size="4px"> <u>Qualification</u></font></b><br>
+											<br> <font size="3px" color="darkblue">PG</font> <input
 											th:field="${dummy.list[__0__].grade}" value="pg"
 											type="hidden">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Board:</label>
 										<input th:field="${dummy.list[__0__].university}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Year
 											of Passing:</label> <input th:field="${dummy.list[__3__].year}"
-											type="text" class="form-control"  >
+											type="text" class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Percentage:</label>
 										<input th:field="${dummy.list[__0__].marks}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
-										<font size="3px" color="darkblue">Ph.D</font> <input
+											<font size="3px" color="darkblue">Ph.D</font> <input
 											th:field="${dummy.list[__1__].grade}" value="phd"
 											type="hidden">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Board:</label>
 										<input th:field="${dummy.list[__1__].university}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Year
 											of Passing:</label> <input th:field="${dummy.list[__1__].year}"
-											type="text" class="form-control"  >
+											type="text" class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Percentage:</label>
 										<input th:field="${dummy.list[__1__].marks}" type="text"
-											class="form-control"  >
+											class="form-control">
 									</div>
 
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label"><br>
-										<b><font size="4px"> <u>Login Credentials</u></font></b><br>
-										<br>Employee ID:</label> <input th:field="${dummy.user.regNum}" type="text" class="form-control"
-											 >
+											<b><font size="4px"> <u>Login Credentials</u></font></b><br>
+											<br>Employee ID:</label> <input th:field="${dummy.user.regNum}"
+											type="text" class="form-control">
 									</div>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Password:</label>
 										<input th:field="${dummy.user.password}" type="password"
-											class="form-control"  >
+											class="form-control">
 									</div>
 
 
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
+									
 										<button type="submit" class="btn btn-tertiary">Save</button>
 										<button type="reset" class="btn btn-primary">Reset</button>
 									</div>
@@ -666,47 +662,499 @@
 	<div class="tab-content" id="exam">
 		<section class="wrapper">
 			<div class="wrapper-container">
-				<div class="admin-exam">
+				<div class="admin-student-exam">
 					<center>
-						<h2>EXAM DETAILS</h2>
+						<h2>STUDENT SCHEDULE</h2>
 					</center>
-
-					<select>
-						<option value="-1" placeholder="">Schedule</option>
-						<option value="add student schedule">ADD STUDENT SCHEDULE</option>
-						<option value="add staff schedule">ADD STAFF SCHEDULE</option>
-						<option value="view student schedule">VIEW STUDENT
-							SCHEDULE</option>
-						<option value="view staff schedule">VIEW STAFF SCHEDULE</option>
-
-					</select> <select>
-						<option value="-1" placeholder="">Department</option>
+                      <select>
+						<option disabled selected="selected"  placeholder="">Department</option>
 						<option value="cse">CSE</option>
 						<option value="ece">ECE</option>
 						<option value="civil">CIVIL</option>
 						<option value="mech">MECH</option>
 						<option value="eee">EEE</option>
 					</select> <select>
-						<option value="-1" placeholder="">Exams</option>
+						<option disabled selected="selected" placeholder="">Exams</option>
+						<option value="seriesone">SERIES ONE</option>
+						<option value="seriestwo">SERIES TWO</option>
+						<option value="semeter">SEMESTER EXAM</option>
+					</select>
+					<select>
+						<option disabled selected="selected" placeholder="">Semester</option>
+						<option value="s1">S1</option>
+						<option value="s2">S2</option>
+						<option value="s3">S3</option>
+						<option value="s4">S4</option>
+						<option value="s5">S5</option>
+						<option value="s6">S6</option>
+						<option value="s7">S7</option>
+						<option value="s8">S8</option>
+						
+						
+					</select>
+					<center>
+						<button href="#" data-toggle="modal" data-target="#exam-schedule">ADD</button>
+						<button href="#" data-toggle="modal" data-target="#view-exam-schedule1">VIEW</button>
+					</center>
+				</div><br><br>
+
+				<div class="admin-faculty-exam">
+					<center>
+						<h2>FACULTY SCHEDULE</h2>
+					</center>
+
+					
+
+					</select> <select>
+						<option disabled selected="selected"   placeholder="">Department</option>
+						<option value="cse">CSE</option>
+						<option value="ece">ECE</option>
+						<option value="civil">CIVIL</option>
+						<option value="mech">MECH</option>
+						<option value="eee">EEE</option>
+					</select> <select>
+						<option disabled selected="selected"  placeholder="">Exams</option>
 						<option value="seriesone">SERIES ONE</option>
 						<option value="seriestwo">SERIES TWO</option>
 						<option value="semeter">SEMESTER</option>
 					</select>
+					<select>
+						<option disabled selected="selected" placeholder="">Semester</option>
+						<option value="s1">S1</option>
+						<option value="s2">S2</option>
+						<option value="s3">S3</option>
+						<option value="s4">S4</option>
+						<option value="s5">S5</option>
+						<option value="s6">S6</option>
+						<option value="s7">S7</option>
+						<option value="s8">S8</option>
+						
+						
+					</select>
+					<
 					<center>
-						<button>APPLY</button>
-						<button>CANCEL</button>
+						<button href="#" data-toggle="modal" data-target="#exam-schedule2">ADD</button>
+						<button href="#" data-toggle="modal" data-target="#view-exam-schedule2">VIEW</button>
 					</center>
 				</div>
 			</div>
+		</section>
+	</div>
+
+
+<div class="modal fade" id="view-exam-schedule1" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<center>
+						<h2 class="modal-title">
+							<b>View student Schedule</b>
+						</h2>
+					</center>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					  <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+     
+      <th scope="col">EXAM DATE</th>
+      <th scope="col">SUBJECT</th>
+      <th scope="col">EXAM HALL</th>
+      <th scope="col">ROLL NO</th>
+      <th scope="col">TIME</th>
+      <th scope="col">INVIGILATOR</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td contenteditable="true">10/4/2019</td>
+      <td contenteditable="true">DATA MINING</td>
+      <td contenteditable="true">SEMINAR HALL 1</td>
+      <td contenteditable="true">1-15</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">PRABHA</td>
+    
+    </tr>
+        <tr>
+      
+      <td contenteditable="true">11/4/2019</td>
+      <td contenteditable="true">EMBEDDED SYSTEMS</td>
+      <td contenteditable="true">SEMINAR HALL 2</td>
+      <td contenteditable="true">20-30</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">KEERTHANA</td>
+    
+    </tr>
+     <tr>
+      
+      <td contenteditable="true">12/4/2019</td>
+      <td contenteditable="true">ARTIFICIAL INTELLIGENCE</td>
+      <td contenteditable="true">DRAWING HALL 1</td>
+      <td contenteditable="true">15-20</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">ANAND</td>
+     
+    </tr>	
+   <tr>
+      
+      <td contenteditable="true">13/4/2019</td>
+      <td contenteditable="true">SUSTAINABLE ENERGY PROCESS</td>
+      <td contenteditable="true">DRAWING HALL 2</td>
+      <td contenteditable="true">1-15</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">VIVEK GOPI</td>
+     
+    </tr>	
+    </tbody>
+    </table>	
+					
+					      <div class="modal-footer">
+							
+							<button type="submit" class="btn btn-tertiary">Save</button>
+							<button type="reset" class="btn btn-primary">Reset</button>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="view-exam-schedule2" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<center>
+						<h2 class="modal-title">
+							<b>View staff Schedule</b>
+						</h2>
+					</center>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					  <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+    
+      <th scope="col">EXAM DATE</th>
+        <th scope="col">FACULTY NAME</th>
+      <th scope="col">EXAM HALL</th>
+     <th scope="col">TIME</th>
+     </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td contenteditable="true">10/4/2019</td>
+      <td contenteditable="true">PRABHA</td>
+      <td contenteditable="true">SEMINAR HALL 1</td>
+      <td contenteditable="true">9:00 am</td>
+      
+    </tr>
+        <tr>
+      
+      <td contenteditable="true">11/4/2019</td>
+      <td contenteditable="true">KEERTHANA</td>
+      <td contenteditable="true">SEMINAR HALL 2</td>
+      <td contenteditable="true">9:00 am</td>
+      
+    </tr>
+  <tr>
+      
+      <td contenteditable="true">12/4/2019</td>
+      <td contenteditable="true">ANAND</td>
+      <td contenteditable="true">DRAWING HALL 1</td>
+      <td contenteditable="true">9:00 am</td>
+    
+    </tr> 	
+     <tr>
+      
+      <td contenteditable="true">13/4/2019</td>
+      <td contenteditable="true">VIVEK GOPI</td>
+      <td contenteditable="true">DRAWING HALL 2</td>
+      <td contenteditable="true">9:00 am</td>
+      
+      
+
+    </tr>
+
+    </tbody>
+    </table>	
+					
+					
+
+						<div class="modal-footer">
+							
+							<button type="submit" class="btn btn-tertiary">Save</button>
+							<button type="reset" class="btn btn-primary">Reset</button>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+	<div class="modal fade" id="exam-schedule" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<center>
+						<h2 class="modal-title">
+							<b>Student Exam Schedule</b>
+						</h2>
+					</center>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Date:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Subject:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Exam
+								Hall:</label> <input type="text" class="form-control"
+								id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Invigilator:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Roll No:</label> <input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Time:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+
+						<div class="modal-footer">
+							
+							<button type="submit" class="btn btn-tertiary">Save</button>
+							<button type="reset" class="btn btn-primary">Reset</button>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exam-schedule2" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<center>
+						<h2 class="modal-title">
+							<b>Faculty Exam Schedule</b>
+						</h2>
+					</center>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Date:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Faculty Name:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Duty Hall:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Time:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+
+						<div class="modal-footer">
+							
+							<button type="submit" class="btn btn-tertiary">Save</button>
+							<button type="reset" class="btn btn-primary">Reset</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="tab-content" id="events">
+		<section class="wrapper">
+			<div class="wrapper-container">
+				<div class="add-event">
+					<a href="#" data-toggle="modal" data-target="#add-event"
+						class="event-btn btn-info btn-lg"> <span
+						class="glyphicon glyphicon-plus"></span> Add Event
+					</a>
+				</div>
+
+				<div class="view-event">
+					<a href="#" data-toggle="modal" data-target="#view-event"
+						class="view-event-btn btn-info btn-lg"> <span
+						class="glyphicon glyphicon-search"></span> View Event
+					</a>
+				</div>
+
+	<div class="modal fade" id="add-event" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<center>
+						<h2 class="modal-title">
+							<b>Add Events</b>
+						</h2>
+					</center>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Event Category:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Event Title:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Staff Coordinator:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+
+                           <div class="form-group">
+							<label for="recipient-name" class="col-form-label">Date:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Time:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+
+						<div class="modal-footer">
+							
+								
+							<button type="submit" class="btn btn-tertiary">Save</button>
+							<button type="reset" class="btn btn-primary">Reset</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<div class="modal fade" id="view-event" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<center>
+						<h2 class="modal-title">
+							<b>View Events</b>
+						</h2>
+					</center>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+    
+      <th scope="col">Event Category </th>
+      <th scope="col">Event Title</th>
+     <th scope="col">Staff Coordinator</th>
+     <th scope="col">Date</th>
+     <th scope="col">Time</th>
+     </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td contenteditable="true">ARTS</td>
+      <td contenteditable="true">AHALIA ANNUAL ARTS</td>
+      <td contenteditable="true">KEERTHANA</td>
+      <td contenteditable="true">4/5/2019</td>
+      <td contenteditable="true">9:00am to 8:00pm</td>
+      
+    </tr>
+        <tr>
+      
+      <td contenteditable="true">SPORTS</td>
+      <td contenteditable="true">AHALIA SPORTS</td>
+      <td contenteditable="true">VIVEK GOPI</td>
+      <td contenteditable="true">9/5/2019</td>
+      <td contenteditable="true">9:00am to 5:00pm</td>
+      
+    </tr>
+  <tr>
+      
+      <td contenteditable="true">TECH FEST</td>
+      <td contenteditable="true">ZAAGA 2.0</td>
+      <td contenteditable="true">ANAND</td>
+      <td contenteditable="true">12/5/2019</td>
+      <td contenteditable="true">9:00am to 6:00pm</td>
+    
+    </tr> 	
+    
+    </tbody>
+    </table>
+    <div class="modal-footer">
+							
+							<button type="submit" class="btn btn-tertiary">Save</button>
+							<button type="reset" class="btn btn-primary">Reset</button>
+						</div>	
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		</section>
 	</div>
 
 
 
-
-
-
-
-	<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>

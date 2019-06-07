@@ -8,7 +8,6 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    
   <title></title>
 </head>
 <body>
@@ -17,11 +16,10 @@
   <ul>
 
     <li><a href="#student-profile">My Profile</a></li>
-    <li><a href="#smart-learn">Smart Learn</a></li>
+   
     <li><a href="#exam">Exam</a></li>
   <li><a href="#events">Events</a></li>
-   <li><a href="#placements">Placements</a></li>
-   <li><a href="#ideapad">Ideapad</a></li>
+
   <li><a href="#logout">Logout</a></li>
  
   </ul>
@@ -39,15 +37,10 @@
     <li th:text="'Firstname: ' + ${dummy.user.firstName}">FirstName:</li><br>
       <li th:text="'Lastname: ' + ${dummy.user.lastName}">LastName:</li><br>
     <li th:text="'Department: ' + ${dummy.user.department}">Department:</li><br>
-    <li >Date of Birth:</li><br>
+    <li th:text="'Dob: ' + ${date}">Date of Birth:</li><br>
     <li th:text="'Mobilenumber: ' + ${dummy.user.contactNumber}">Mobile No:</li><br>
     <li th:text="'Email: ' + ${dummy.user.email}">Email:</li><br>
-    <li th:text="'Housename: ' + ${dummy.address.houseName}">Housename:</li><br>
-    <li th:text="'Street: ' + ${dummy.address.street}">Street:</li><br>
-    <li th:text="'District: ' + ${dummy.address.district}">District:</li><br>
-    <li th:text="'Pincode: ' + ${dummy.address.pincode}">Pincode:</li><br>
-    <li th:text="'State: ' + ${dummy.address.state}">State:</li><br>
- <li th:text="'Nationality: ' + ${dummy.address.country}">Nationality:</li><br>
+    
     
     </ul>
 </div>
@@ -60,49 +53,7 @@
   </section>
 </div>
 
-<div class="tab-content" id="smart-learn" >
-  <section class="wrapper">
-    <div class="wrapper-container">
-      
-      
 
-      <div class="student-studymaterials">
-        <center><h2>STUDY MATERIALS</h2></center>
-
-        <select>
-         <option value="-1" placeholder="">Department</option>
-         <option value="cse">CSE</option>
-         <option value="ece">ECE</option>
-         <option value="civil">CIVIL</option>
-         <option value="mech">MECH</option>
-         <option value="eee">EEE</option>
-
-       </select>
-       <select>
-        <option value="-1" placeholder="">Semester</option>
-        <option value="S1">S1</option>  
-        <option value="S2">S2</option>  
-        <option value="S3">S3</option>  
-        <option value="S4">S4</option>  
-        <option value="S5">S5</option>  
-        <option value="S6">S6</option>  
-        <option value="S7">S7</option>  
-        <option value="S8">S8</option>  
-      </select>
-
-       <select>
-        <option value="-1" placeholder="">Subjects</option>
-        <option value="datamining">DATA MINING</option>  
-        <option value="sustainable">SUSTAINABLE ENERGY PROCESS</option>  
-        <option value="ai">ARTIFICIAL INTELLIGENCE</option>  
-        <option value="es">EMBEDDED SYSTEMS</option>  
-      </select>
-
-      <a href="studentstudymaterial.html"> <center><button>SUBMIT</button><button>CANCEL</button></center></a>
-      </div>
-  </div>
-  </section>
-</div>
 
 
 <div class="tab-content" id="exam" >
@@ -112,7 +63,7 @@
         <center><h2>EXAM DETAILS</h2></center>
 
         <select>
-          <option value="-1" placeholder="">Semester</option>
+          <option disabled selected="selected" placeholder="">Semester</option>
           <option value="S1">S1</option>
           <option value="S2">S2</option>  
          <option value="S3">S3</option>  
@@ -124,7 +75,7 @@
         </select>
 
         <select>
-         <option value="-1" placeholder="">Department</option>
+         <option disabled selected="selected"  placeholder="">Department</option>
          <option value="cse">CSE</option>
          <option value="ece">ECE</option>
          <option value="civil">CIVIL</option>
@@ -134,43 +85,258 @@
 
 
         <select>
-         <option value="-1" placeholder="">Exams</option>
+         <option disabled selected="selected" placeholder="">Exams</option>
          <option value="seriesone">SERIES ONE</option>
          <option value="seriestwo">SERIES TWO</option>
          <option value="semeter">SEMESTER</option>
         </select>
-        <a href="studentexamdetails.html"><center><button>SUBMIT</button><button>CANCEL</button></center></a>
+       <center>
+            <button >SUBMIT</button>
+            <button href="#" data-toggle="modal" data-target="#view-exam-schedule">VIEW</button>
+          </center>
      </div>
+   </div>
+ </section>
+</div>
+
+     <div class="modal fade" id="view-exam-schedule" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <center>
+            <h2 class="modal-title">
+              <b>View Exam Schedule</b>
+            </h2>
+          </center>
+          <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+     
+      <th scope="col">EXAM DATE</th>
+      <th scope="col">SUBJECT</th>
+      <th scope="col">EXAM HALL</th>
+      <th scope="col">ROLL NO</th>
+      <th scope="col">TIME</th>
+      <th scope="col">INVIGILATOR</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td contenteditable="true">10/4/2019</td>
+      <td contenteditable="true">DATA MINING</td>
+      <td contenteditable="true">SEMINAR HALL 1</td>
+      <td contenteditable="true">1-15</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">PRABHA</td>
+    
+    </tr>
+        <tr>
+      
+      <td contenteditable="true">11/4/2019</td>
+      <td contenteditable="true">EMBEDDED SYSTEMS</td>
+      <td contenteditable="true">SEMINAR HALL 2</td>
+      <td contenteditable="true">20-30</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">KEERTHANA</td>
+    
+    </tr>
+     <tr>
+      
+      <td contenteditable="true">12/4/2019</td>
+      <td contenteditable="true">ARTIFICIAL INTELLIGENCE</td>
+      <td contenteditable="true">DRAWING HALL 1</td>
+      <td contenteditable="true">15-20</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">ANAND</td>
+     
+    </tr> 
+   <tr>
+      
+      <td contenteditable="true">13/4/2019</td>
+      <td contenteditable="true">SUSTAINABLE ENERGY PROCESS</td>
+      <td contenteditable="true">DRAWING HALL 2</td>
+      <td contenteditable="true">1-15</td>
+      <td contenteditable="true">9:00 am</td>
+      <td contenteditable="true">VIVEK GOPI</td>
+     
+    </tr> 
+    </tbody>
+    </table>  
+          
+                
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 
 
+  
 
-<div class="tab-content" id="ideapad">
+  
+ 
+
+
+<div class="tab-content" id="events" >
   <section class="wrapper">
     <div class="wrapper-container">
-      <div class="container">
-    <h3>
-    LAUNCH IDEA
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-   </h3>
+      
+        <div class="view-student-event">
+          <a href="#" data-toggle="modal" data-target="#view-event"
+            class="view-event-btn btn-info btn-lg"> <span
+            class="glyphicon glyphicon-search"></span> View Events
+          </a>
+        </div>
+        
+        <div class="register-event">
+          <a href="#" data-toggle="modal" data-target="#register-event"
+            class="register-event-btn btn-info btn-lg"> <span
+            class="glyphicon glyphicon-plus"></span> Register Events
+          </a>
+        </div>
+        
+        <div class="modal fade" id="register-event" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel1" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<center>
+						<h2 class="modal-title">
+							<b>Register Events</b>
+						</h2>
+					</center>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Event Name:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						
+						
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Name:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
 
-     <br><label for="RegNo"><b> University Register Number</b></label>&nbsp  &nbsp &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp
-    <br><input type="text" placeholder=" Register Number" name="RegNo" required>
-    
-     <br><label for="title"><b>Title</b></label>&nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp 
-    <br><input type="text" placeholder="Title" name="title" required>
-    
-    <br><label for="ideades"><b>Idea Description</b></label>
-  <br><input type="text" placeholder="Idea description" name="ideades" required><br>
-  
- <button >Submit</button><br><br> <button>Cancel</button><br>
-</div>
+                           <div class="form-group">
+							<label for="recipient-name" class="col-form-label">Department:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
 
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Semester:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+
+						<div class="modal-footer">
+							
+							
+							<button type="submit" class="btn btn-tertiary-one">Register</button>
+							<button type="reset" class="btn btn-primary-one">Reset</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+        
+
+
+<div class="modal fade" id="view-event" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <center>
+            <h2 class="modal-title">
+              <b>View Events</b>
+            </h2>
+          </center>
+          <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+    
+      <th scope="col">Event Category </th>
+      <th scope="col">Event Title</th>
+     <th scope="col">Staff Coordinator</th>
+     <th scope="col">Date</th>
+     <th scope="col">Time</th>
+     </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td contenteditable="true">ARTS</td>
+      <td contenteditable="true">AHALIA ANNUAL ARTS</td>
+      <td contenteditable="true">KEERTHANA</td>
+      <td contenteditable="true">4/5/2019</td>
+      <td contenteditable="true">9:00am to 8:00pm</td>
+      
+    </tr>
+        <tr>
+      
+      <td contenteditable="true">SPORTS</td>
+      <td contenteditable="true">AHALIA SPORTS</td>
+      <td contenteditable="true">VIVEK GOPI</td>
+      <td contenteditable="true">9/5/2019</td>
+      <td contenteditable="true">9:00am to 5:00pm</td>
+      
+    </tr>
+  <tr>
+      
+      <td contenteditable="true">TECH FEST</td>
+      <td contenteditable="true">ZAAGA 2.0</td>
+      <td contenteditable="true">ANAND</td>
+      <td contenteditable="true">12/5/2019</td>
+      <td contenteditable="true">9:00am to 6:00pm</td>
+    
+    </tr>   
+    
+    </tbody>
+    </table>
+    <div class="modal-footer">
+             
+              <button type="submit" class="btn btn-tertiary">Save</button>
+              <button type="reset" class="btn btn-primary">Reset</button>
+            </div>  
+          
+          
+        </div>
+      </div>
     </div>
-</section>
+  </div>
 </div>
+    </section>
+  </div>
+
+
+
+
+
 
 	
 	
