@@ -1,11 +1,21 @@
 package com.lxisoft.sas.service.dto;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DummyDTO {
 	private UserDomainDTO user;
 	private AddressDTO address;
 	ArrayList<QualificationDTO> list=new ArrayList<QualificationDTO>();
 	ArrayList<SubjectDTO> subList=new ArrayList<SubjectDTO>();
+	ArrayList<SubjectDTO> subjects=new ArrayList<SubjectDTO>();
+	
+	public ArrayList<SubjectDTO> getSubjects() {
+		return subjects;
+	}
+	
+	public void setSubjects(ArrayList<SubjectDTO> subjects) {
+		this.subjects = subjects;
+	}
 	
 	public ArrayList<SubjectDTO> getSubList() {
 		return subList;
@@ -95,6 +105,21 @@ public class DummyDTO {
 		}
 		return true;
 	}
+	
+	public boolean validateSubjects() {
+		for (SubjectDTO ss : subjects) {
+			if (ss.getSubjectCode().equals("")) {
+				ss.setSubjectCode(null);
+			}
+			if (ss.getSubjectCode() == null)
+			{
+				ss=null;
+			}
+		
+		}
+		return true;
+	}
+	
 	
 	
 	

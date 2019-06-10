@@ -2,8 +2,8 @@ package com.lxisoft.sas.web.controller;
 
 import java.net.URISyntaxException;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.lxisoft.sas.domain.enumeration.Role;
 import com.lxisoft.sas.service.dto.AddressDTO;
 import com.lxisoft.sas.service.dto.DummyDTO;
 import com.lxisoft.sas.service.dto.ErrorDTO;
 import com.lxisoft.sas.service.dto.QualificationDTO;
 import com.lxisoft.sas.service.dto.SubjectDTO;
 import com.lxisoft.sas.service.dto.UserDomainDTO;
+import com.lxisoft.sas.service.dto.UserRoleDTO;
 import com.lxisoft.sas.service.mapper.AddressMapper;
 import com.lxisoft.sas.service.mapper.QualificationMapper;
 import com.lxisoft.sas.service.mapper.UserDomainMapper;
@@ -27,13 +29,15 @@ import com.lxisoft.sas.web.rest.AddressResource;
 import com.lxisoft.sas.web.rest.QualificationResource;
 import com.lxisoft.sas.web.rest.SubjectResource;
 import com.lxisoft.sas.web.rest.UserDomainResource;
+import com.lxisoft.sas.web.rest.UserRoleResource;
 
 
 
 @Controller
 	public class AdminController
 	{
-	
+		@Autowired
+		UserRoleResource userRoleResource;
 		@Autowired
 		SubjectResource subjectResource;
 		@Autowired
@@ -52,14 +56,13 @@ import com.lxisoft.sas.web.rest.UserDomainResource;
 		@GetMapping("/view-profile")
 		public String viewProfile(Model model) 
 		{
-			
 			UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("1")).getBody();
 			model.addAttribute("admin", userDomainDTO);
-			
 			DummyDTO dummyDTO = new DummyDTO();
 			dummyDTO.setAddress(new AddressDTO());
 			dummyDTO.getList().add(new QualificationDTO());
 			dummyDTO.getSubList().add(new SubjectDTO());
+			dummyDTO.getSubjects().add(new SubjectDTO());
 			dummyDTO.setUser(new UserDomainDTO());
 			model.addAttribute("dummy", dummyDTO);
 	         return "admindashboard";
@@ -67,7 +70,7 @@ import com.lxisoft.sas.web.rest.UserDomainResource;
 		
 		@PostMapping("/create-user")
 		public String createUser(@ModelAttribute DummyDTO dummy,@RequestParam("date") String date,
-				@RequestParam("month") String month, @RequestParam("year") String year, Model model) throws URISyntaxException {
+				@RequestParam("month") String month, @RequestParam("year") String year,@RequestParam("role") String role, Model model) throws URISyntaxException {
 			if (dummy.setValidContents()) {
 			if (dummy.getAddress() != null) {
 				AddressDTO address = addressResource.createAddress(dummy.getAddress()).getBody();
@@ -81,13 +84,29 @@ import com.lxisoft.sas.web.rest.UserDomainResource;
 				System.out.println("-----------------------------" + dob.toString());
 			}
 			dummy.getUser().setActivated(true);
+			dummy.getUser().setRoles(new HashSet<>());
+			if(role.equals("student") )
+			{
+				UserRoleDTO rol = new UserRoleDTO();
+				rol.setRole(Role.STUDENT);
+				rol = this.userRoleResource.createUserRole(rol).getBody();
+				dummy.getUser().getRoles().add(rol);
+			}
+			
+			else if(role.equals("faculty"))
+				{
+					UserRoleDTO rol = new UserRoleDTO();
+					rol.setRole(Role.FACULTY);
+					rol = this.userRoleResource.createUserRole(rol).getBody();
+					dummy.getUser().getRoles().add(rol);
+				}
+			
 			dummy.setUser(userDomainResource.createUserDomain(dummy.getUser()).getBody());
 			for (QualificationDTO q : dummy.getList()) {
 				if(q!=null)
 				{	
 					if(q.getUniversity().equals(""))
 					{
-					
 					
 					}
 					else
@@ -102,6 +121,7 @@ import com.lxisoft.sas.web.rest.UserDomainResource;
 	        
 			return "redirect:/view-profile";
 			}
+			
 		else {
 			ErrorDTO err = new ErrorDTO("Error 500", "Can't pasre inputs",
 					"Some fields of the entered content couldn't be parsed", "UNRESOLVED");
@@ -127,6 +147,28 @@ import com.lxisoft.sas.web.rest.UserDomainResource;
 						s.setSubjectCode(s.getSubjectCode());
 						
 						s = subjectResource.createSubject(s).getBody();
+					}
+				
+				}
+		}
+				
+			return "redirect:/view-profile";			
+		}
+		@PostMapping("/add-subjects")
+		public String createSubjects(@ModelAttribute DummyDTO dummy,Model model) throws URISyntaxException {
+			List <SubjectDTO>sub=dummy.getSubjects();
+			for (SubjectDTO ss : sub) {
+				if(ss!=null)
+				{	
+					if(ss.getSubjectCode().equals(""))
+					{
+						
+					}
+					else
+					{
+						ss.setSubjectCode(ss.getSubjectCode());
+						
+						ss= subjectResource.createSubject(ss).getBody();
 					}
 				
 				}

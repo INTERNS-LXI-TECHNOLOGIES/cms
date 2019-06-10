@@ -18,7 +18,6 @@
     <li><a href="#subject"> Add Subjects</a></li>
     <li><a href="#timetable"> Timetable</a></li>
     <li><a href="#logout">Logout</a></li>
- 
   </ul>
   
 </div>
@@ -68,6 +67,7 @@
       </div>
       <div class="modal-body">
         <form action="/create-user" method="POST">
+        <input type="hidden" th:value="student" th:name="role">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">FirstName:</label>
             <input th:field= "${dummy.user.firstName}" type="text" class="form-control">
@@ -87,12 +87,22 @@
 						th:text="${dept}">
 			  </option>
             </select>
+            <label for="recipient-name" class="col-form-label">Semester:</label>
+            <input type="hidden" th:id="student-semester" th:field="${dummy.user.semester}">
+        <select class="form-control" onchange="document.getElementById('student-semester').value=this.value;">
+          <option disabled selected="selected" value="0" placeholder="Semester">Semester</option>
+         <option
+              			th:each="semester: ${T(com.lxisoft.sas.domain.enumeration.Semester).values()}"
+						th:value="${semester}"
+						th:text="${semester}">
+			  </option>
+        </select>
           </div>
           <div class="form-group">
 											
 						<label for="recipient-name" class="col-form-label">Date of Birth:</label>
-            			<input type="hidden" th:id="date" th:name="date">
-						<select onchange="document.getElementById('date').value=this.value;" class="form-control" id="Birthday_Day">
+            			<input type="hidden" th:id="date2" th:name="date">
+						<select onchange="document.getElementById('date2').value=this.value;" class="form-control" id="Birthday_Day1">
 											<option disabled selected="selected" value="0">Day:</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -126,8 +136,8 @@
 											<option value="30">30</option>
 											<option value="31">31</option>
 										</select> 
-										<input type="hidden" th:id="month" th:name="month">		
-										<select onchange="document.getElementById('month').value=this.value;" class="form-control" id="Birthday_Month">
+										<input type="hidden" th:id="month2" th:name="month">		
+										<select onchange="document.getElementById('month').value=this.value;" class="form-control" id="Birthday_Month1">
 											<option disabled selected="selected" value="0">Month:</option>
 											<option value="1">Jan</option>
 											<option value="2">Feb</option>
@@ -142,8 +152,8 @@
 											<option value="11">Nov</option>
 											<option value="12">Dec</option>
 										</select>	
-										<input type="hidden" th:id="year" th:name="year">
-										<select onchange="document.getElementById('year').value=this.value;" class="form-control" id="Birthday_Year">
+										<input type="hidden" th:id="year2" th:name="year">
+										<select onchange="document.getElementById('year2').value=this.value;" class="form-control" id="Birthday_Year1">
 											<option  disabled selected="selected" value="0">Year:</option>
 											<option value="2012">2012</option>
 											<option value="2011">2011</option>
@@ -301,6 +311,7 @@
       </div>
       <div class="modal-body">
         <form action="/create-user" method="POST">
+        <input type="hidden" th:value="faculty" th:name="role">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">FirstName:</label>
             <input th:field= "${dummy.user.firstName}" type="text" class="form-control">
@@ -320,12 +331,13 @@
 						th:text="${dept}">
 			  </option>
             </select>
+            
           </div>
-
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Date of Birth:</label>
+											
+						<label for="recipient-name" class="col-form-label">Date of Birth:</label>
             			<input type="hidden" th:id="date1" th:name="date">
-						<select onchange="document.getElementById('date1').value=this.value;" class="form-control" id="Birthday_Day">
+						<select onchange="document.getElementById('date1').value=this.value;" class="form-control" id="Birthday_Day2">
 											<option disabled selected="selected" value="0">Day:</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -358,9 +370,9 @@
 											<option value="29">29</option>
 											<option value="30">30</option>
 											<option value="31">31</option>
-										</select>
+										</select> <br>
 										<input type="hidden" th:id="month1" th:name="month">		
-										<select onchange="document.getElementById('month1').value=this.value;" class="form-control" id="Birthday_Month">
+										<select onchange="document.getElementById('month1').value=this.value;" class="form-control" id="Birthday_Month2">
 											<option disabled selected="selected" value="0">Month:</option>
 											<option value="1">Jan</option>
 											<option value="2">Feb</option>
@@ -374,11 +386,10 @@
 											<option value="10">Oct</option>
 											<option value="11">Nov</option>
 											<option value="12">Dec</option>
-										</select>	
+										</select>	<br>
 										<input type="hidden" th:id="year1" th:name="year">
-										<select onchange="document.getElementById('year1').value=this.value;" class="form-control" id="Birthday_Year">
-
-											<option disabled selected="selected" value="0">Year:</option>
+										<select onchange="document.getElementById('year1').value=this.value;" class="form-control" id="Birthday_Year2">
+											<option  disabled selected="selected" value="0">Year:</option>
 											<option value="2012">2012</option>
 											<option value="2011">2011</option>
 											<option value="2010">2010</option>
@@ -392,6 +403,7 @@
 											<option value="2002">2002</option>
 											<option value="2001">2001</option>
 											<option value="2000">2000</option>
+
 											<option value="1999">1999</option>
 											<option value="1998">1998</option>
 											<option value="1997">1997</option>
@@ -403,6 +415,7 @@
 											<option value="1991">1991</option>
 											<option value="1990">1990</option>
 										</select>		
+            
           </div>
           
           <div class="form-group">
@@ -426,7 +439,7 @@
             <input th:field="${dummy.address.district}" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Pincode:</label>
+            <label for="recipient-name" class="col-form-label">Pin code:</label>
             <input th:field="${dummy.address.pincode}" type="text" class="form-control">
           </div>
           <div class="form-group">
@@ -438,7 +451,7 @@
             <input th:field="${dummy.address.country}" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">PG</font></label>
+            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Qualification</u></font></b><br><br><font size="3px" color="darkblue">PG</font><br>Name of the Institution: </label>
             <input th:field="${dummy.list[__0__].grade}" value="pg" type="hidden" class="form-control">
           </div>
           <div class="form-group">
@@ -447,14 +460,14 @@
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Year of Passing:</label>
-            <input th:field="${dummy.list[__0__].year}" type="text" class="form-control">
+            <input th:field="${dummy.list[__0__].year}" type="text" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Percentage:</label>
             <input th:field="${dummy.list[__0__].percentage}" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Ph.D</font></label>
+            <label for="recipient-name" class="col-form-label"><br><font size="3px" color="darkblue">Ph.D</font> </label>
             <input th:field="${dummy.list[__1__].grade}" value="phd" type="hidden" class="form-control">
           </div>
           <div class="form-group">
@@ -469,16 +482,15 @@
             <label for="recipient-name" class="col-form-label">Percentage:</label>
             <input th:field="${dummy.list[__1__].percentage}" type="text" class="form-control">
           </div>
-         
+        
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Login Credentials</u></font></b><br><br>Employee ID:</label>
-            <input th:field="${dummy.user.regNum}" type="text" class="form-control">
+            <label for="recipient-name" class="col-form-label"><br><b><font size="4px"> <u>Login Credentials</u></font></b><br><br>University Registration Number:</label>
+            <input th:field="${dummy.user.regNum}" type="text"  class="form-control">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Password:</label>
-            <input th:field="${dummy.user.password}" type="password hidden" class="form-control">
+            <input th:field="${dummy.user.password}" type="password" class="form-control">
           </div>
-        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -489,7 +501,7 @@
       </form>
     </div>
   </div>
-</div>
+</div> 
 </div>
 
 
@@ -500,6 +512,8 @@
   <div class="tab-content" id="subject">
       <section class="wrapper">
         <h2>ADD SUBJECTS</h2>
+        
+        <form action="/add-subjects" method="POST">
         <div class="dropdown">
         <input type="hidden" th:id="subject-department" th:field="${dummy.user.department}">
   		<select class="subject" onchange="document.getElementById('subject-department').value=this.value;">
@@ -519,34 +533,36 @@
 						th:text="${semester}">
 			  </option>
         </select>
-        <form >
+       
         <br>
   <div class="form-row">
     <div class="col-3">
-      <input type="text" class="form-control" placeholder="Subject 1">
+      <input th:field="${dummy.subjects[__0__].subjectCode}" type="text" class="form-control" placeholder="Subject 1">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 2">
+      <input th:field="${dummy.subjects[__1__].subjectCode}" type="text" class="form-control" placeholder="Subject 2">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 3">
+      <input th:field="${dummy.subjects[__2__].subjectCode}" type="text" class="form-control" placeholder="Subject 3">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 4">
+      <input th:field="${dummy.subjects[__3__].subjectCode}" type="text" class="form-control" placeholder="Subject 4">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 5">
+      <input th:field="${dummy.subjects[__4__].subjectCode}" type="text" class="form-control" placeholder="Subject 5">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 6">
+      <input th:field="${dummy.subjects[__5__].subjectCode}" type="text" class="form-control" placeholder="Subject 6">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 7">
+      <input th:field="${dummy.subjects[__6__].subjectCode}" type="text" class="form-control" placeholder="Subject 7">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 8">
+      <input th:field="${dummy.subjects[__7__].subjectCode}" type="text" class="form-control" placeholder="Subject 8">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 9">
+      <input th:field="${dummy.subjects[__8__].subjectCode}" type="text" class="form-control" placeholder="Subject 9">
       <br>
-      <input type="text" class="form-control" placeholder="Subject 10">
+      <input th:field="${dummy.subjects[__9__].subjectCode}" type="text" class="form-control" placeholder="Subject 10">
     </div>
     
   </div>
   <br>
-  <button type="button" class="btn btn-primary">ADD</button>
+  
+  </div>
+  <button type="submit" class="btn btn-primary">ADD</button>
 </form>
 </div>
       </section>

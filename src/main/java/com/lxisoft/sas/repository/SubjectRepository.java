@@ -1,8 +1,12 @@
 package com.lxisoft.sas.repository;
 
-import com.lxisoft.sas.domain.Subject;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.lxisoft.sas.domain.Subject;
+import com.lxisoft.sas.domain.enumeration.Department;
+import com.lxisoft.sas.domain.enumeration.Semester;
 
 
 /**
@@ -12,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SubjectRepository extends JpaRepository<Subject, Long> {
 
+	/* Page<Subject> findAllBySemesterAndDepartment(Semester s, Department d); */
 }

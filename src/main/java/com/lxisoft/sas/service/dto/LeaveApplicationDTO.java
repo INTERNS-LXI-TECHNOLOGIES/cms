@@ -16,7 +16,6 @@ public class LeaveApplicationDTO implements Serializable {
 
     private Instant toDate;
 
-
     private Long appliedById;
 
     public Long getId() {
