@@ -1,6 +1,5 @@
 package com.lxisoft.sas.service.dto;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DummyDTO {
 	private UserDomainDTO user;
@@ -45,7 +44,7 @@ public class DummyDTO {
 	public boolean setValidContents() {
 		if (user.getEmail() == null || user.getEmail().equals("")) {
 			return false;
-		} else if (user.getPassword() == null || user.getPassword() == "") {
+		} else if (user.getPassword() == null || user.getPassword().equals("")) {
 			return false;
 		}
 		return validateAddress();
@@ -84,8 +83,7 @@ public class DummyDTO {
 			if (q.getUniversity().equals("")) {
 				q.setUniversity(null);
 			}
-			if (q.getGrade() == null && q.getMarks() == null && q.getPercentage() == null && q.getUniversity() == null
-					&& q.getYear() == null) {
+			if (q.getGrade() == null && q.getUniversity() == null) {
 				q = null;
 			}
 		}

@@ -100,7 +100,7 @@
 											
 						<label for="recipient-name" class="col-form-label">Date of Birth:</label>
             			<input type="hidden" th:id="date2" th:name="date">
-						<select onchange="document.getElementById('date2').value=this.value;" class="form-control" id="Birthday_Day1">
+						<select onchange="document.getElementById('date2').value=this.value;console.log(document.getElementById('date2').value);" class="form-control" id="Birthday_Day1">
 											<option disabled selected="selected" value="0">Day:</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -135,7 +135,7 @@
 											<option value="31">31</option>
 										</select> 
 										<input type="hidden" th:id="month2" th:name="month">		
-										<select onchange="document.getElementById('month').value=this.value;" class="form-control" id="Birthday_Month1">
+										<select onchange="document.getElementById('month2').value=this.value;console.log(document.getElementById('month2').value);" class="form-control" id="Birthday_Month1">
 											<option disabled selected="selected" value="0">Month:</option>
 											<option value="1">Jan</option>
 											<option value="2">Feb</option>
@@ -151,7 +151,7 @@
 											<option value="12">Dec</option>
 										</select>	
 										<input type="hidden" th:id="year2" th:name="year">
-										<select onchange="document.getElementById('year2').value=this.value;" class="form-control" id="Birthday_Year1">
+										<select onchange="document.getElementById('year2').value=this.value;console.log(document.getElementById('year2').value);" class="form-control" id="Birthday_Year1">
 											<option  disabled selected="selected" value="0">Year:</option>
 											<option value="2012">2012</option>
 											<option value="2011">2011</option>
