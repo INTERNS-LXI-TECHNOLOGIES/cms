@@ -63,10 +63,10 @@
 	    	
 	    	<center><div class="form login-card">
       <h1>LOGIN</h1>
-      <form action="Login" class="login-form" name="form" method="POST"/>
-        <input type="text" placeholder="Employee ID" name="username" /><br><br>
-        <input type="password" placeholder="password" name="password" /><br><br>
-        <input class="login-btn" type="submit" value="Submit" name="signin">
+      <form action="/do-login" class="login-form" name="form" method="POST"/>
+        <input type="text" placeholder="Employee ID" th:name="username" /><br><br>
+        <input type="password" placeholder="password" th:name="password" /><br><br>
+        <button class="login-btn" type="submit">Submit</button>
       </form>
     </div></center>
 	    </section>

@@ -92,6 +92,13 @@ public class UserDomainServiceImpl implements UserDomainService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete UserDomain : {}", id);        userDomainRepository.deleteById(id);
+        log.debug("Request to delete UserDomain : {}", id);        
+        userDomainRepository.deleteById(id);
     }
+
+	@Override
+	public Optional<UserDomainDTO> findOneByRegNum(String regNum) {
+		return userDomainRepository.findOneByRegNum(regNum)
+				.map(userDomainMapper::toDto);
+	}
 }

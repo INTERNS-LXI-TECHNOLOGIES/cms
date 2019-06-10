@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,11 +54,13 @@ import com.lxisoft.sas.web.rest.UserRoleResource;
 		QualificationMapper qualificationMapper;
 		@Autowired
 		AddressMapper addressMapper;
+		@Autowired
+		HttpSession session;
 	
 		@GetMapping("/view-profile")
 		public String viewProfile(Model model) 
 		{
-			UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("1")).getBody();
+			UserDomainDTO userDomainDTO = (UserDomainDTO)session.getAttribute("current-user");
 			model.addAttribute("admin", userDomainDTO);
 			DummyDTO dummyDTO = new DummyDTO();
 			dummyDTO.setAddress(new AddressDTO());
