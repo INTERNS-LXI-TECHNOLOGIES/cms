@@ -52,6 +52,7 @@ public class LoginController {
 		}
 	}
 	
+	@GetMapping("/logout")
 	public String logout() {
 		session.removeAttribute("current-user");
 		return redirectLogin();
