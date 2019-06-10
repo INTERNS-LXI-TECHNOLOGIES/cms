@@ -13,10 +13,6 @@ public class StudentDashboard {
 		return "studentdashboard";
 	}
 	
-	@PostMapping("/studentleave")
-	public String StudentLeave()
-	{
-		return "redirect:/student";
-	}
+	
 
 }
