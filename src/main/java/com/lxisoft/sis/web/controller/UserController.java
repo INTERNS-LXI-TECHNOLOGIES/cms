@@ -14,15 +14,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.lxisoft.sis.domain.Exam;
+import com.lxisoft.sis.repository.ExamRepository;
 import com.lxisoft.sis.service.dto.AddressDTO;
 import com.lxisoft.sis.service.dto.DummyDTO;
 import com.lxisoft.sis.service.dto.ErrorDTO;
+import com.lxisoft.sis.service.dto.ExamDTO;
+import com.lxisoft.sis.service.dto.ExamDummyDTO;
+import com.lxisoft.sis.service.dto.ExamHallDTO;
+import com.lxisoft.sis.service.dto.ExamScheduleDTO;
 import com.lxisoft.sis.service.dto.QualificationDTO;
 import com.lxisoft.sis.service.dto.UserDomainDTO;
 import com.lxisoft.sis.service.mapper.AddressMapper;
 import com.lxisoft.sis.service.mapper.QualificationMapper;
 import com.lxisoft.sis.service.mapper.UserDomainMapper;
 import com.lxisoft.sis.web.rest.AddressResource;
+import com.lxisoft.sis.web.rest.ExamHallResource;
+import com.lxisoft.sis.web.rest.ExamResource;
+import com.lxisoft.sis.web.rest.ExamScheduleResource;
 import com.lxisoft.sis.web.rest.QualificationResource;
 import com.lxisoft.sis.web.rest.UserDomainResource;
 import com.lxisoft.sis.web.rest.errors.ErrorConstants;
@@ -31,6 +40,12 @@ import com.lxisoft.sis.web.rest.errors.ErrorConstants;
 public class UserController {
 	@Autowired
 	UserDomainResource userDomainResource;
+	@Autowired
+	ExamHallResource examHallResource;
+	@Autowired
+	ExamResource examResource;
+	
+	
 	@Autowired
 	AddressResource addressResource;
 	@Autowired
@@ -41,6 +56,11 @@ public class UserController {
 	QualificationMapper qualificationMapper;
 	@Autowired
 	AddressMapper addressMapper;
+	@Autowired
+	ExamScheduleResource examScheduleResource;
+	
+@Autowired
+ExamRepository examrepository;
 
 	@GetMapping("/view-profile")
 	public String viewProfile(Model model) {
@@ -54,6 +74,15 @@ public class UserController {
 
 		dummyDTO.setUser(new UserDomainDTO());
 		model.addAttribute("dummy", dummyDTO);
+		ExamDummyDTO examdummyDTO = new ExamDummyDTO();
+		examdummyDTO.setExam(new ExamDTO());
+		examdummyDTO.setExamhall(new ExamHallDTO());
+		examdummyDTO.setExamschedule(new ExamScheduleDTO());
+		
+		
+		
+		
+		model.addAttribute("examdummy", examdummyDTO);
 
 		return "admindashboard";
 
@@ -127,7 +156,7 @@ public class UserController {
 
 			return "redirect:/view-profile";
 		}
-
+		
 		else {
 			ErrorDTO err = new ErrorDTO("Error 500", "Can't pasre inputs",
 					"Some fields of the entered content couldn't be parsed", "UNRESOLVED");
@@ -135,4 +164,25 @@ public class UserController {
 			return "error";
 		}
 	}
+
+//@PostMapping("/create-student-exam")
+//public String createStudentExam(@ModelAttribute ExamDummyDTO examdummyDTO,Model model ) throws URISyntaxException {
+//	examHallResource.createExamHall(examdummyDTO.getExamhall());
+//	examScheduleResource.createExamSchedule(examdummyDTO.getExamschedule());
+//	examResource.createExam(examdummyDTO.getExam());
+//	
+//	return viewProfile(model);
+//	
+//	
+//	
+//	
+//
+//	
+//}
+	
 }
+
+
+
+
+
