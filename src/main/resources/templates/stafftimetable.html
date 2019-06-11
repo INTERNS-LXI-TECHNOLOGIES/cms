@@ -1,255 +1,321 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  
-	<title>Admin Dashboard</title>
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<title>Admin Dashboard</title>
 </head>
 <body>
-  <div class="sidenav" id="navmenu">
-  <center><h2>DASHBOARD</h2></center>
-  <ul>
+	<div class="sidenav" id="navmenu">
+		<center>
+			<h2>DASHBOARD</h2>
+		</center>
+		<ul>
 
-    <li><a href="#admin-profile" >My Profile</a></li>
-    <li><a href="#student" >Student</a></li>
-    <li><a href="#faculty"> Faculty</a></li>
-    <li><a href="#subject"> Add Subjects</a></li>
-    <li><a href="#timetable"> Timetable</a></li>
-   
-  </ul>
-  
-   <a class="logout" href="/user-logout">Logout</a>
-  
-</div>
+			<li><a href="#admin-profile">My Profile</a></li>
+			<li><a href="#student">Student</a></li>
+			<li><a href="#faculty"> Faculty</a></li>
+			<li><a href="#subject"> Add Subjects</a></li>
+			<li><a href="#timetable"> Timetable</a></li>
 
-  <!-- <!-- Timetable -->
-  <div class="tab-content" id="timetable">
-      <section class="wrapper">
-        
-        <div class="wrapper-container">
+		</ul>
 
-    
-        <div class="staff-timetable">
-          <center><h2>STAFF Timetable</h2></center>
-          <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline1">Staff 1</label>
-</div>
-<div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline2">Staff 2</label>
-</div>
-        </center>
+		<a class="logout" href="/user-logout">Logout</a>
 
-        <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createstafftimetableModal"><span class="glyphicon glyphicon-plus"></span>
-  Create timetable
-</button>
+	</div>
+
+	<!-- <!-- Timetable -->
+	<div class="tab-content" id="timetable">
+		<section class="wrapper">
+
+			<div class="wrapper-container">
 
 
-<div class="modal fade-in bd-example-modal-lg" id="createstafftimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-  <form action="/staff-timetable" method="post">
-    <div class="modal-content">
-      <div class="modal-header">
-        <center><h5 class="modal-title" id="myLargeModalLabel">CREATE STAFF TIMETABLE</h5></center>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="table-responsive">
-        <table class="table table-bordered table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Hour 1</th>
-      <th scope="col">Hour 2</th>
-      <th scope="col">Hour 3</th>
-      <th scope="col">Hour 4</th>
-      <th scope="col">Hour 5</th>
-      <th scope="col">Hour 6</th>
-      <th scope="col">Hour 7</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Monday</th>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-    </tr>
-    <tr>
-      <th scope="row">Tuesday</th>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      
-    </tr>
-    <tr>
-      <th scope="row">Wednesday</th>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
+				<div class="staff-timetable">
+					<center>
+						<h2>STAFF Timetable</h2>
+					</center>
+					<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<div class="custom-control custom-radio custom-control-inline" th:each="staff: ${staffs}">
+						<input type="radio" th:id="${staff.regNum}" name="customRadioInline1" class="custom-control-input">
+						<label th:for="${staff.regNum}"	class="custom-control-label" th:text="${staff.firstName + ' ' + staff.lastName}"></label>
+					</div>
 
-    </tr>
-    <tr>
-      <th scope="row">Thursday</th>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
+					</center>
 
-    </tr>
-    <tr>
-      <th scope="row">Friday</th>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input class="ttfield" type="text"/></td>
+					<center>
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#createstafftimetableModal">
+							<span class="glyphicon glyphicon-plus"></span> Create timetable
+						</button>
 
-    </tr>
-  </tbody>
-</table>
-</div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewstafftimetableModal"><span class="glyphicon glyphicon-search"></span>
-  View timetable
-</button></center>
+						<div class="modal fade-in bd-example-modal-lg"
+							id="createstafftimetableModal" tabindex="-1" role="dialog"
+							aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg" role="document">
+								<form action="/staff-timetable" method="post">
+									<div class="modal-content">
+										<div class="modal-header">
+											<center>
+												<h5 class="modal-title" id="myLargeModalLabel">CREATE
+													STAFF TIMETABLE</h5>
+											</center>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<div class="table-responsive">
+												<table class="table table-bordered table-dark">
+													<thead>
+														<tr>
+															<th scope="col">#</th>
+															<th scope="col">Hour 1</th>
+															<th scope="col">Hour 2</th>
+															<th scope="col">Hour 3</th>
+															<th scope="col">Hour 4</th>
+															<th scope="col">Hour 5</th>
+															<th scope="col">Hour 6</th>
+															<th scope="col">Hour 7</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th scope="row">Monday</th>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+														</tr>
+														<tr>
+															<th scope="row">Tuesday</th>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
 
-<div class="modal fade-in bd-example-modal-lg" id="viewstafftimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <center><h5 class="modal-title" id="myLargeModalLabel">EDIT STAFF TIMETABLE</h5></center>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="table-responsive">
-        <table class="table table-bordered table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Hour 1</th>
-      <th scope="col">Hour 2</th>
-      <th scope="col">Hour 3</th>
-      <th scope="col">Hour 4</th>
-      <th scope="col">Hour 5</th>
-      <th scope="col">Hour 6</th>
-      <th scope="col">Hour 7</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Monday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Tuesday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Wednesday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Thursday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Friday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-  </tbody>
-</table>
-<div class="form-group">
-  <input type="button" class="btn btn-warning btn-sm pull-right" value="Reset">
-  <div class="clearfix"></div>
-</div>
-</div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Cancel</button>
-        <button type="button" class="btn btn-primary">Update</button>
-      </div>
-    </div>
-  </div>
-</div> 
-      </div>
-      </section>
-  </div>
-  <!-- LOGOUT -->
-  <div class="tab-content" id="logout">
-      <section class="wrapper">
-        <h2>LOGOUT</h2>
-      </section>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="js/custom.js"></script>
+														</tr>
+														<tr>
+															<th scope="row">Wednesday</th>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+
+														</tr>
+														<tr>
+															<th scope="row">Thursday</th>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+
+														</tr>
+														<tr>
+															<th scope="row">Friday</th>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+															<td contenteditable="true"><input class="ttfield"
+																type="text" /></td>
+
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+											<button type="submit" class="btn btn-primary">Create</button>
+										</div>
+								</form>
+							</div>
+						</div>
+				</div>
+
+				<button type="button" class="btn btn-secondary" data-toggle="modal"
+					data-target="#viewstafftimetableModal">
+					<span class="glyphicon glyphicon-search"></span> View timetable
+				</button>
+				</center>
+
+				<div class="modal fade-in bd-example-modal-lg"
+					id="viewstafftimetableModal" tabindex="-1" role="dialog"
+					aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<center>
+									<h5 class="modal-title" id="myLargeModalLabel">EDIT STAFF
+										TIMETABLE</h5>
+								</center>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="table-responsive">
+									<table class="table table-bordered table-dark">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Hour 1</th>
+												<th scope="col">Hour 2</th>
+												<th scope="col">Hour 3</th>
+												<th scope="col">Hour 4</th>
+												<th scope="col">Hour 5</th>
+												<th scope="col">Hour 6</th>
+												<th scope="col">Hour 7</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Monday</th>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+											</tr>
+											<tr>
+												<th scope="row">Tuesday</th>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+											</tr>
+											<tr>
+												<th scope="row">Wednesday</th>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+											</tr>
+											<tr>
+												<th scope="row">Thursday</th>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+											</tr>
+											<tr>
+												<th scope="row">Friday</th>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+												<td contenteditable="true"></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="form-group">
+										<input type="button" class="btn btn-warning btn-sm pull-right"
+											value="Reset">
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-danger">Cancel</button>
+								<button type="button" class="btn btn-primary">Update</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!-- LOGOUT -->
+	<div class="tab-content" id="logout">
+		<section class="wrapper">
+			<h2>LOGOUT</h2>
+		</section>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
 </body>
 
 </html>
