@@ -29,18 +29,21 @@ public class DummyDTO {
 	public void setList(List<QualificationDTO> list) {
 		this.list = list;
 	}
-
+	
 	public boolean setValidContents() {
 		if (user.getEmail() == null || user.getEmail().equals("")) {
 			return false;
-		} else if (user.getRegNum() == null || user.getRegNum().equals("")) {
-			return false;
-		} else if (user.getPassword() == null || user.getPassword() == "") {
+		} else if (user.getPassword() == null || user.getPassword().equals("")) {
 			return false;
 		}
+		else if (user.getRegNum() == null || user.getRegNum().equals("")) {
+			return false;
+		}
+		
 		return validateAddress();
 	}
 
+	
 	private boolean validateAddress() {
 		if (address.getCountry().equals("")) {
 			address.setCountry(null);
@@ -63,21 +66,23 @@ public class DummyDTO {
 		}
 		return validateQualifications();
 	}
-
+	
 	private boolean validateQualifications() {
 		for (QualificationDTO q : list) {
 			if (q.getGrade().equals("")) {
 				q.setGrade(null);
 			}
+			
 			if (q.getUniversity().equals("")) {
 				q.setUniversity(null);
 			}
-			if (q.getGrade() == null && q.getMarks() == null && q.getPercentage() == null && q.getUniversity() == null
-					&& q.getYear() == null) {
-				list.remove(q);
+			if (q.getGrade() == null && q.getUniversity() == null) {
+				q = null;
 			}
 		}
 		return true;
 	}
+
+		
 
 }

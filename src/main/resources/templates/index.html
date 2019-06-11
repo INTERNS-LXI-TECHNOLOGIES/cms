@@ -49,7 +49,7 @@
 
     <li><a href="#home">Home</a></li>
   <li><a href="#about">About</a></li>
-  <li><a href="#student">Login</a></li>
+  <li><a href="#login">Login</a></li>
     <li><a href="#events">Events</a></li>
 
    <li><a href="#contact">Contact Us</a></li>
@@ -141,13 +141,13 @@
 
 
 
-<div class="tab-content" id="student">
+<div class="tab-content" id="login">
   <section class="login-page">
     <center><div class="form">
       <h1>Login</h1>
-      <form class="login-form" name="form" method="POST" action="studentdashboard.html"/>
-        <input type="text" placeholder="Email" name="j_username" />
-        <input type="password" placeholder="password" name="j_password" />
+      <form action="/do-login" class="login-form" name="form" method="POST" >
+        <input type="text" placeholder="regnum" name="username" />
+        <input type="password" placeholder="password" name="password" />
         <button>Sign In</button>
       </form>
     </div></center>

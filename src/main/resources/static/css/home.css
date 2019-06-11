@@ -48,6 +48,14 @@
   font-size: 16px;
   display: block;
 }
+.logout {
+  padding: 6px 8px 6px 16px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px, solid rgba(190, 190, 190, 0.4);
+  font-size: 16px;
+}
 
 .wrapper {
   position: relative;

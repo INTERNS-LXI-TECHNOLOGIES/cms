@@ -35,8 +35,9 @@
 			<li><a href="#faculty"> Faculty</a></li>
 			<li><a href="#exam"> Exam</a></li>
 			<li><a href="#events"> Events</a></li>
-			<li><a href="#logout">Logout</a></li>
+			
 		</ul>
+		<a class="logout" href="/user-logout">Logout</a>
 
 	</div>
 	<div class="tab-content" id="admin-profile">
@@ -59,11 +60,7 @@
 					<br>
 				</ul>
 			</div>
-			<div class="edit-btn">
-				<a href="#" class="btn btn-info btn-lg"> <span
-					class="glyphicon glyphicon-pencil"></span> Edit
-				</a>
-			</div>
+		
 
 		</section>
 	</div>
@@ -103,6 +100,8 @@
 							</div>
 							<div class="modal-body">
 								<form action="/create-user" method="POST">
+								<input th:value="student" th:name="role" type="hidden">
+								
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Firstname:</label>
 										<input th:field="${dummy.user.firstName}" type="text"
@@ -399,6 +398,7 @@
 							</div>
 							<div class="modal-body">
 								<form action="/create-user" method="POST">
+									<input th:value="faculty" th:name="role" type="hidden">
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Firstname:</label>
 										<input th:field="${dummy.user.firstName}" type="text"
@@ -426,10 +426,10 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<input type="hidden" th:id="date" th:name="date"> <label
+										<input type="hidden" th:id="f-date" th:name="date"> <label
 											for="recipient-name" class="col-form-label">Date of
 											Birth:</label> <select
-											onchange="document.getElementById('date').value=this.value;"
+											onchange="document.getElementById('f-date').value=this.value;"
 											name="Birthday_day" id="Birthday_Day" class="form-control"
 											width=50px;>
 											<option disabled selected="selected">Day:</option>
@@ -468,8 +468,8 @@
 											<option value="30">30</option>
 
 											<option value="31">31</option>
-										</select> <input type="hidden" th:id="month" th:name="month"> <select
-											onchange="document.getElementById('month').value=this.value;"
+										</select> <input type="hidden" th:id="f-month" th:name="month"> <select
+											onchange="document.getElementById('f-month').value=this.value;"
 											id="Birthday_Month" name="Birthday_Month"
 											class="form-control">
 											<option disabled selected="selected">Month:</option>
@@ -485,9 +485,9 @@
 											<option value="9">Oct</option>
 											<option value="10">Nov</option>
 											<option value="11">Dec</option>
-										</select> <input type="hidden" th:id="year" th:name="year"> <select
+										</select> <input type="hidden" th:id="f-year" th:name="year"> <select
 											name="Birthday_Year"
-											onchange="document.getElementById('year').value=this.value;"
+											onchange="document.getElementById('f-year').value=this.value;"
 											id="Birthday_Year" class="form-control">
 
 											<option disabled selected="selected">Year:</option>
@@ -766,7 +766,8 @@
       <th scope="col">EXAM DATE</th>
       <th scope="col">SUBJECT</th>
       <th scope="col">EXAM HALL</th>
-      <th scope="col">ROLL NO</th>
+      <th scope="col">ROLL NO From</th>
+       <th scope="col">ROLL NO To</th>
       <th scope="col">TIME</th>
       <th scope="col">INVIGILATOR</th>
      
@@ -778,7 +779,8 @@
       <td contenteditable="true">10/4/2019</td>
       <td contenteditable="true">DATA MINING</td>
       <td contenteditable="true">SEMINAR HALL 1</td>
-      <td contenteditable="true">1-15</td>
+      <td contenteditable="true">1</td>
+       <td contenteditable="true">15</td>
       <td contenteditable="true">9:00 am</td>
       <td contenteditable="true">PRABHA</td>
     
@@ -788,7 +790,8 @@
       <td contenteditable="true">11/4/2019</td>
       <td contenteditable="true">EMBEDDED SYSTEMS</td>
       <td contenteditable="true">SEMINAR HALL 2</td>
-      <td contenteditable="true">20-30</td>
+      <td contenteditable="true">20</td>
+            <td contenteditable="true">30</td>
       <td contenteditable="true">9:00 am</td>
       <td contenteditable="true">KEERTHANA</td>
     
@@ -798,7 +801,8 @@
       <td contenteditable="true">12/4/2019</td>
       <td contenteditable="true">ARTIFICIAL INTELLIGENCE</td>
       <td contenteditable="true">DRAWING HALL 1</td>
-      <td contenteditable="true">15-20</td>
+      <td contenteditable="true">15</td>
+       <td contenteditable="true">20</td>
       <td contenteditable="true">9:00 am</td>
       <td contenteditable="true">ANAND</td>
      
@@ -808,7 +812,8 @@
       <td contenteditable="true">13/4/2019</td>
       <td contenteditable="true">SUSTAINABLE ENERGY PROCESS</td>
       <td contenteditable="true">DRAWING HALL 2</td>
-      <td contenteditable="true">1-15</td>
+      <td contenteditable="true">1</td>
+       <td contenteditable="true">9</td>
       <td contenteditable="true">9:00 am</td>
       <td contenteditable="true">VIVEK GOPI</td>
      
@@ -923,40 +928,142 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<form action="/create-student-exam" method=post>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Date:</label>
-							<input th:field="${examdummy.exam.examDate}" type="text" class="form-control">
-						</div>
+		<div class="modal-body"> 
+				<form action="/create-student-exam" method=post> 
+						<div class="form-group"> 
+ 							<input type="hidden" th:id="exam-date" th:name="date"> <label
+											for="recipient-name" class="col-form-label">Date 
+											:</label> <select
+											onchange="document.getElementById('exam-date').value=this.value;"
+											name="day" id="Day" class="form-control"
+											width=50px;>
+											<option disabled selected="selected">Day:</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+
+											<option value="31">31</option>
+										</select> <input type="hidden" th:id="exam-month" th:name="month"> <select
+											onchange="document.getElementById('exam-month').value=this.value;"
+											id="Month" name="Month"
+											class="form-control">
+											<option disabled selected="selected">Month:</option>
+											<option value="0">Jan</option>
+											<option value="1">Feb</option>
+											<option value="2">Mar</option>
+											<option value="3">Apr</option>
+											<option value="4">May</option>
+											<option value="5">Jun</option>
+											<option value="6">Jul</option>
+											<option value="7">Aug</option>
+											<option value="8">Sep</option>
+											<option value="9">Oct</option>
+											<option value="10">Nov</option>
+											<option value="11">Dec</option>
+										</select> <input type="hidden" th:id="exam-year" th:name="year"> <select
+											name="Year"
+											onchange="document.getElementById('exam-year').value=this.value;"
+											id="Year" class="form-control">
+
+											<option disabled selected="selected">Year:</option>
+											<option value="1996">1996</option>
+											<option value="1995">1995</option>
+											<option value="1994">1994</option>
+											<option value="1993">1993</option>
+											<option value="1992">1992</option>
+											<option value="1991">1991</option>
+											<option value="1990">1990</option>
+											<option value="1990">1990</option>
+											<option value="1990">1989</option>
+											<option value="1990">1988</option>
+											<option value="1990">1987</option>
+											<option value="1990">1986</option>
+											<option value="1990">1985</option>
+											<option value="1990">1984</option>
+											<option value="1990">1983</option>
+											<option value="1990">1982</option>
+											<option value="1990">1981</option>
+											<option value="1990">1980</option>
+											<option value="1990">1979</option>
+											<option value="1990">1978</option>
+											<option value="1990">1977</option>
+											<option value="1990">1976</option>
+											<option value="1990">1975</option>
+											<option value="1990">1974</option>
+											<option value="1990">1973</option>
+											<option value="1990">1972</option>
+											<option value="1990">1971</option>
+											<option value="1990">1970</option>
+											<option value="1990">1969</option>
+											<option value="1990">1968</option>
+											<option value="1990">1967</option>
+											<option value="1990">1966</option>
+											<option value="1990">1965</option>
+											<option value="1990">1964</option>
+											<option value="1990">1963</option>
+											<option value="1990">1962</option>
+											<option value="1990">1961</option>
+											<option value="1990">1960</option>
+
+										</select>
+									</div>
 						
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Subject:</label>
-							<input  type="text" class="form-control">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Exam
-								Hall:</label> 
-								<input  th:field="${examdummy.examhall.hallNumber}"type="text" class="form-control"
-								id="recipient-name">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Invigilator:</label>
-							<input th:field="${examdummy.examhall.invigialtor}"type="text" class="form-control" >
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Roll No From:</label>
-							 <input th:field="${examdummy.examhall.rollNumFrom}" type="text" class="form-control" >
-						</div>
+ 						<div class="form-group">
+ 							<label for="recipient-name" class="col-form-label">Subject:</label> 
+ 							<input th:field= "${examdummy.exam.subjectId}" type="text" class="form-control"> 
+						</div> 
+						<div class="form-group"> 
+								<label for="recipient-name" class="col-form-label">Exam Hall:</label>  
+								<input  th:field="${examdummy.examhall.hallNumber}"type="text" class="form-control" >
+								
+						</div> 
+						<div class="form-group"> 
+							<label for="recipient-name" class="col-form-label">Invigilator:</label> 
+							<input th:field="${examdummy.examhall.invigialtor}"type="text" class="form-control" > 
+						</div> 
+						<div class="form-group"> 
+ 							<label for="recipient-name" class="col-form-label">Roll No From:</label> 
+							 <input th:field="${examdummy.examhall.rollNumFrom}" type="text" class="form-control" > 
+ 						</div> 
 						
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Roll No To:</label>
-							 <input th:field="${examdummy.examhall.rollNumTo}" type="text" class="form-control" >
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Start Time:</label>
-							<input th:field="${examdummy.exam.startingTime}"type="text" class="form-control" >
-						</div>
+ 						<div class="form-group"> 
+ 							<label for="recipient-name" class="col-form-label">Roll No To:</label> 
+							 <input th:field="${examdummy.examhall.rollNumTo}" type="text" class="form-control" > 
+ 						</div> 
+						<div class="form-group"> 
+							<label for="recipient-name" class="col-form-label">Start Time:</label> 
+ 							<input th:field="${examdummy.exam.startingTime}"type="text" class="form-control" > 
+ 						</div> 
 						
 
 						<div class="modal-footer">
