@@ -15,9 +15,10 @@
     <li><a href="#leave-request">Leave Request</a></li>
     <li><a href="#timetable" >Timetable</a></li> 
     <li><a href="#assignment">Assignments</a></li>
-    <li><a href="#logout">Logout</a></li>
+   
  
   </ul>
+  <a class="logout" href="/user-logout">Logout</a>
   
 </div>
 <!-- My Profile -->
@@ -29,12 +30,13 @@
         <center><div class="card">
   <img src="images/passport.jpg" class="card-img-top" alt="avatar">
   <div class="card-body">
-    <p class="card-text">FIRST NAME :ARTHADH </p>
-    <p class="card-text">LAST NAME : BALAN</p>
-    <p class="card-text">DEPARTMENT: CSE </p>
-    <p class="card-text">MOBILE NO: 7736381278 </p>
-    <p class="card-text">EMAIL: arthadhkallingal@live.com</p>
-    <p class="card-text">ADDRESS: Kallingal House</p>
+    <p class="card-text" th:text="'Id: '+${faculty.id}"> ID:1</p>
+    <p class="card-text" th:text="'FirstName: '+${faculty.firstName}">FIRST NAME :ARTHADH </p>
+    <p class="card-text" th:text="'LastName: '+${faculty.lastName}">LAST NAME : BALAN</p>
+    <p class="card-text" th:text="'Date Of Birth: '+${faculty.dob}">DATE OF BIRTH</p>
+    <p class="card-text" th:text="'ContactNo: '+${faculty.contactNumber}">MOBILE NO: 7736381278 </p>
+    <p class="card-text" th:text="'Registration Number: '+${faculty.regNum}">REGISTRATION NUM:</p>
+    <p class="card-text" th:text="'Email: ' + ${faculty.email}">EMAIL: arthadhb@live.com</p>  
   </div>
 </div></center>
       </section>
@@ -273,8 +275,7 @@
         
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-        
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
       </div>
   </div>
 </div>
@@ -298,13 +299,37 @@
       <br>
       <div class="leave-history">
         <div class="alert alert-warning">
-          1.<a href="#" data-toggle="modal" data-target="#leaveModal">Leave request 1</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: PENDING  &nbsp<span class="glyphicon glyphicon-exclamation-sign"></span><br>
+          1.<a href="#" data-toggle="modal" data-target="#studentleaveModal">Leave request 1</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: PENDING  &nbsp<span class="glyphicon glyphicon-exclamation-sign"></span><br>
+        	<div class="modal fade-in bd-example-modal-lg" id="studentleaveModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+ 			 <div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+      		<div class="modal-header">
+        <center><h5 class="modal-title" id="myLargeModalLabel">Applied Leave</h5></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      <p>From: </p>
+      <p>To: </p>
+      <br>
+      <p><strong>REASON: </strong></p>
+      
+        
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-success">ACCEPT</button>
+        <button type="submit" class="btn btn-outline-danger">REJECT</button>
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+</div>
+</div>
         </div>   
         <div class="alert alert-success">
-          2.<a href="#" data-toggle="modal" data-target="#leaveModal">Leave request 2</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: ACCEPTED  &nbsp<span class="glyphicon glyphicon-ok-circle"></span><br>
+          2.<a href="#" data-toggle="modal" data-target="#studentleaveModal">Leave request 2</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: ACCEPTED  &nbsp<span class="glyphicon glyphicon-ok-circle"></span><br>
         </div>
         <div class="alert alert-danger">
-          3.<a href="#" data-toggle="modal" data-target="#leaveModal">Leave request 3</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: REJECTED &nbsp<span class="glyphicon glyphicon-remove-circle"></span><br>
+          3.<a href="#" data-toggle="modal" data-target="#studentleaveModal">Leave request 3</a><br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Status: REJECTED &nbsp<span class="glyphicon glyphicon-remove-circle"></span><br>
 
         </div>   
       </div>
@@ -405,9 +430,9 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-        <li>ASSIGNMENT 1 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
-        <li>ASSIGNMENT 2 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
-        <li>ASSIGNMENT 3 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
+        <li>ASSIGNMENT 1 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
+        <li>ASSIGNMENT 2 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
+        <li>ASSIGNMENT 3 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
       </div>
     </div>
   </div>
@@ -421,9 +446,9 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
-        <li>ASSIGNMENT 1 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
-        <li>ASSIGNMENT 2 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
-        <li>ASSIGNMENT 3 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
+        <li>ASSIGNMENT 1 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
+        <li>ASSIGNMENT 2 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
+        <li>ASSIGNMENT 3 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
       </div>
     </div>
   </div>
@@ -437,9 +462,9 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
-        <li>ASSIGNMENT 1 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
-        <li>ASSIGNMENT 2 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
-        <li>ASSIGNMENT 3 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a><a href="#" data-toggle="modal" data-target="#submittedList">&nbsp &nbsp &nbsp &nbsp View</a></li>
+        <li>ASSIGNMENT 1 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
+        <li>ASSIGNMENT 2 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
+        <li>ASSIGNMENT 3 <a href="#" data-toggle="modal" data-target="#assignmentModal">&nbsp &nbsp &nbsp &nbsp Add</a></li>
       </div>
     </div>
   </div>
@@ -484,43 +509,7 @@
 </div>
 <!-- ----------------------------------------------------------- -->
 
-<div class="modal fade-in bd-example-modal-lg" id="submittedList" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
- 			 <div class="modal-dialog modal-lg" role="document">
-    		<div class="modal-content">
-    
-      		<div class="modal-header">
-        <center><h5 class="modal-title" id="myLargeModalLabel">Submitted List</h5></center>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-      <form >
-        <br>
-  <div class="form-row">
-    <div class="col-12">
-      <ul>
-	      <li>Arthadh</li>
-	      <li>Sreeram</li>
-	      <li>Sinu</li>
-	      <li>Varsha</li>
-      </ul>
 
-    </div>
-    
-  </div>
-  <br>
-  <button type="button" class="btn btn-primary">ADD</button>
-</form>
-      
-        <!-- ----------------------------------------------- -->
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-        
-      </div>
-  </div>
-</div>
-</div>
       </section>
   </div>
   <!-- LOGOUT -->
