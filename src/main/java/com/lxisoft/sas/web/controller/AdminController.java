@@ -56,6 +56,9 @@ public class AdminController {
 	@GetMapping("/view-profile")
 	public String viewProfile(Model model) {
 		UserDomainDTO userDomainDTO = (UserDomainDTO) session.getAttribute("current-user");
+		if (userDomainDTO == null) {
+			return "redirect:/";
+		}
 		model.addAttribute("admin", userDomainDTO);
 		DummyDTO dummyDTO = new DummyDTO();
 		dummyDTO.setAddress(new AddressDTO());
@@ -83,7 +86,7 @@ public class AdminController {
 	public void saveQualifications(DummyDTO dummy) throws URISyntaxException {
 		for (QualificationDTO q : dummy.getList()) {
 			if (q != null) {
-				if (q.getUniversity().equals("")) {
+				if (q.getUniversity()== null || q.getUniversity().equals("")) {
 
 				} else {
 					q.setUserDomainId(dummy.getUser().getId());
@@ -93,7 +96,7 @@ public class AdminController {
 			}
 		}
 	}
-	
+
 	public void saveAddressAndDOB(DummyDTO dummy, String date, String month, String year) throws URISyntaxException {
 		if (dummy.getAddress() != null) {
 			AddressDTO address = addressResource.createAddress(dummy.getAddress()).getBody();

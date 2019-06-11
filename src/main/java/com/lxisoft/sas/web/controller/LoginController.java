@@ -31,7 +31,9 @@ public class LoginController {
 	
 	@PostMapping("do-login")
 	public String loginManager(@RequestParam("username") String username, @RequestParam("password") String password) {
-		UserDomainDTO user = this.userDomainService.findOneByRegNum(username).get();
+		UserDomainDTO user = null;
+		if(this.userDomainService.findOneByRegNum(username).isPresent())			
+			user = this.userDomainService.findOneByRegNum(username).get();
 		if(user!=null && user.getPassword().equals(password)) {			
 			this.session.setAttribute("current-user", user);
 			for(UserRoleDTO role : user.getRoles()) {
@@ -52,7 +54,7 @@ public class LoginController {
 		}
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping("/user-logout")
 	public String logout() {
 		session.removeAttribute("current-user");
 		return redirectLogin();

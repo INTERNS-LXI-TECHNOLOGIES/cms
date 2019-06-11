@@ -79,12 +79,12 @@ public class DummyDTO {
 			if (q.getGrade().equals("")) {
 				q.setGrade(null);
 			}
-			
 			if (q.getUniversity().equals("")) {
 				q.setUniversity(null);
 			}
 			if (q.getGrade() == null && q.getUniversity() == null) {
 				q = null;
+				list.remove(q);
 			}
 		}
 		return true;
