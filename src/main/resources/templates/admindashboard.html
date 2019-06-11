@@ -17,8 +17,10 @@
     <li><a href="#faculty"> Faculty</a></li>
     <li><a href="#subject"> Add Subjects</a></li>
     <li><a href="#timetable"> Timetable</a></li>
+   
   </ul>
-    <a href="/user-logout">Logout</a>
+  
+   <a class="logout" href="/user-logout">Logout</a>
   
 </div>
 <!-- My Profile -->
@@ -574,7 +576,7 @@
           <!----------------------------------------------staff timetable------------------------------------------>
         <div class="staff-timetable">
           <center><h2>STAFF Timetable</h2></center>
-          
+          <form action="/staff-timetable">
           <input type="hidden" th:id="staff-timetable" th:field="${dummy.user.department}">
         <center><select class="staff-filter1" onchange="document.getElementById('staff-timetable').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Department">Department</option>
@@ -584,213 +586,12 @@
 						th:text="${dept}">
 			  </option>
         </select>
-        
-        <select class="staff-filter2">
-          <option disabled selected=selected value="0" placeholder="STAFF">STAFF</option>
-          <option value="staff1" >STAFF 1</option>
-          <option value="ece">STAFF 2</option>
-          <option value="eee">STAFF 3</option>
-          <option value="ce">STAFF 4</option>
-          <option value="me">STAFF 5</option>
-        </select>
         </center>
 
-        <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createstafftimetableModal"><span class="glyphicon glyphicon-plus"></span>
-  Create timetable
-</button>
-
-<!-- Modal -->
-<div class="modal fade-in bd-example-modal-lg" id="createstafftimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-  <form action="/staff-timetable" method="post">
-    <div class="modal-content">
-      <div class="modal-header">
-        <center><h5 class="modal-title" id="myLargeModalLabel">CREATE STAFF TIMETABLE</h5></center>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="table-responsive">
-        <table class="table table-bordered table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Hour 1</th>
-      <th scope="col">Hour 2</th>
-      <th scope="col">Hour 3</th>
-      <th scope="col">Hour 4</th>
-      <th scope="col">Hour 5</th>
-      <th scope="col">Hour 6</th>
-      <th scope="col">Hour 7</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Monday</th>
-      <td contenteditable="true"><input th:field="${dummy.subList[__0__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__1__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__2__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__3__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__4__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__5__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__6__].subjectCode}" class="ttfield" type="text"/></td>
-    </tr>
-    <tr>
-      <th scope="row">Tuesday</th>
-      <td contenteditable="true"><input th:field="${dummy.subList[__7__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__8__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__9__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__10__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__11__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__12__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__13__].subjectCode}" class="ttfield" type="text"/></td>
-      
-    </tr>
-    <tr>
-      <th scope="row">Wednesday</th>
-      <td contenteditable="true"><input th:field="${dummy.subList[__14__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__15__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__16__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__17__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__18__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__19__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__20__].subjectCode}" class="ttfield" type="text"/></td>
-
-    </tr>
-    <tr>
-      <th scope="row">Thursday</th>
-      <td contenteditable="true"><input th:field="${dummy.subList[__21__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__22__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__23__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__24__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__25__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__26__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__27__].subjectCode}" class="ttfield" type="text"/></td>
-
-    </tr>
-    <tr>
-      <th scope="row">Friday</th>
-      <td contenteditable="true"><input th:field="${dummy.subList[__28__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__29__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__30__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__31__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__32__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__33__].subjectCode}" class="ttfield" type="text"/></td>
-      <td contenteditable="true"><input th:field="${dummy.subList[__34__].subjectCode}" class="ttfield" type="text"/></td>
-
-    </tr>
-  </tbody>
-</table>
-</div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewstafftimetableModal"><span class="glyphicon glyphicon-search"></span>
-  View timetable
+        <center><button type="submit" class="btn btn-primary staff-btn" data-toggle="modal" data-target="#createstafftimetableModal">
+  View Staff's
 </button></center>
-<!-- view staff timetable Modal -->
-<div class="modal fade-in bd-example-modal-lg" id="viewstafftimetableModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <center><h5 class="modal-title" id="myLargeModalLabel">EDIT STAFF TIMETABLE</h5></center>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="table-responsive">
-        <table class="table table-bordered table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Hour 1</th>
-      <th scope="col">Hour 2</th>
-      <th scope="col">Hour 3</th>
-      <th scope="col">Hour 4</th>
-      <th scope="col">Hour 5</th>
-      <th scope="col">Hour 6</th>
-      <th scope="col">Hour 7</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Monday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Tuesday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Wednesday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Thursday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-    <tr>
-      <th scope="row">Friday</th>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-      <td contenteditable="true"></td>
-    </tr>
-  </tbody>
-</table>
-<div class="form-group">
-  <input type="button" class="btn btn-warning btn-sm pull-right" value="Reset">
-  <div class="clearfix"></div>
-</div>
-</div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Cancel</button>
-        <button type="button" class="btn btn-primary">Update</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- --------------------------------------------------------------------- -->
-
-
+</form>
       </div>
       <br><br><br>
 
