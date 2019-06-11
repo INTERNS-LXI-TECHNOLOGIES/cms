@@ -7,18 +7,18 @@ import { ICrudGetAllAction, getSortState, IPaginationBaseState, getPaginationIte
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getEntities } from './subject.reducer';
-import { ISubject } from 'app/shared/model/subject.model';
+import { getEntities } from './day-of-week.reducer';
+import { IDayOfWeek } from 'app/shared/model/day-of-week.model';
 // tslint:disable-next-line:no-unused-variable
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 
-export interface ISubjectProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
+export interface IDayOfWeekProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
-export type ISubjectState = IPaginationBaseState;
+export type IDayOfWeekState = IPaginationBaseState;
 
-export class Subject extends React.Component<ISubjectProps, ISubjectState> {
-  state: ISubjectState = {
+export class DayOfWeek extends React.Component<IDayOfWeekProps, IDayOfWeekState> {
+  state: IDayOfWeekState = {
     ...getSortState(this.props.location, ITEMS_PER_PAGE)
   };
 
@@ -49,14 +49,14 @@ export class Subject extends React.Component<ISubjectProps, ISubjectState> {
   };
 
   render() {
-    const { subjectList, match, totalItems } = this.props;
+    const { dayOfWeekList, match, totalItems } = this.props;
     return (
       <div>
-        <h2 id="subject-heading">
-          Subjects
+        <h2 id="day-of-week-heading">
+          Day Of Weeks
           <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Subject
+            &nbsp; Create new Day Of Week
           </Link>
         </h2>
         <div className="table-responsive">
@@ -66,42 +66,58 @@ export class Subject extends React.Component<ISubjectProps, ISubjectState> {
                 <th className="hand" onClick={this.sort('id')}>
                   ID <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={this.sort('subjectCode')}>
-                  Subject Code <FontAwesomeIcon icon="sort" />
+                <th className="hand" onClick={this.sort('sub1')}>
+                  Sub 1 <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={this.sort('semester')}>
-                  Semester <FontAwesomeIcon icon="sort" />
+                <th className="hand" onClick={this.sort('sub2')}>
+                  Sub 2 <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={this.sort('department')}>
-                  Department <FontAwesomeIcon icon="sort" />
+                <th className="hand" onClick={this.sort('sub3')}>
+                  Sub 3 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('sub4')}>
+                  Sub 4 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('sub5')}>
+                  Sub 5 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('sub6')}>
+                  Sub 6 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('sub7')}>
+                  Sub 7 <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  Faculty <FontAwesomeIcon icon="sort" />
+                  Time Table <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
             </thead>
             <tbody>
-              {subjectList.map((subject, i) => (
+              {dayOfWeekList.map((dayOfWeek, i) => (
                 <tr key={`entity-${i}`}>
                   <td>
-                    <Button tag={Link} to={`${match.url}/${subject.id}`} color="link" size="sm">
-                      {subject.id}
+                    <Button tag={Link} to={`${match.url}/${dayOfWeek.id}`} color="link" size="sm">
+                      {dayOfWeek.id}
                     </Button>
                   </td>
-                  <td>{subject.subjectCode}</td>
-                  <td>{subject.semester}</td>
-                  <td>{subject.department}</td>
-                  <td>{subject.facultyId ? <Link to={`user-domain/${subject.facultyId}`}>{subject.facultyId}</Link> : ''}</td>
+                  <td>{dayOfWeek.sub1}</td>
+                  <td>{dayOfWeek.sub2}</td>
+                  <td>{dayOfWeek.sub3}</td>
+                  <td>{dayOfWeek.sub4}</td>
+                  <td>{dayOfWeek.sub5}</td>
+                  <td>{dayOfWeek.sub6}</td>
+                  <td>{dayOfWeek.sub7}</td>
+                  <td>{dayOfWeek.timeTableId ? <Link to={`time-table/${dayOfWeek.timeTableId}`}>{dayOfWeek.timeTableId}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${subject.id}`} color="info" size="sm">
+                      <Button tag={Link} to={`${match.url}/${dayOfWeek.id}`} color="info" size="sm">
                         <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
                       </Button>
-                      <Button tag={Link} to={`${match.url}/${subject.id}/edit`} color="primary" size="sm">
+                      <Button tag={Link} to={`${match.url}/${dayOfWeek.id}/edit`} color="primary" size="sm">
                         <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
                       </Button>
-                      <Button tag={Link} to={`${match.url}/${subject.id}/delete`} color="danger" size="sm">
+                      <Button tag={Link} to={`${match.url}/${dayOfWeek.id}/delete`} color="danger" size="sm">
                         <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
                       </Button>
                     </div>
@@ -124,9 +140,9 @@ export class Subject extends React.Component<ISubjectProps, ISubjectState> {
   }
 }
 
-const mapStateToProps = ({ subject }: IRootState) => ({
-  subjectList: subject.entities,
-  totalItems: subject.totalItems
+const mapStateToProps = ({ dayOfWeek }: IRootState) => ({
+  dayOfWeekList: dayOfWeek.entities,
+  totalItems: dayOfWeek.totalItems
 });
 
 const mapDispatchToProps = {
@@ -139,4 +155,4 @@ type DispatchProps = typeof mapDispatchToProps;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Subject);
+)(DayOfWeek);

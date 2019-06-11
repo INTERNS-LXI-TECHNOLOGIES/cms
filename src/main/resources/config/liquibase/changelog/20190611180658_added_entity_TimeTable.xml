@@ -15,26 +15,18 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Subject.
+        Added the entity TimeTable.
     -->
-    <changeSet id="20190406142308-1" author="jhipster">
-        <createTable tableName="subject">
+    <changeSet id="20190611180658-1" author="jhipster">
+        <createTable tableName="time_table">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="subject_code" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="semester" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
             <column name="department" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="faculty_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

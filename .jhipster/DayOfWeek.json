@@ -1,0 +1,50 @@
+{
+    "name": "DayOfWeek",
+    "fields": [
+        {
+            "fieldName": "sub1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sub2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sub3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sub4",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sub5",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sub6",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sub7",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "timeTable",
+            "otherEntityName": "timeTable",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190611180659",
+    "entityTableName": "day_of_week",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

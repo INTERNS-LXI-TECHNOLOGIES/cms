@@ -18,6 +18,8 @@
     <include file="config/liquibase/changelog/20190406142307_added_entity_ExamHall.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190406142308_added_entity_Subject.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190406142309_added_entity_Assignment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190611180658_added_entity_TimeTable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190611180659_added_entity_DayOfWeek.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20190406142257_added_entity_constraints_UserDomain.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190406142300_added_entity_constraints_Event.xml" relativeToChangelogFile="false"/>
@@ -26,5 +28,7 @@
     <include file="config/liquibase/changelog/20190406142303_added_entity_constraints_Attatchment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190406142305_added_entity_constraints_Exam.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190406142306_added_entity_constraints_StudyMaterial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190611180659_added_entity_constraints_DayOfWeek.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190406142308_added_entity_constraints_Subject.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

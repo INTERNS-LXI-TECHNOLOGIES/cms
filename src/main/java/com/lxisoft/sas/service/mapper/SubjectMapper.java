@@ -8,11 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Subject and its DTO SubjectDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {UserDomainMapper.class})
 public interface SubjectMapper extends EntityMapper<SubjectDTO, Subject> {
 
+    @Mapping(source = "faculty.id", target = "facultyId")
+    SubjectDTO toDto(Subject subject);
 
     @Mapping(target = "materials", ignore = true)
+    @Mapping(source = "facultyId", target = "faculty")
     Subject toEntity(SubjectDTO subjectDTO);
 
     default Subject fromId(Long id) {

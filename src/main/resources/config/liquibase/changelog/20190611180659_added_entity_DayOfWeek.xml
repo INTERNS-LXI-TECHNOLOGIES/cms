@@ -15,26 +15,42 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Subject.
+        Added the entity DayOfWeek.
     -->
-    <changeSet id="20190406142308-1" author="jhipster">
-        <createTable tableName="subject">
+    <changeSet id="20190611180659-1" author="jhipster">
+        <createTable tableName="day_of_week">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="subject_code" type="varchar(255)">
+            <column name="sub_1" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="semester" type="varchar(255)">
+            <column name="sub_2" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="department" type="varchar(255)">
+            <column name="sub_3" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="faculty_id" type="bigint">
+            <column name="sub_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sub_5" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sub_6" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sub_7" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="time_table_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

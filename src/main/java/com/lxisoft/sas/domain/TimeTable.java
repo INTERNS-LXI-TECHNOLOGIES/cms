@@ -2,7 +2,6 @@ package com.lxisoft.sas.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -16,20 +15,17 @@ import com.lxisoft.sas.domain.enumeration.Semester;
 import com.lxisoft.sas.domain.enumeration.Department;
 
 /**
- * A Subject.
+ * A TimeTable.
  */
 @Entity
-@Table(name = "subject")
-public class Subject implements Serializable {
+@Table(name = "time_table")
+public class TimeTable implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "subject_code")
-    private String subjectCode;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "semester")
@@ -39,12 +35,8 @@ public class Subject implements Serializable {
     @Column(name = "department")
     private Department department;
 
-    @OneToMany(mappedBy = "subject")
-    private Set<StudyMaterial> materials = new HashSet<>();
-    @ManyToOne
-    @JsonIgnoreProperties("subjects")
-    private UserDomain faculty;
-
+    @OneToMany(mappedBy = "timeTable")
+    private Set<DayOfWeek> days = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -54,24 +46,11 @@ public class Subject implements Serializable {
         this.id = id;
     }
 
-    public String getSubjectCode() {
-        return subjectCode;
-    }
-
-    public Subject subjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
-        return this;
-    }
-
-    public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
-    }
-
     public Semester getSemester() {
         return semester;
     }
 
-    public Subject semester(Semester semester) {
+    public TimeTable semester(Semester semester) {
         this.semester = semester;
         return this;
     }
@@ -84,7 +63,7 @@ public class Subject implements Serializable {
         return department;
     }
 
-    public Subject department(Department department) {
+    public TimeTable department(Department department) {
         this.department = department;
         return this;
     }
@@ -93,42 +72,29 @@ public class Subject implements Serializable {
         this.department = department;
     }
 
-    public Set<StudyMaterial> getMaterials() {
-        return materials;
+    public Set<DayOfWeek> getDays() {
+        return days;
     }
 
-    public Subject materials(Set<StudyMaterial> studyMaterials) {
-        this.materials = studyMaterials;
+    public TimeTable days(Set<DayOfWeek> dayOfWeeks) {
+        this.days = dayOfWeeks;
         return this;
     }
 
-    public Subject addMaterials(StudyMaterial studyMaterial) {
-        this.materials.add(studyMaterial);
-        studyMaterial.setSubject(this);
+    public TimeTable addDays(DayOfWeek dayOfWeek) {
+        this.days.add(dayOfWeek);
+        dayOfWeek.setTimeTable(this);
         return this;
     }
 
-    public Subject removeMaterials(StudyMaterial studyMaterial) {
-        this.materials.remove(studyMaterial);
-        studyMaterial.setSubject(null);
+    public TimeTable removeDays(DayOfWeek dayOfWeek) {
+        this.days.remove(dayOfWeek);
+        dayOfWeek.setTimeTable(null);
         return this;
     }
 
-    public void setMaterials(Set<StudyMaterial> studyMaterials) {
-        this.materials = studyMaterials;
-    }
-
-    public UserDomain getFaculty() {
-        return faculty;
-    }
-
-    public Subject faculty(UserDomain userDomain) {
-        this.faculty = userDomain;
-        return this;
-    }
-
-    public void setFaculty(UserDomain userDomain) {
-        this.faculty = userDomain;
+    public void setDays(Set<DayOfWeek> dayOfWeeks) {
+        this.days = dayOfWeeks;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -140,11 +106,11 @@ public class Subject implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Subject subject = (Subject) o;
-        if (subject.getId() == null || getId() == null) {
+        TimeTable timeTable = (TimeTable) o;
+        if (timeTable.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), subject.getId());
+        return Objects.equals(getId(), timeTable.getId());
     }
 
     @Override
@@ -154,9 +120,8 @@ public class Subject implements Serializable {
 
     @Override
     public String toString() {
-        return "Subject{" +
+        return "TimeTable{" +
             "id=" + getId() +
-            ", subjectCode='" + getSubjectCode() + "'" +
             ", semester='" + getSemester() + "'" +
             ", department='" + getDepartment() + "'" +
             "}";

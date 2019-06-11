@@ -5,20 +5,16 @@ import com.lxisoft.sas.domain.enumeration.Semester;
 import com.lxisoft.sas.domain.enumeration.Department;
 
 /**
- * A DTO for the Subject entity.
+ * A DTO for the TimeTable entity.
  */
-public class SubjectDTO implements Serializable {
+public class TimeTableDTO implements Serializable {
 
     private Long id;
-
-    private String subjectCode;
 
     private Semester semester;
 
     private Department department;
 
-
-    private Long facultyId;
 
     public Long getId() {
         return id;
@@ -26,14 +22,6 @@ public class SubjectDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSubjectCode() {
-        return subjectCode;
-    }
-
-    public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
     }
 
     public Semester getSemester() {
@@ -52,14 +40,6 @@ public class SubjectDTO implements Serializable {
         this.department = department;
     }
 
-    public Long getFacultyId() {
-        return facultyId;
-    }
-
-    public void setFacultyId(Long userDomainId) {
-        this.facultyId = userDomainId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -69,11 +49,11 @@ public class SubjectDTO implements Serializable {
             return false;
         }
 
-        SubjectDTO subjectDTO = (SubjectDTO) o;
-        if (subjectDTO.getId() == null || getId() == null) {
+        TimeTableDTO timeTableDTO = (TimeTableDTO) o;
+        if (timeTableDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), subjectDTO.getId());
+        return Objects.equals(getId(), timeTableDTO.getId());
     }
 
     @Override
@@ -83,12 +63,10 @@ public class SubjectDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "SubjectDTO{" +
+        return "TimeTableDTO{" +
             "id=" + getId() +
-            ", subjectCode='" + getSubjectCode() + "'" +
             ", semester='" + getSemester() + "'" +
             ", department='" + getDepartment() + "'" +
-            ", faculty=" + getFacultyId() +
             "}";
     }
 }
