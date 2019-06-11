@@ -45,6 +45,7 @@
       <section class="wrapper">
         <h2>COURSE ENROLLMENT</h2>
         <br><br>
+        <form action="/course-enroll">
         <input type="hidden" th:id="dept" th:field="${dummy.user.department}">
        <select class="course-filter1 col-2" onchange="document.getElementById('dept').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Department">Department</option>
@@ -64,20 +65,7 @@
 			  </option>
         </select>
         <button type="submit" class="btn btn-primary"> View Subjects</button>
-        <br><br>
-        <select class="course-filter3 col-2">
-          <option disabled selected="selected" value="0" placeholder="Subject">SUBJECT</option>
-         <option value="subject1"> Subject 1</option>
-         <option value="subject2"> Subject 2</option>
-         <option value="subject3"> Subject 3</option>
-         <option value="subject4"> Subject 4</option>
-         <option value="subject5"> Subject 5</option>
-         <option value="subject6"> Subject 6</option>
-         <option value="subject7"> Subject 7</option>
-         <option value="subject8"> Subject 8</option>
-        </select>     
-        &nbsp &nbsp &nbsp &nbsp &nbsp 
-  		<button type="submit" class="btn btn-primary"> ENROLL</button>
+        </form>	
       </section>
   </div>
   
@@ -90,7 +78,6 @@
       <div class="leave-form-header">
         <center><h2>LEAVE FORM</h2></center>
       </div>
-
       <div class="leavedate">
         <label class="fromlabel">From Date:</label>
         <input type="hidden" th:id="date11" th:name="date">
