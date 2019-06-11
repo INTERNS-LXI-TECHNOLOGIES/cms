@@ -577,8 +577,8 @@
           <!----------------------------------------------staff timetable------------------------------------------>
         <div class="staff-timetable">
           <center><h2>STAFF Timetable</h2></center>
-          <form action="/staff-timetable">
-          <input type="hidden" th:id="staff-timetable" th:field="${dummy.user.department}">
+          <form action="/staffTimeTable">
+          <input type="hidden" th:id="staff-timetable" th:name="dept">
         <center><select class="staff-filter1" onchange="document.getElementById('staff-timetable').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Department">Department</option>
          <option
