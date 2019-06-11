@@ -111,6 +111,7 @@ HttpSession session;
 	public String viewStudentProfile(Model model, Pageable pageable) {
 
 		UserDomainDTO userDomainDTO =  (UserDomainDTO) session.getAttribute("current-user");
+		
 		//UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("3")).getBody();
 		Date d = Date.from(userDomainDTO.getDob());
 		String date = (d.getDate() - 1) + " / " + (d.getMonth() + 1) + " / " + (d.getYear() + 1900);

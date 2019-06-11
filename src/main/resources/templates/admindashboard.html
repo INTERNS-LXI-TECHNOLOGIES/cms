@@ -1158,26 +1158,31 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form>
+					<form th:object="${event}" action="/create-an-event" method="post">
 						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Event Category:</label>
-							<input type="text" class="form-control" id="recipient-name">
-						</div>
+							<label for="category" class="col-form-label">Event Category:</label>
+							<input type="hidden" th:field="*{eventCategory}" class="form-control" id="category">
+										<select onchange="document.getElementById('category').value=this.value">
+											<option disabled selected="selected">Category</option>
+											<option th:each="categ: ${T(com.lxisoft.sis.domain.enumeration.EventType).values()}"
+												th:value="${categ}" th:text="${categ}"></option>
+										</select>
+									</div>
 						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Event Title:</label>
-							<input type="text" class="form-control" id="recipient-name">
+							<label for="title" class="col-form-label">Event Title:</label>
+							<input type="text" th:field="*{eventName}" class="form-control" id="title">
 						</div>
 						
 						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Staff Coordinator:</label>
-							<input type="text" class="form-control" id="recipient-name">
+							<label for="title" class="col-form-label">Event Venue:</label>
+							<input type="text" th:field="*{eventVenue}" class="form-control" id="venue">
 						</div>
 
-                           <div class="form-group">
-							<label for="recipient-name" class="col-form-label">Date:</label>
-							<input type="text" class="form-control" id="recipient-name">
+						
+                        <div class="form-group">
+							<label for="date-event" class="col-form-label">Date: DD-MM-YYYY</label>
+							<input type="text" th:name="event-date" class="form-control" id="date-event">
 						</div>
-
 
 
 						<div class="modal-footer">
@@ -1215,39 +1220,18 @@
     
       <th scope="col">Event Category </th>
       <th scope="col">Event Title</th>
-     <th scope="col">Staff Coordinator</th>
+<!--      <th scope="col">Staff Coordinator</th> -->
      <th scope="col">Date</th>
      <th scope="col">Time</th>
      </tr>
   </thead>
   <tbody>
-    <tr>
-      
-      <td contenteditable="true">ARTS</td>
-      <td contenteditable="true">AHALIA ANNUAL ARTS</td>
-      <td contenteditable="true">KEERTHANA</td>
-      <td contenteditable="true">4/5/2019</td>
-      <td contenteditable="true">9:00am to 8:00pm</td>
-      
-    </tr>
-        <tr>
-      
-      <td contenteditable="true">SPORTS</td>
-      <td contenteditable="true">AHALIA SPORTS</td>
-      <td contenteditable="true">VIVEK GOPI</td>
-      <td contenteditable="true">9/5/2019</td>
-      <td contenteditable="true">9:00am to 5:00pm</td>
-      
-    </tr>
-  <tr>
-      
-      <td contenteditable="true">TECH FEST</td>
-      <td contenteditable="true">ZAAGA 2.0</td>
-      <td contenteditable="true">ANAND</td>
-      <td contenteditable="true">12/5/2019</td>
-      <td contenteditable="true">9:00am to 6:00pm</td>
-    
-    </tr> 	
+    <tr th:each="eve: ${allEvents}">
+      <td contenteditable="true" th:text="${eve.eventCategory}"></td>
+      <td contenteditable="true" th:text="${eve.eventName}"></td>
+      <td contenteditable="true" th:text="${eve.eventDate}">4/5/2019</td>
+      <td contenteditable="true" th:text="${eve.eventVenue}"></td>
+    </tr>	
     
     </tbody>
     </table>
