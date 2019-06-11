@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.lxisoft.sis.domain.Exam;
 import com.lxisoft.sis.repository.ExamRepository;
 import com.lxisoft.sis.service.dto.AddressDTO;
 import com.lxisoft.sis.service.dto.DummyDTO;
 import com.lxisoft.sis.service.dto.ErrorDTO;
+import com.lxisoft.sis.service.dto.EventDTO;
 import com.lxisoft.sis.service.dto.ExamDTO;
 import com.lxisoft.sis.service.dto.ExamDummyDTO;
 import com.lxisoft.sis.service.dto.ExamHallDTO;
@@ -34,7 +34,6 @@ import com.lxisoft.sis.web.rest.ExamResource;
 import com.lxisoft.sis.web.rest.ExamScheduleResource;
 import com.lxisoft.sis.web.rest.QualificationResource;
 import com.lxisoft.sis.web.rest.UserDomainResource;
-import com.lxisoft.sis.web.rest.errors.ErrorConstants;
 
 @Controller
 public class UserController {
@@ -66,26 +65,18 @@ ExamRepository examrepository;
 	public String viewProfile(Model model) {
 
 		UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("1")).getBody();
-
 		model.addAttribute("admin", userDomainDTO);
-
 		DummyDTO dummyDTO = new DummyDTO();
 		dummyDTO.setAddress(new AddressDTO());
-
 		dummyDTO.setUser(new UserDomainDTO());
 		model.addAttribute("dummy", dummyDTO);
 		ExamDummyDTO examdummyDTO = new ExamDummyDTO();
 		examdummyDTO.setExam(new ExamDTO());
 		examdummyDTO.setExamhall(new ExamHallDTO());
 		examdummyDTO.setExamschedule(new ExamScheduleDTO());
-		
-		
-		
-		
 		model.addAttribute("examdummy", examdummyDTO);
-
+		model.addAttribute("event", new EventDTO());
 		return "admindashboard";
-
 	}
 
 	@GetMapping("/view-student-profile")
