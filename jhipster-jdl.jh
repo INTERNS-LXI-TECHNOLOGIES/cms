@@ -11,6 +11,21 @@ entity UserDomain {
   contactNumber Long
 }
 
+entity TimeTable {
+  semester Semester,
+    department Department
+}
+
+entity DayOfWeek {
+  sub1 String,
+  sub2 String,
+  sub3 String,
+  sub4 String,
+  sub5 String,
+  sub6 String,
+  sub7 String,
+}
+
 entity UserRole {
   role Role
 }
@@ -42,13 +57,13 @@ entity Event {
 }
 
 enum EventType {
-	ARTS,
+  ARTS,
     SPORTS,
     OTHER
 }
 
 entity Qualification {
-	grade String,
+  grade String,
     year Integer,
     university String,
     marks Double,
@@ -56,13 +71,13 @@ entity Qualification {
 }
 
 entity LeaveApplication {
-	reason String,
+  reason String,
     fromDate Instant,
     toDate Instant
 }
 
 entity Attatchment {
-	file Blob
+  file Blob
 }
 
 entity ExamSchedule {
@@ -75,19 +90,19 @@ entity ExamSchedule {
 }
 
 entity Exam {
-	examDate Instant,
-  	startingTime String,
+  examDate Instant,
+    startingTime String,
     duration String
 }
 
 entity StudyMaterial {
-	title String,
+  title String,
     module Integer,
-	file Blob
+  file Blob
 }
 
 entity ExamHall {
-	hallNumber Integer,
+  hallNumber Integer,
     batch String,
     rollNumFrom Integer,
     rollNumTo Integer,
@@ -95,20 +110,20 @@ entity ExamHall {
 }
 
 entity Subject {
-	subjectCode String,
+  subjectCode String,
     semester Semester,
     department Department
 }
 
 entity Assignment {
-	submissionDate Instant,
+  submissionDate Instant,
     topic String,
     semester Semester,
     department Department
 }
 
 enum Semester {
-	S1,
+  S1,
     S2,
     S3,
     S4,
@@ -120,7 +135,7 @@ enum Semester {
 }
 
 enum Department {
-	CSE,
+  CSE,
     ME,
     ECE,
     EEE,
@@ -129,7 +144,7 @@ enum Department {
 }
 
 relationship OneToOne {
-	UserDomain{address} to Address,
+  UserDomain{address} to Address,
     Exam{subject} to Subject
 }
 
@@ -137,7 +152,8 @@ relationship OneToMany {
     UserDomain{qualifications} to Qualification,
     ExamSchedule{exams} to Exam,
     Subject{materials} to StudyMaterial,
-    LeaveApplication{attatchments} to Attatchment
+    LeaveApplication{attatchments} to Attatchment,
+    TimeTable{days} to DayOfWeek
 }
 
 relationship ManyToMany {
@@ -147,25 +163,10 @@ relationship ManyToMany {
 }
 
 relationship ManyToOne {
-	LeaveApplication{appliedBy} to UserDomain
+  LeaveApplication{appliedBy} to UserDomain,
+  Subject{faculty} to UserDomain
 }
 
 dto * with mapstruct
 service * with serviceImpl
 paginate * with pagination
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-import { IStudyMaterial } from 'app/shared/model/study-material.model';
+import { IDayOfWeek } from 'app/shared/model/day-of-week.model';
 
 export const enum Semester {
   S1 = 'S1',
@@ -21,13 +21,11 @@ export const enum Department {
   OTHER = 'OTHER'
 }
 
-export interface ISubject {
+export interface ITimeTable {
   id?: number;
-  subjectCode?: string;
   semester?: Semester;
   department?: Department;
-  materials?: IStudyMaterial[];
-  facultyId?: number;
+  days?: IDayOfWeek[];
 }
 
-export const defaultValue: Readonly<ISubject> = {};
+export const defaultValue: Readonly<ITimeTable> = {};

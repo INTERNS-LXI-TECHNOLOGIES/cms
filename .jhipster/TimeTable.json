@@ -1,10 +1,6 @@
 {
-    "name": "Subject",
+    "name": "TimeTable",
     "fields": [
-        {
-            "fieldName": "subjectCode",
-            "fieldType": "String"
-        },
         {
             "fieldName": "semester",
             "fieldType": "Semester",
@@ -19,20 +15,13 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "materials",
-            "otherEntityName": "studyMaterial",
-            "otherEntityRelationshipName": "subject"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "faculty",
-            "otherEntityName": "userDomain",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "subject"
+            "relationshipName": "days",
+            "otherEntityName": "dayOfWeek",
+            "otherEntityRelationshipName": "timeTable"
         }
     ],
-    "changelogDate": "20190406142308",
-    "entityTableName": "subject",
+    "changelogDate": "20190611180658",
+    "entityTableName": "time_table",
     "dto": "mapstruct",
     "pagination": "pagination",
     "service": "serviceImpl",

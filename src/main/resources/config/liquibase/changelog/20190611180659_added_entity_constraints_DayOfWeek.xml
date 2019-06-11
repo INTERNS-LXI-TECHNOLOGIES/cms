@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity DayOfWeek.
+    -->
+    <changeSet id="20190611180659-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="time_table_id"
+                                 baseTableName="day_of_week"
+                                 constraintName="fk_day_of_week_time_table_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="time_table"/>
+
+    </changeSet>
+</databaseChangeLog>

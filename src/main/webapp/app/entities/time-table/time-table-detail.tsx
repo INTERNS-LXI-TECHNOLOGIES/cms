@@ -7,47 +7,41 @@ import { ICrudGetAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getEntity } from './subject.reducer';
-import { ISubject } from 'app/shared/model/subject.model';
+import { getEntity } from './time-table.reducer';
+import { ITimeTable } from 'app/shared/model/time-table.model';
 // tslint:disable-next-line:no-unused-variable
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 
-export interface ISubjectDetailProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface ITimeTableDetailProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export class SubjectDetail extends React.Component<ISubjectDetailProps> {
+export class TimeTableDetail extends React.Component<ITimeTableDetailProps> {
   componentDidMount() {
     this.props.getEntity(this.props.match.params.id);
   }
 
   render() {
-    const { subjectEntity } = this.props;
+    const { timeTableEntity } = this.props;
     return (
       <Row>
         <Col md="8">
           <h2>
-            Subject [<b>{subjectEntity.id}</b>]
+            TimeTable [<b>{timeTableEntity.id}</b>]
           </h2>
           <dl className="jh-entity-details">
             <dt>
-              <span id="subjectCode">Subject Code</span>
-            </dt>
-            <dd>{subjectEntity.subjectCode}</dd>
-            <dt>
               <span id="semester">Semester</span>
             </dt>
-            <dd>{subjectEntity.semester}</dd>
+            <dd>{timeTableEntity.semester}</dd>
             <dt>
               <span id="department">Department</span>
             </dt>
-            <dd>{subjectEntity.department}</dd>
-            <dt>Faculty</dt>
-            <dd>{subjectEntity.facultyId ? subjectEntity.facultyId : ''}</dd>
+            <dd>{timeTableEntity.department}</dd>
           </dl>
-          <Button tag={Link} to="/entity/subject" replace color="info">
+          <Button tag={Link} to="/entity/time-table" replace color="info">
             <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
           </Button>
           &nbsp;
-          <Button tag={Link} to={`/entity/subject/${subjectEntity.id}/edit`} replace color="primary">
+          <Button tag={Link} to={`/entity/time-table/${timeTableEntity.id}/edit`} replace color="primary">
             <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
           </Button>
         </Col>
@@ -56,8 +50,8 @@ export class SubjectDetail extends React.Component<ISubjectDetailProps> {
   }
 }
 
-const mapStateToProps = ({ subject }: IRootState) => ({
-  subjectEntity: subject.entity
+const mapStateToProps = ({ timeTable }: IRootState) => ({
+  timeTableEntity: timeTable.entity
 });
 
 const mapDispatchToProps = { getEntity };
@@ -68,4 +62,4 @@ type DispatchProps = typeof mapDispatchToProps;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SubjectDetail);
+)(TimeTableDetail);
