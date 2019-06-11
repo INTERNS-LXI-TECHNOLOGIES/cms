@@ -24,6 +24,7 @@ public class StudentDashboard {
 			return "redirect:/";
 		}
 		model.addAttribute("student", userDomainDTO);
+		
 		DummyDTO dummyDTO = new DummyDTO();
 		model.addAttribute("dummy", dummyDTO);
 		

@@ -1,4 +1,6 @@
 package com.lxisoft.sas.web.rest;
+import com.lxisoft.sas.domain.enumeration.Department;
+import com.lxisoft.sas.domain.enumeration.Semester;
 import com.lxisoft.sas.service.SubjectService;
 import com.lxisoft.sas.web.rest.errors.BadRequestAlertException;
 import com.lxisoft.sas.web.rest.util.HeaderUtil;
@@ -90,6 +92,14 @@ public class SubjectResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/subjects");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
+    
+    @GetMapping("/subjects-dept")
+    public ResponseEntity<List<SubjectDTO>> getAllSubjectsByDept(Pageable pageable,Semester s,Department d) {
+        log.debug("REST request to get a page of Subjects");
+        Page<SubjectDTO> page = subjectService.findAllBySemesterAndDepartment(pageable,s,d);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/subjects");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
 
     /**
      * GET  /subjects/:id : get the "id" subject.
@@ -116,4 +126,5 @@ public class SubjectResource {
         subjectService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
 }

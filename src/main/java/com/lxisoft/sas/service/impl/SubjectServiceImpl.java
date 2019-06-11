@@ -2,8 +2,11 @@ package com.lxisoft.sas.service.impl;
 
 import com.lxisoft.sas.service.SubjectService;
 import com.lxisoft.sas.domain.Subject;
+import com.lxisoft.sas.domain.enumeration.Department;
+import com.lxisoft.sas.domain.enumeration.Semester;
 import com.lxisoft.sas.repository.SubjectRepository;
 import com.lxisoft.sas.service.dto.SubjectDTO;
+import com.lxisoft.sas.service.dto.UserDomainDTO;
 import com.lxisoft.sas.service.mapper.SubjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,4 +88,10 @@ public class SubjectServiceImpl implements SubjectService {
     public void delete(Long id) {
         log.debug("Request to delete Subject : {}", id);        subjectRepository.deleteById(id);
     }
+    
+    @Override
+	public Page<SubjectDTO> findAllBySemesterAndDepartment(Pageable pageable,Semester s,Department d) {
+		return subjectRepository.findAllBySemesterAndDepartment(pageable,s,d)
+				.map(subjectMapper::toDto);
+	}
 }

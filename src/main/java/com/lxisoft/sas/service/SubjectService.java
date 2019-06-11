@@ -1,5 +1,8 @@
 package com.lxisoft.sas.service;
 
+import com.lxisoft.sas.domain.Subject;
+import com.lxisoft.sas.domain.enumeration.Department;
+import com.lxisoft.sas.domain.enumeration.Semester;
 import com.lxisoft.sas.service.dto.SubjectDTO;
 
 import org.springframework.data.domain.Page;
@@ -43,4 +46,8 @@ public interface SubjectService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    Page<SubjectDTO> findAllBySemesterAndDepartment(Pageable pageable,Semester s,Department d); 
+    
+    
 }

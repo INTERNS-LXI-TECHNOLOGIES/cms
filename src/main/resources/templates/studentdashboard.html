@@ -28,13 +28,14 @@
         <center><div class="card">
   <img src="images/passport.jpg" class="card-img-top" alt="avatar">
   <div class="card-body">
-    <p class="card-text">FIRST NAME :ARTHADH </p>
-    <p class="card-text">LAST NAME : BALAN</p>
-    <p class="card-text">BATCH:2015-2019 </p>
-    <p class="card-text">DEPARTMENT: CSE </p>
-    <p class="card-text">MOBILE NO: 7736381278 </p>
-    <p class="card-text">EMAIL: arthadhkallingal@live.com</p>
-    <p class="card-text">ADDRESS: Kallingal House</p>
+    <p class="card-text" th:text="'Id: '+${student.id}"> ID:1</p>
+    <p class="card-text" th:text="'FirstName: '+${student.firstName}">FIRST NAME :ARTHADH </p>
+    <p class="card-text" th:text="'LastName: '+${student.lastName}">LAST NAME : BALAN</p>
+    <p class="card-text" th:text="'Date Of Birth: '+${student.dob}">DATE OF BIRTH</p>
+    <p class="card-text" th:text="'Department: '+${student.department}">DEPARTMENT/p>
+    <p class="card-text" th:text="'ContactNo: '+${student.contactNumber}">MOBILE NO: 7736381278 </p>
+    <p class="card-text" th:text="'Registration Number: '+${student.regNum}">REGISTRATION NUM:</p>
+    <p class="card-text" th:text="'Email: ' + ${student.email}">EMAIL: arthadhb@live.com</p>  
   </div>
 </div>
 </center>
