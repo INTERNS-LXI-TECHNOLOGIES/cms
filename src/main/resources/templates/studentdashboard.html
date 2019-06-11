@@ -20,9 +20,10 @@
     <li><a href="#exam">Exam</a></li>
   <li><a href="#events">Events</a></li>
 
-  <li><a href="#logout">Logout</a></li>
+
  
   </ul>
+  <a class="logout" href="/user-logout">Logout</a>
   
 </div>
 
@@ -277,48 +278,23 @@
     
       <th scope="col">Event Category </th>
       <th scope="col">Event Title</th>
-     <th scope="col">Staff Coordinator</th>
+<!--      <th scope="col">Staff Coordinator</th> -->
      <th scope="col">Date</th>
-     <th scope="col">Time</th>
+     <th scope="col">Venue</th>
      </tr>
   </thead>
   <tbody>
-    <tr>
-      
-      <td contenteditable="true">ARTS</td>
-      <td contenteditable="true">AHALIA ANNUAL ARTS</td>
-      <td contenteditable="true">KEERTHANA</td>
-      <td contenteditable="true">4/5/2019</td>
-      <td contenteditable="true">9:00am to 8:00pm</td>
-      
+   <tr th:each="eve: ${allEvents}">
+      <td contenteditable="true" th:text="${eve.eventCategory}"></td>
+      <td contenteditable="true" th:text="${eve.eventName}"></td>
+      <td contenteditable="true" th:text="${eve.eventDate}"></td>
+      <td contenteditable="true" th:text="${eve.eventVenue}"></td>
     </tr>
-        <tr>
-      
-      <td contenteditable="true">SPORTS</td>
-      <td contenteditable="true">AHALIA SPORTS</td>
-      <td contenteditable="true">VIVEK GOPI</td>
-      <td contenteditable="true">9/5/2019</td>
-      <td contenteditable="true">9:00am to 5:00pm</td>
-      
-    </tr>
-  <tr>
-      
-      <td contenteditable="true">TECH FEST</td>
-      <td contenteditable="true">ZAAGA 2.0</td>
-      <td contenteditable="true">ANAND</td>
-      <td contenteditable="true">12/5/2019</td>
-      <td contenteditable="true">9:00am to 6:00pm</td>
-    
-    </tr>   
+       
     
     </tbody>
     </table>
-    <div class="modal-footer">
-             
-              <button type="submit" class="btn btn-tertiary">Save</button>
-              <button type="reset" class="btn btn-primary">Reset</button>
-            </div>  
-          
+    
           
         </div>
       </div>

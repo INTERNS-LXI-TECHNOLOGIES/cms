@@ -2,6 +2,7 @@ package com.lxisoft.sis.service.dto;
 import java.io.Serializable;
 import java.util.Objects;
 import com.lxisoft.sis.domain.enumeration.Semester;
+import com.lxisoft.sis.domain.enumeration.Department;
 
 /**
  * A DTO for the Subject entity.
@@ -13,6 +14,8 @@ public class SubjectDTO implements Serializable {
     private String subjectCode;
 
     private Semester semester;
+
+    private Department department;
 
 
     public Long getId() {
@@ -37,6 +40,14 @@ public class SubjectDTO implements Serializable {
 
     public void setSemester(Semester semester) {
         this.semester = semester;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -66,6 +77,7 @@ public class SubjectDTO implements Serializable {
             "id=" + getId() +
             ", subjectCode='" + getSubjectCode() + "'" +
             ", semester='" + getSemester() + "'" +
+            ", department='" + getDepartment() + "'" +
             "}";
     }
 }

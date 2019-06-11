@@ -642,9 +642,7 @@
 					</div>
 				</div>
 				</form>
-
-
-
+				
 				<!-------------------------------------------search box------------------------------------------------------>
 
 
@@ -659,6 +657,10 @@
 			</div>
 		</section>
 	</div>
+
+
+
+		
 
 
 	<div class="tab-content" id="exam">
@@ -1222,14 +1224,14 @@
       <th scope="col">Event Title</th>
 <!--      <th scope="col">Staff Coordinator</th> -->
      <th scope="col">Date</th>
-     <th scope="col">Time</th>
+<!--      <th scope="col">Time</th> -->
      </tr>
   </thead>
   <tbody>
     <tr th:each="eve: ${allEvents}">
       <td contenteditable="true" th:text="${eve.eventCategory}"></td>
       <td contenteditable="true" th:text="${eve.eventName}"></td>
-      <td contenteditable="true" th:text="${eve.eventDate}">4/5/2019</td>
+      <td contenteditable="true" th:text="${eve.eventDate}"></td>
       <td contenteditable="true" th:text="${eve.eventVenue}"></td>
     </tr>	
     
@@ -1257,7 +1259,7 @@
         
         <form action="/add-subjects" method="POST">
         <div class="dropdown">
-        <input type="hidden" th:id="subject-department" th:field="${dummy.user.department}">
+        <input type="hidden" th:id="subject-department" th:name="subdept">
   		<select class="subject" onchange="document.getElementById('subject-department').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Department">Department</option>
          <option
@@ -1266,7 +1268,7 @@
 						th:text="${dept}">
 			  </option>
         </select>
-        <input type="hidden" th:id="subject-semester" th:field="${dummy.user.semester}">
+        <input type="hidden" th:id="subject-semester" th:name="subsem">
         <select class="subject" onchange="document.getElementById('subject-semester').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Semester">SEMESTER</option>
          <option
@@ -1287,11 +1289,7 @@
       <br>
       <input th:field="${dummy.subjects[__3__].subjectCode}" type="text" class="form-control" placeholder="Subject 4">
       <br>
-      <input th:field="${dummy.subjects[__4__].subjectCode}" type="text" class="form-control" placeholder="Subject 5">
-      <br>
-      <input th:field="${dummy.subjects[__5__].subjectCode}" type="text" class="form-control" placeholder="Subject 6">
-      <br>
-
+      
 
  
  <center> <button type="submit" class="btn btn-primary">ADD</button></center>
