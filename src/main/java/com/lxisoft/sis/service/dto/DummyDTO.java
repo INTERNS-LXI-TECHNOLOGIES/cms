@@ -8,6 +8,23 @@ public class DummyDTO {
 	private UserDomainDTO user;
 	private AddressDTO address;
 	List<QualificationDTO> list=new ArrayList<QualificationDTO>();
+	ArrayList<SubjectDTO> subList=new ArrayList<SubjectDTO>();
+	ArrayList<SubjectDTO> subjects=new ArrayList<SubjectDTO>();
+	
+	public ArrayList<SubjectDTO> getSubjects() {
+		return subjects;
+	}
+	
+	public void setSubjects(ArrayList<SubjectDTO> subjects) {
+		this.subjects = subjects;
+	}
+	
+	public ArrayList<SubjectDTO> getSubList() {
+		return subList;
+	}
+	public void setSubList(ArrayList<SubjectDTO> subList) {
+		this.subList = subList;
+	}
 	public UserDomainDTO getUser() {
 		return user;
 	}
@@ -29,17 +46,12 @@ public class DummyDTO {
 	public void setList(List<QualificationDTO> list) {
 		this.list = list;
 	}
-	
 	public boolean setValidContents() {
 		if (user.getEmail() == null || user.getEmail().equals("")) {
 			return false;
 		} else if (user.getPassword() == null || user.getPassword().equals("")) {
 			return false;
 		}
-		else if (user.getRegNum() == null || user.getRegNum().equals("")) {
-			return false;
-		}
-		
 		return validateAddress();
 	}
 
@@ -72,16 +84,33 @@ public class DummyDTO {
 			if (q.getGrade().equals("")) {
 				q.setGrade(null);
 			}
-			
 			if (q.getUniversity().equals("")) {
 				q.setUniversity(null);
 			}
 			if (q.getGrade() == null && q.getUniversity() == null) {
 				q = null;
+				list.remove(q);
 			}
 		}
 		return true;
 	}
+	
+	public boolean validateSubjects() {
+		for (SubjectDTO ss : subjects) {
+			if (ss.getSubjectCode().equals("")) {
+				ss.setSubjectCode(null);
+			}
+			if (ss.getSubjectCode() == null)
+			{
+				ss=null;
+			}
+		
+		}
+		return true;
+	}
+	
+	
+
 
 		
 

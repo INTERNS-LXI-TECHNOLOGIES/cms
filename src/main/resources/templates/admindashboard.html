@@ -33,8 +33,10 @@
 			<li><a href="#admin-profile">My Profile</a></li>
 			<li><a href="#student">Student</a></li>
 			<li><a href="#faculty"> Faculty</a></li>
+			
 			<li><a href="#exam"> Exam</a></li>
 			<li><a href="#events"> Events</a></li>
+			<li><a href="#subject"> Add Subjects</a></li>
 			
 		</ul>
 		<a class="logout" href="/user-logout">Logout</a>
@@ -1177,10 +1179,6 @@
 						</div>
 
 
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Time:</label>
-							<input type="text" class="form-control" id="recipient-name">
-						</div>
 
 						<div class="modal-footer">
 							
@@ -1267,6 +1265,57 @@
 </div>
 		</section>
 	</div>
+	<!-- Add Subjects -->
+  <div class="tab-content" id="subject">
+      <section class="wrapper">
+      <div class="wrapper-container">
+        <h2>ADD SUBJECTS</h2>
+        
+        <form action="/add-subjects" method="POST">
+        <div class="dropdown">
+        <input type="hidden" th:id="subject-department" th:field="${dummy.user.department}">
+  		<select class="subject" onchange="document.getElementById('subject-department').value=this.value;">
+          <option disabled selected="selected" value="0" placeholder="Department">Department</option>
+         <option
+              			th:each="dept: ${T(com.lxisoft.sis.domain.enumeration.Department).values()}"
+						th:value="${dept}" 
+						th:text="${dept}">
+			  </option>
+        </select>
+        <input type="hidden" th:id="subject-semester" th:field="${dummy.user.semester}">
+        <select class="subject" onchange="document.getElementById('subject-semester').value=this.value;">
+          <option disabled selected="selected" value="0" placeholder="Semester">SEMESTER</option>
+         <option
+              			th:each="semester: ${T(com.lxisoft.sis.domain.enumeration.Semester).values()}"
+						th:value="${semester}"
+						th:text="${semester}">
+			  </option>
+        </select>
+       
+        <br><br><br>
+  
+    
+      <input th:field="${dummy.subjects[__0__].subjectCode}" type="text" class="form-control" placeholder="Subject 1">
+      <br>
+      <input th:field="${dummy.subjects[__1__].subjectCode}" type="text" class="form-control" placeholder="Subject 2">
+      <br>
+      <input th:field="${dummy.subjects[__2__].subjectCode}" type="text" class="form-control" placeholder="Subject 3">
+      <br>
+      <input th:field="${dummy.subjects[__3__].subjectCode}" type="text" class="form-control" placeholder="Subject 4">
+      <br>
+      <input th:field="${dummy.subjects[__4__].subjectCode}" type="text" class="form-control" placeholder="Subject 5">
+      <br>
+      <input th:field="${dummy.subjects[__5__].subjectCode}" type="text" class="form-control" placeholder="Subject 6">
+      <br>
+
+
+ 
+ <center> <button type="submit" class="btn btn-primary">ADD</button></center>
+</form>
+</div>
+      </section>
+  </div>
+	
 
 
 

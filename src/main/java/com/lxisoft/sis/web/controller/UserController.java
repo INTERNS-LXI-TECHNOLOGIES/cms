@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,6 +29,7 @@ import com.lxisoft.sis.service.dto.ExamDummyDTO;
 import com.lxisoft.sis.service.dto.ExamHallDTO;
 import com.lxisoft.sis.service.dto.ExamScheduleDTO;
 import com.lxisoft.sis.service.dto.QualificationDTO;
+import com.lxisoft.sis.service.dto.SubjectDTO;
 import com.lxisoft.sis.service.dto.UserDomainDTO;
 import com.lxisoft.sis.service.dto.UserRoleDTO;
 import com.lxisoft.sis.service.mapper.AddressMapper;
@@ -38,6 +40,7 @@ import com.lxisoft.sis.web.rest.ExamHallResource;
 import com.lxisoft.sis.web.rest.ExamResource;
 import com.lxisoft.sis.web.rest.ExamScheduleResource;
 import com.lxisoft.sis.web.rest.QualificationResource;
+import com.lxisoft.sis.web.rest.SubjectResource;
 import com.lxisoft.sis.web.rest.UserDomainResource;
 import com.lxisoft.sis.web.rest.UserRoleResource;
 import com.lxisoft.sis.web.rest.errors.ErrorConstants;
@@ -52,6 +55,8 @@ public class UserController {
 	ExamResource examResource;
 	@Autowired
 	UserRoleResource userRoleResource;
+	@Autowired
+	SubjectResource subjectResource;
 	
 	
 	@Autowired
@@ -105,8 +110,8 @@ HttpSession session;
 	@GetMapping("/view-student-profile")
 	public String viewStudentProfile(Model model, Pageable pageable) {
 
-		//UserDomainDTO userDomainDTO =  (UserDomainDTO) session.getAttribute("current-user");
-		UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("3")).getBody();
+		UserDomainDTO userDomainDTO =  (UserDomainDTO) session.getAttribute("current-user");
+		//UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("3")).getBody();
 		Date d = Date.from(userDomainDTO.getDob());
 		String date = (d.getDate() - 1) + " / " + (d.getMonth() + 1) + " / " + (d.getYear() + 1900);
 		model.addAttribute("date", date);
@@ -125,9 +130,9 @@ HttpSession session;
 	
 	@GetMapping("/view-faculty-profile")
 	public String viewFacultyProfile(Model model, Pageable pageable) {
-		//UserDomainDTO userDomainDTO =  (UserDomainDTO) session.getAttribute("current-user");
+		UserDomainDTO userDomainDTO =  (UserDomainDTO) session.getAttribute("current-user");
 
-		UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("10")).getBody();
+		//UserDomainDTO userDomainDTO = userDomainResource.getUserDomain(Long.parseLong("10")).getBody();
 		Date d = Date.from(userDomainDTO.getDob());
 		String date = (d.getDate() - 1) + " / " + (d.getMonth() + 1) + " / " + (d.getYear() + 1900);
 		model.addAttribute("date", date);
@@ -253,6 +258,25 @@ HttpSession session;
 			rol = this.userRoleResource.createUserRole(rol).getBody();
 			dummy.getUser().getRoles().add(rol);
 		}
+	}
+	
+	@PostMapping("/add-subjects")
+	public String createSubjects(@ModelAttribute DummyDTO dummy, Model model) throws URISyntaxException {
+		List<SubjectDTO> sub = dummy.getSubjects();
+		for (SubjectDTO ss : sub) {
+			if (ss != null) {
+				if (ss.getSubjectCode().equals("")) {
+
+				} else {
+					ss.setSubjectCode(ss.getSubjectCode());
+
+					ss = subjectResource.createSubject(ss).getBody();
+				}
+
+			}
+		}
+
+		return "redirect:/view-profile";
 	}
 
 @PostMapping("/create-student-exam")
