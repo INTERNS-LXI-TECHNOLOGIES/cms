@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class DummyDTO {
 	private UserDomainDTO user;
 	private AddressDTO address;
@@ -36,10 +37,6 @@ public class DummyDTO {
 		} else if (user.getPassword() == null || user.getPassword().equals("")) {
 			return false;
 		}
-		else if (user.getRegNum() == null || user.getRegNum().equals("")) {
-			return false;
-		}
-		
 		return validateAddress();
 	}
 
@@ -69,20 +66,18 @@ public class DummyDTO {
 	
 	private boolean validateQualifications() {
 		for (QualificationDTO q : list) {
-			if (q.getGrade().equals("")) {
+			if (q.getGrade()==null || q.getGrade().equals("")) {
 				q.setGrade(null);
 			}
-			
-			if (q.getUniversity().equals("")) {
+			if (q.getUniversity() == null || q.getUniversity().equals("")) {
 				q.setUniversity(null);
 			}
 			if (q.getGrade() == null && q.getUniversity() == null) {
 				q = null;
+				list.remove(q);
 			}
 		}
 		return true;
-	}
-
-		
+	}	
 
 }
