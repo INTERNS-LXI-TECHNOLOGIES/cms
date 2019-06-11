@@ -2,6 +2,7 @@ package com.lxisoft.sas.web.controller;
 
 import java.net.URISyntaxException;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.lxisoft.sas.domain.enumeration.Department;
 import com.lxisoft.sas.domain.enumeration.Role;
+import com.lxisoft.sas.domain.enumeration.Semester;
 import com.lxisoft.sas.service.dto.AddressDTO;
 import com.lxisoft.sas.service.dto.DummyDTO;
 import com.lxisoft.sas.service.dto.QualificationDTO;
@@ -147,9 +150,14 @@ public class AdminController {
 	}
 
 	@PostMapping("/add-subjects")
-	public String createSubjects(@ModelAttribute DummyDTO dummy, Model model) throws URISyntaxException {
+	public String createSubjects(@ModelAttribute DummyDTO dummy, @RequestParam("subdept") Department subdept,
+			@RequestParam("subsem") Semester subsem, Model model) throws URISyntaxException {
 		List<SubjectDTO> sub = dummy.getSubjects();
 		for (SubjectDTO ss : sub) {
+			
+			ss.setDepartment(subdept);
+			ss.setSemester(subsem);
+			
 			if (ss != null) {
 				if (ss.getSubjectCode().equals("")) {
 
@@ -160,7 +168,7 @@ public class AdminController {
 				}
 
 			}
-		}
+		}	
 
 		return "redirect:/view-profile";
 	}

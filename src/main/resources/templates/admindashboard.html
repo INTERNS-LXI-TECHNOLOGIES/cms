@@ -515,7 +515,7 @@
         
         <form action="/add-subjects" method="POST">
         <div class="dropdown">
-        <input type="hidden" th:id="subject-department" th:field="${dummy.user.department}">
+        <input type="hidden" th:id="subject-department" th:name="subdept">
   		<select class="subject" onchange="document.getElementById('subject-department').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Department">Department</option>
          <option
@@ -524,7 +524,7 @@
 						th:text="${dept}">
 			  </option>
         </select>
-        <input type="hidden" th:id="subject-semester" th:field="${dummy.user.semester}">
+        <input type="hidden" th:id="subject-semester" th:name="subsem">
         <select class="subject" onchange="document.getElementById('subject-semester').value=this.value;">
           <option disabled selected="selected" value="0" placeholder="Semester">SEMESTER</option>
          <option
@@ -537,6 +537,7 @@
         <br>
   <div class="form-row">
     <div class="col-3">
+    
       <input th:field="${dummy.subjects[__0__].subjectCode}" type="text" class="form-control" placeholder="Subject 1">
       <br>
       <input th:field="${dummy.subjects[__1__].subjectCode}" type="text" class="form-control" placeholder="Subject 2">
@@ -721,7 +722,7 @@
     
   </div>
 </div>
-<!-- ------------------view/Edit class timtable modal----------------- -->
+<!-- ------------------view/Edit class timetable modal----------------- -->
 <button class="btn btn-secondary" href="#" data-toggle="modal" data-target="#viewclasstimetableModal"><span class="glyphicon glyphicon-search"></span>
   View timetable
 </button></center>
